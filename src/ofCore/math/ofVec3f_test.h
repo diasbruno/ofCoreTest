@@ -33,6 +33,9 @@ private:
         TEST_ASSERT( tVec3f[0] == 0 )
         TEST_ASSERT( tVec3f[1] == 0 )
         TEST_ASSERT( tVec3f[2] == 0 )
+		// since vec3f only have size of 3
+		// this should need review?
+		TEST_ASSERT( tVec3f[3] == 0 )
     }
 	void test_pointer_access() {
 		tVec3f.x = 10;
@@ -45,18 +48,21 @@ private:
         TEST_ASSERT( *(p+2) == 15 )
     }
 	void test_set_axis_vec3f_scalar() {
+		// axis
 		tVec3f.set( 20, 30, 40 );
 		
         TEST_ASSERT( tVec3f.x == 20 )
         TEST_ASSERT( tVec3f.y == 30 )
         TEST_ASSERT( tVec3f.z == 40 )
 		
+		// vec3f
 		tVec3f.set( ofVec3f( 40, 50, 60 ) );
 		
 		TEST_ASSERT( tVec3f.x == 40 )
         TEST_ASSERT( tVec3f.y == 50 )
         TEST_ASSERT( tVec3f.z == 60 )
 		
+		// scalar
 		tVec3f.set( 10 );
 		
 		TEST_ASSERT( tVec3f.x == 10 )
@@ -66,13 +72,18 @@ private:
 	void test_equality() {
 		tVec3f.set( 20, 30, 40 );
 		
-        TEST_ASSERT( tVec3f == ofVec3f(20,30,40) )
-		TEST_ASSERT( tVec3f != ofVec3f(20,30,50) )
+        TEST_ASSERT( tVec3f == ofVec3f( 20, 30, 40 ) )
+		TEST_ASSERT( tVec3f != ofVec3f( 20, 30, 50 ) )
     }
 	void test_math_operations() {
 		tVec3f.set( 20, 30, 40 );
 		
-		TEST_ASSERT( tVec3f + ofVec3f(40,30,400) == ofVec3f(60,60,440) )
+		//           results in a new ofVec3f
+		TEST_ASSERT( tVec3f + ofVec3f( 40, 30, 400 ) == ofVec3f( 60, 60, 440 ) )
+		
+		// modify lhs
+		tVec3f += ofVec3f(40,30,400);
+		TEST_ASSERT( tVec3f == ofVec3f( 60, 60, 440 ) )
     }
 };
 
