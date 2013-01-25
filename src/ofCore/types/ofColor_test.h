@@ -25,8 +25,6 @@ protected:
 private:
 	
     void test_instance_creation() {
-		// should initialize with 
-		// a default value?
         TEST_ASSERT( tColor.r == 1 )
 		TEST_ASSERT( tColor.b == 1 )
 		TEST_ASSERT( tColor.r == 1 )
