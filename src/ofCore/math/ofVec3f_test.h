@@ -33,15 +33,16 @@ private:
         TEST_ASSERT( tVec3f[0] == 0 )
         TEST_ASSERT( tVec3f[1] == 0 )
         TEST_ASSERT( tVec3f[2] == 0 )
-		// since vec3f only have size of 3
-		// this should need review?
-		TEST_ASSERT( tVec3f[3] == 0 )
+		// since vec3f has size of 3
+		// this needs review?
+		// TEST_ASSERT( tVec3f[3] == 0 )
     }
 	void test_pointer_access() {
 		tVec3f.x = 10;
 		tVec3f.y = 12;
 		tVec3f.z = 15;
 		
+		// needs to be managed manually.
 		float *p = tVec3f.getPtr();
         TEST_ASSERT( *(p+0) == 10 )
         TEST_ASSERT( *(p+1) == 12 )
@@ -78,12 +79,26 @@ private:
 	void test_math_operations() {
 		tVec3f.set( 20, 30, 40 );
 		
-		//           results in a new ofVec3f
+		// operations between 2 vec's 
+		// results in a new vec.
+		
+		// operation and assignment 
+		// modifies the lhs.
+		
 		TEST_ASSERT( tVec3f + ofVec3f( 40, 30, 400 ) == ofVec3f( 60, 60, 440 ) )
 		
-		// modify lhs
 		tVec3f += ofVec3f(40,30,400);
 		TEST_ASSERT( tVec3f == ofVec3f( 60, 60, 440 ) )
+		
+		TEST_ASSERT( tVec3f - ofVec3f( 20, 10, 600 ) == ofVec3f( 40, 50, -160 ) )
+		
+		tVec3f -= ofVec3f( -40, -30, 10 );
+		TEST_ASSERT( tVec3f == ofVec3f( 100, 90, 430 ) )
+		
+		TEST_ASSERT( tVec3f * ofVec3f( 20, 10, -6 ) == ofVec3f( 2000, 900, -2580 ) )
+		
+		tVec3f *= ofVec3f( -2, -1, 0.5 );
+		TEST_ASSERT( tVec3f == ofVec3f( -200, -90, 215 ) )
     }
 };
 
