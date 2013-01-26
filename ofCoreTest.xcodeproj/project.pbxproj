@@ -70,7 +70,6 @@
 
 /* Begin PBXFileReference section */
 		03F7C17216B183A8009E009E /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
-		03F7C18D16B18415009E009E /* test_ofVec3f.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = test_ofVec3f.h; sourceTree = "<group>"; };
 		03F7C1C316B206C5009E009E /* collectoroutput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = collectoroutput.cpp; sourceTree = "<group>"; };
 		03F7C1C416B206C5009E009E /* compileroutput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = compileroutput.cpp; sourceTree = "<group>"; };
 		03F7C1C516B206C5009E009E /* cpptest-assert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "cpptest-assert.h"; sourceTree = "<group>"; };
@@ -92,6 +91,11 @@
 		03F7C1D616B206C5009E009E /* time.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = time.cpp; sourceTree = "<group>"; };
 		03F7C1D716B206C5009E009E /* utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = utils.cpp; sourceTree = "<group>"; };
 		03F7C1D816B206C5009E009E /* utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utils.h; sourceTree = "<group>"; };
+		03F7C2B716B24181009E009E /* ofVec3f_test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofVec3f_test.h; sourceTree = "<group>"; };
+		03F7C2D716B24C1B009E009E /* ofColor_test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofColor_test.h; sourceTree = "<group>"; };
+		03F7C3C616B39817009E009E /* ofImage_test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofImage_test.h; sourceTree = "<group>"; };
+		03F7C3D016B39A38009E009E /* ofCoreTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofCoreTests.h; sourceTree = "<group>"; };
+		03F7C45916B3A559009E009E /* ofPixels_test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofPixels_test.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -223,6 +227,106 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		03F7C2AF16B24181009E009E /* ofCore */ = {
+			isa = PBXGroup;
+			children = (
+				03F7C2B016B24181009E009E /* 3d */,
+				03F7C2B116B24181009E009E /* app */,
+				03F7C2B216B24181009E009E /* communication */,
+				03F7C2B316B24181009E009E /* events */,
+				03F7C2B416B24181009E009E /* gl */,
+				03F7C2B516B24181009E009E /* graphics */,
+				03F7C2B616B24181009E009E /* math */,
+				03F7C2B816B24181009E009E /* sound */,
+				03F7C2B916B24181009E009E /* types */,
+				03F7C2BA16B24181009E009E /* utils */,
+				03F7C2BB16B24181009E009E /* video */,
+				03F7C3D016B39A38009E009E /* ofCoreTests.h */,
+			);
+			path = ofCore;
+			sourceTree = "<group>";
+		};
+		03F7C2B016B24181009E009E /* 3d */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = 3d;
+			sourceTree = "<group>";
+		};
+		03F7C2B116B24181009E009E /* app */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = app;
+			sourceTree = "<group>";
+		};
+		03F7C2B216B24181009E009E /* communication */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = communication;
+			sourceTree = "<group>";
+		};
+		03F7C2B316B24181009E009E /* events */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = events;
+			sourceTree = "<group>";
+		};
+		03F7C2B416B24181009E009E /* gl */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = gl;
+			sourceTree = "<group>";
+		};
+		03F7C2B516B24181009E009E /* graphics */ = {
+			isa = PBXGroup;
+			children = (
+				03F7C3C616B39817009E009E /* ofImage_test.h */,
+				03F7C45916B3A559009E009E /* ofPixels_test.h */,
+			);
+			path = graphics;
+			sourceTree = "<group>";
+		};
+		03F7C2B616B24181009E009E /* math */ = {
+			isa = PBXGroup;
+			children = (
+				03F7C2B716B24181009E009E /* ofVec3f_test.h */,
+			);
+			path = math;
+			sourceTree = "<group>";
+		};
+		03F7C2B816B24181009E009E /* sound */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = sound;
+			sourceTree = "<group>";
+		};
+		03F7C2B916B24181009E009E /* types */ = {
+			isa = PBXGroup;
+			children = (
+				03F7C2D716B24C1B009E009E /* ofColor_test.h */,
+			);
+			path = types;
+			sourceTree = "<group>";
+		};
+		03F7C2BA16B24181009E009E /* utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		03F7C2BB16B24181009E009E /* video */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = video;
+			sourceTree = "<group>";
+		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
@@ -294,10 +398,10 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				03F7C2AF16B24181009E009E /* ofCore */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* testApp.h */,
-				03F7C18D16B18415009E009E /* test_ofVec3f.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
