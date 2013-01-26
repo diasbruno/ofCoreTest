@@ -2,9 +2,7 @@
 #include "testApp.h"
 #include "ofAppGlutWindow.h"
 
-#include "cpptest.h"
-#include "ofVec3f_test.h"
-#include "ofColor_test.h"
+#include "ofCoreTests.h"
 
 void run_tests()
 {
