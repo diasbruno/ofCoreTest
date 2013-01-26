@@ -1,3 +1,4 @@
+#pragma once
 
 #include "cpptest.h"
 
@@ -19,23 +20,26 @@ public:
 	
 protected:
 	
-    virtual void setup()     {}
+    virtual void setup()     {
+		
+	}
     virtual void tear_down() {}
 	
 private:
 	
     void test_instance_creation() {
-        TEST_ASSERT( tColor.r == 1 )
-		TEST_ASSERT( tColor.b == 1 )
-		TEST_ASSERT( tColor.r == 1 )
-	}
-	
-	void test_instance_creation() {
-		// should initialize with 
-		// a default value?
-        TEST_ASSERT( tColor.r == 1 )
-		TEST_ASSERT( tColor.b == 1 )
-		TEST_ASSERT( tColor.r == 1 )
+        TEST_ASSERT( tColor.r == 255.0 )
+		TEST_ASSERT( tColor.g == 255.0 )
+		TEST_ASSERT( tColor.b == 255.0 )
+		TEST_ASSERT( tColor.a == 255.0 )
+		
+		// ofColor.set( <#ofColor_ *color#> );
+		tColor.set( ofColor_<float>::blue );
+		
+        TEST_ASSERT( tColor.r == 0.0 )
+		TEST_ASSERT( tColor.g == 0.0 )
+		TEST_ASSERT( tColor.b == 255.0 )
+		TEST_ASSERT( tColor.a == 255.0 )
 	}
 	
 };
