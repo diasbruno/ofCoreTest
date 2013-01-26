@@ -4,11 +4,6 @@
 
 #include "ofCoreTests.h"
 
-void run_tests()
-{
-    Test::Suite ts;
-    ts.add( auto_ptr<Test::Suite>( new ofVec3f_Suite ) );
-    ts.add( auto_ptr<Test::Suite>( new ofColor_Suite ) );
 static Test::Suite ts_types;
 static Test::Suite ts_graphics;
 
@@ -29,8 +24,10 @@ void run_tests() {
 	run_tests_for_types();
 	run_tests_for_graphics();
     
-    Test::TextOutput output( Test::TextOutput::Verbose );
-    ts.run( output );
+    Test::HtmlOutput output;
+	output.generate( std::cout, true, "HTML Tests" );
+    ts_types.run( output );
+	ts_graphics.run( output );
 }
 
 //========================================================================
