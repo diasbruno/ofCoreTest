@@ -1,3 +1,5 @@
+#pragma once
+
 #include "cpptest.h"
 
 using namespace std;
@@ -99,16 +101,16 @@ private:
 		TEST_ASSERT( tVec3f == ofVec3f( 40, 50, -160 ) )
 		
 		
-		TEST_ASSERT( tVec3f * ofVec3f( 20, 10, -6 ) == ofVec3f( 8000, 500, -960 ) )
+		TEST_ASSERT( tVec3f * ofVec3f( 20, 10, -6 ) == ofVec3f( 800, 500, 960 ) )
 		
-		tVec3f *= ofVec3f( 8000, 500, -960 );
-		TEST_ASSERT( tVec3f == ofVec3f( 8000, 900, -2580 ) )
+		tVec3f *= ofVec3f( 20, 10, -6 );
+		TEST_ASSERT( tVec3f == ofVec3f( 800, 500, 960 ) )
 		
 		
-		TEST_ASSERT( tVec3f / ofVec3f( 20, 10, -5 ) == ofVec3f( -10, -9, -43 ) )
+		TEST_ASSERT( tVec3f / ofVec3f( 80, 20, -5 ) == ofVec3f( 10, 25, -192 ) )
 		
-		tVec3f /= ofVec3f( 20, 10, -5 );
-		TEST_ASSERT( tVec3f == ofVec3f( -10, -9, -43 ) )		
+		tVec3f /= ofVec3f( 80, 20, -5 );
+		TEST_ASSERT( tVec3f == ofVec3f( 10, 25, -192 ) )		
     }
 };
 
