@@ -26,11 +26,12 @@ void run_tests() {
     
     Test::HtmlOutput output;
 	output.generate( std::cout, true, "HTML Tests" );
+	
     ts_types.run( output );
 	ts_graphics.run( output );
 }
 
-//========================================================================
+/*! */
 int main() {
 	run_tests();
     return 0;
