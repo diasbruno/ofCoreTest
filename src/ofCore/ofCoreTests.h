@@ -8,3 +8,4 @@
 #include "ofImage_test.h"
 // Utils
 #include "ofSystemUtils_test.h"
+#include "ofUtils_test.h"
