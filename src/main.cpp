@@ -24,7 +24,8 @@ void run_tests_for_graphics() {
 }
 
 void run_tests_for_utils() {
-	ts_graphics.add( auto_ptr<Test::Suite>( new ofSystemUtils_Suite ) );
+//	ts_graphics.add( auto_ptr<Test::Suite>( new ofSystemUtils_Suite ) );
+	ts_graphics.add( auto_ptr<Test::Suite>( new ofUtils_DateTime_Suite ) );
 }
 
 void run_tests() {
