@@ -20,10 +20,8 @@ public:
 	
 protected:
 	
-    virtual void setup()     {
-		
-	}
-    virtual void tear_down() {}
+    void     setup() {}
+    void tear_down() {}
 	
 private:
 	

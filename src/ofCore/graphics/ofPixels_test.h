@@ -30,8 +30,8 @@ public:
 	
 protected:
 	
-    virtual void setup()     {}
-    virtual void tear_down() {
+    void     setup() {}
+    void tear_down() {
 		tpixels.clear();
 		tpixels_f.clear();
 		tpixels_s.clear();

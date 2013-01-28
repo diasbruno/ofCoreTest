@@ -21,11 +21,11 @@ public:
 	
 protected:
 	
-    virtual void     setup() {
+    void     setup() {
 		dialog_error_message = "Test dialog error message.";
 		encoding_string_a = "Esse é um exemplo de texto";
 	}
-    virtual void tear_down() {
+    void tear_down() {
 		dialog_error_message.clear();
 		encoding_string_a.clear();
 	}
