@@ -23,10 +23,15 @@ void run_tests_for_graphics() {
 	//ts.add( auto_ptr<Test::Suite>( new ofImage_Suite ) );
 }
 
+void run_tests_for_utils() {
+	ts_graphics.add( auto_ptr<Test::Suite>( new ofSystemUtils_Suite ) );
+}
+
 void run_tests() {
 	// comment tests you don't want to run.
 	run_tests_for_types();
 	run_tests_for_graphics();
+	run_tests_for_utils();
     
 #if CPPTEST_OUTPUT == 1
     Test::HtmlOutput output;
