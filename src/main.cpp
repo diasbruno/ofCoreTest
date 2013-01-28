@@ -4,6 +4,10 @@
 
 #include "ofCoreTests.h"
 
+// 0 output as console 
+// 1 output as html
+#define CPPTEST_OUTPUT 0 
+
 static Test::Suite ts_types;
 static Test::Suite ts_graphics;
 
