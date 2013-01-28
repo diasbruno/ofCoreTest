@@ -28,8 +28,12 @@ void run_tests() {
 	run_tests_for_types();
 	run_tests_for_graphics();
     
+#if CPPTEST_OUTPUT == 1
     Test::HtmlOutput output;
 	output.generate( std::cout, true, "HTML Tests" );
+#else
+    Test::TextOutput output( Test::TextOutput::Verbose );
+#endif
 	
     ts_types.run( output );
 	ts_graphics.run( output );
