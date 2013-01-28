@@ -6,3 +6,5 @@
 // Graphics
 #include "ofPixels_test.h"
 #include "ofImage_test.h"
+// Utils
+#include "ofSystemUtils_test.h"
