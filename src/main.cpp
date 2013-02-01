@@ -2,7 +2,7 @@
 #include "testApp.h"
 #include "ofAppGlutWindow.h"
 
-#include "ofCoreTests.h"
+#include "ofVecT_test.h"
 
 // 0 output as console 
 // 1 output as html
@@ -12,27 +12,13 @@ static Test::Suite ts_types;
 static Test::Suite ts_graphics;
 
 /*! */
-void run_tests_for_types() {
-    ts_types.add( auto_ptr<Test::Suite>( new ofVec3f_Suite ) );
-    ts_types.add( auto_ptr<Test::Suite>( new ofColor_Suite ) );
-}
-
-void run_tests_for_graphics() {
-	ts_graphics.add( auto_ptr<Test::Suite>( new ofPixels_Suite ) );
-	ts_graphics.add( auto_ptr<Test::Suite>( new ofPixels_Scenarion ) );
-	//ts.add( auto_ptr<Test::Suite>( new ofImage_Suite ) );
-}
-
-void run_tests_for_utils() {
-//	ts_graphics.add( auto_ptr<Test::Suite>( new ofSystemUtils_Suite ) );
-	ts_graphics.add( auto_ptr<Test::Suite>( new ofUtils_DateTimeFrame_Suite ) );
+void run_tests_for_ofVecT() {
+    ts_types.add( auto_ptr<Test::Suite>( new ofVecT_Suite ) );
 }
 
 void run_tests() {
 	// comment tests you don't want to run.
-	run_tests_for_types();
-	run_tests_for_graphics();
-	run_tests_for_utils();
+	run_tests_for_ofVecT();
     
 #if CPPTEST_OUTPUT == 1
     Test::HtmlOutput output;
@@ -42,7 +28,6 @@ void run_tests() {
 #endif
 	
     ts_types.run( output );
-	ts_graphics.run( output );
 }
 
 /*! */
