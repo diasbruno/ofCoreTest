@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		035D921D16BC75A100587D9D /* ofVec2T.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 035D921C16BC75A100587D9D /* ofVec2T.cpp */; };
+		035D922416BC768100587D9D /* ofVec3T.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 035D922316BC768100587D9D /* ofVec3T.cpp */; };
+		035D922716BC768A00587D9D /* ofVec4T.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 035D922616BC768A00587D9D /* ofVec4T.cpp */; };
 		03F7C1D916B206C5009E009E /* collectoroutput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03F7C1C316B206C5009E009E /* collectoroutput.cpp */; };
 		03F7C1DA16B206C5009E009E /* compileroutput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03F7C1C416B206C5009E009E /* compileroutput.cpp */; };
 		03F7C1DB16B206C5009E009E /* htmloutput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03F7C1CF16B206C5009E009E /* htmloutput.cpp */; };
@@ -69,6 +72,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		035D91DE16BC6C3500587D9D /* ofVecT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofVecT.h; sourceTree = "<group>"; };
+		035D91E116BC6C8E00587D9D /* ofVecT_test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofVecT_test.h; sourceTree = "<group>"; };
+		035D921B16BC75A000587D9D /* ofVec2T.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofVec2T.h; sourceTree = "<group>"; };
+		035D921C16BC75A100587D9D /* ofVec2T.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofVec2T.cpp; sourceTree = "<group>"; };
+		035D922216BC768100587D9D /* ofVec3T.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofVec3T.h; sourceTree = "<group>"; };
+		035D922316BC768100587D9D /* ofVec3T.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofVec3T.cpp; sourceTree = "<group>"; };
+		035D922516BC768A00587D9D /* ofVec4T.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofVec4T.h; sourceTree = "<group>"; };
+		035D922616BC768A00587D9D /* ofVec4T.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofVec4T.cpp; sourceTree = "<group>"; };
 		03F7C17216B183A8009E009E /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
 		03F7C1C316B206C5009E009E /* collectoroutput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = collectoroutput.cpp; sourceTree = "<group>"; };
 		03F7C1C416B206C5009E009E /* compileroutput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = compileroutput.cpp; sourceTree = "<group>"; };
@@ -154,6 +165,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		035D91DD16BC6C2100587D9D /* ofVecT */ = {
+			isa = PBXGroup;
+			children = (
+				035D923E16BC785400587D9D /* vecs */,
+				035D91DE16BC6C3500587D9D /* ofVecT.h */,
+			);
+			path = ofVecT;
+			sourceTree = "<group>";
+		};
+		035D923E16BC785400587D9D /* vecs */ = {
+			isa = PBXGroup;
+			children = (
+				035D921B16BC75A000587D9D /* ofVec2T.h */,
+				035D921C16BC75A100587D9D /* ofVec2T.cpp */,
+				035D922216BC768100587D9D /* ofVec3T.h */,
+				035D922316BC768100587D9D /* ofVec3T.cpp */,
+				035D922516BC768A00587D9D /* ofVec4T.h */,
+				035D922616BC768A00587D9D /* ofVec4T.cpp */,
+			);
+			name = vecs;
+			sourceTree = "<group>";
+		};
 		03F7C0A716B182A2009E009E /* cpptest */ = {
 			isa = PBXGroup;
 			children = (
@@ -298,6 +331,7 @@
 			isa = PBXGroup;
 			children = (
 				03F7C2B716B24181009E009E /* ofVec3f_test.h */,
+				035D91E116BC6C8E00587D9D /* ofVecT_test.h */,
 			);
 			path = math;
 			sourceTree = "<group>";
@@ -406,6 +440,7 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				035D91DD16BC6C2100587D9D /* ofVecT */,
 				03F7C2AF16B24181009E009E /* ofCore */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */,
@@ -518,6 +553,9 @@
 				03F7C1DF16B206C5009E009E /* textoutput.cpp in Sources */,
 				03F7C1E016B206C5009E009E /* time.cpp in Sources */,
 				03F7C1E116B206C5009E009E /* utils.cpp in Sources */,
+				035D921D16BC75A100587D9D /* ofVec2T.cpp in Sources */,
+				035D922416BC768100587D9D /* ofVec3T.cpp in Sources */,
+				035D922716BC768A00587D9D /* ofVec4T.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
