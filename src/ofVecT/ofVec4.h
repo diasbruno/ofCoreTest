@@ -123,7 +123,7 @@ template <typename T>
 template <typename S>
 inline 
 ofVec4<T> ofVec4<T>::operator+( const ofVec4<S>& v ) const {
-	return ofVec4<T>( x+v.x, y+v.y, z+v.z, w+v.w);
+	return ofVec4<T>( x+(T)v.x, y+(T)v.y, z+(T)v.z, w+(T)v.w);
 }
 
 template <typename T>
