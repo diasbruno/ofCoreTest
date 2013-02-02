@@ -107,7 +107,7 @@ private:
 		TEST_ASSERT( v3f.x == 2.0f )
 		TEST_ASSERT( v3f.y == 2.0f )
 
-		// probably this will loose data. double -> float
+		// probably this is not precise. double -> float
         of::ofVec2d v2d( 3, 3 );
         of::ofVec3f v3ff( v2d );
 		TEST_ASSERT( v3ff.x == 3.0 )
