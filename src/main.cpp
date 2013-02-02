@@ -3,17 +3,18 @@
 #include "ofAppGlutWindow.h"
 
 #include "ofVecT_test.h"
+#include "ofVecT_Operations_test.h"
 
 // 0 output as console 
 // 1 output as html
 #define CPPTEST_OUTPUT 0 
 
 static Test::Suite ts_types;
-static Test::Suite ts_graphics;
 
 /*! */
 void run_tests_for_ofVecT() {
     ts_types.add( auto_ptr<Test::Suite>( new ofVecT_Suite ) );
+    ts_types.add( auto_ptr<Test::Suite>( new ofVecT_Operations_Suite ) );
 }
 
 void run_tests() {
