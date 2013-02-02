@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ofVecT.h"
+#include "ofVec3.h"
 
 namespace of {
 
@@ -24,6 +25,10 @@ public:
 	: x(v.x), y(v.y), z(v.z), w(v.w)
     {}
 
+    template<typename S>
+	ofVec4( const ofVec3<S>& v ) 
+	: x((T)v.x), y((T)v.y), z((T)v.z), w(0)
+	{}
 	
 	// Equality -----------------------------------------------
 	
