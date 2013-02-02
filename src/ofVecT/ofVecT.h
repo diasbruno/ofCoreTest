@@ -1,19 +1,59 @@
 #pragma once
 
-#include "ofVec2T.h"
-#include "ofVec3T.h"
-#include "ofVec4T.h"
+#include <cmath>
+#include <iostream>
 
-namespace of { // using namespace to avoid conflicts.
+#include "ofConstants.h"
 
-// Pre-defined types.
-typedef ofVec2T<float> ofVec2f;
-typedef ofVec2T<double> ofVec2d;
+namespace of {
 
-typedef ofVec3T<float> ofVec3f;
-typedef ofVec3T<double> ofVec3d;
+template<typename T>
+class ofVecT {
+public:
+	T x;
+	// T* x[ DIM ] ?
 
-typedef ofVec4T<float> ofVec4f;
-typedef ofVec4T<double> ofVec4d;
+	static const int DIM = 1;
+	
+	ofVecT()
+	: x(0) 
+	{}
+	
+	ofVecT( T _x )
+	: x(_x) 
+	{}
+	
+	// Equality -------------------------------------
+	
+	bool operator==( const ofVecT<T>& v ) const {
+		return x == v.x;
+	}
+	
+	bool operator!=( const ofVecT<T>& v ) const {
+		return x != v.x;
+	}
+	
+	bool match( const ofVecT<T>& v, T tolerance ) const {
+		return fabs(x - v.x) < tolerance;
+	}
+	
+	// Accessors ------------------------------------
+	
+	T* getPtr() {
+		return (T*)&x;
+	}
+	const T* getPtr() const {
+		return (const T*)&x;
+	}
+	
+	T& operator[]( int n ){
+		return getPtr()[n];
+	}
+	
+	T operator[]( int n ) const {
+		return getPtr()[n];
+	}
+	
+};
 
 }
