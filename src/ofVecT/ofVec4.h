@@ -33,9 +33,9 @@ public:
 	// Equality -----------------------------------------------
 	
     template <typename S>
-	bool operator==( const ofVec4<S>& v ) const;
+	bool operator == ( const ofVec4<S>& v ) const;
     template <typename S>
-	bool operator!=( const ofVec4<S>& v ) const;
+	bool operator != ( const ofVec4<S>& v ) const;
     template <typename S>
 	bool match( const ofVec4<S>& vec, T tolerance ) const;
 
