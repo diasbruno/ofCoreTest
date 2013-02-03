@@ -65,7 +65,7 @@ private:
 		TEST_ASSERT( v4d.z == 50.0 )
 		TEST_ASSERT( v4d.w == 30.0 )
 		
-		of::ofVec4<int> v4i(10,40, 50, 22);
+		of::ofVec4<int> v4i( 10, 40, 50, 22 );
 		TEST_ASSERT( v4i.x == 10 )
 		TEST_ASSERT( v4i.y == 40 )
 		TEST_ASSERT( v4i.z == 50 )
