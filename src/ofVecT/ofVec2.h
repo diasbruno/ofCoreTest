@@ -25,7 +25,7 @@ public:
     : x(v.x), y(v.y) 
     {}
 		
-	template<typename S>
+    template <typename S>
 	ofVec2( const ofVec2<S>& v ) 
     : x((T)v.x), y((T)v.y)
     {}
@@ -39,265 +39,85 @@ public:
 	
 	// Operators ----------------------------------------------
 	
-    template<typename S>
-    ofVec2<T>  operator +  ( const ofVec2<S>& v ) const;
-    template<typename S>
-    ofVec2<T>& operator += ( const ofVec2<S>& v );
-    template<typename S>
-    ofVec2<T>  operator -  ( const ofVec2<S>& v ) const;
-    template<typename S>
-    ofVec2<T>& operator -= ( const ofVec2<S>& v );
-    template<typename S>
-    ofVec2<T>  operator *  ( const ofVec2<S>& v ) const;
-    template<typename S>
-    ofVec2<T>& operator *= ( const ofVec2<S>& v );
-    template<typename S>
-    ofVec2<T>  operator /  ( const ofVec2<S>& v ) const;
-    template<typename S>
-    ofVec2<T>& operator /= ( const ofVec2<S>& v );
+    ofVec2<T>  operator +  ( const ofVec2<T>& v ) const;
+    ofVec2<T>& operator += ( const ofVec2<T>& v );
+    ofVec2<T>  operator -  ( const ofVec2<T>& v ) const;
+    ofVec2<T>& operator -= ( const ofVec2<T>& v );
+    ofVec2<T>  operator *  ( const ofVec2<T>& v ) const;
+    ofVec2<T>& operator *= ( const ofVec2<T>& v );
+    ofVec2<T>  operator /  ( const ofVec2<T>& v ) const;
+    ofVec2<T>& operator /= ( const ofVec2<T>& v );
 	
-    template<typename S>
-    ofVec2<T>  operator +  ( const S s ) const;
-    template<typename S>
-    ofVec2<T>& operator += ( const S s );
-    template<typename S>
-    ofVec2<T>  operator -  ( const S s ) const;
-    template<typename S>
-    ofVec2<T>& operator -= ( const S s );
-    template<typename S>
+    ofVec2<T>  operator +  ( const T s ) const;
+    ofVec2<T>& operator += ( const T s );
+    ofVec2<T>  operator -  ( const T s ) const;
+    ofVec2<T>& operator -= ( const T s );
     ofVec2<T>  operator -  () const;
-    template<typename S>
-    ofVec2<T>  operator *  ( const S s ) const;
-    template<typename S>
-    ofVec2<T>& operator *= ( const S s );
-    template<typename S>
-    ofVec2<T>  operator /  ( const S s ) const;
-    template<typename S>
-    ofVec2<T>& operator /= ( const S s );
+    ofVec2<T>  operator *  ( const T s ) const;
+    ofVec2<T>& operator *= ( const T s );
+    ofVec2<T>  operator /  ( const T s ) const;
+    ofVec2<T>& operator /= ( const T s );
 
     // Scaling ---------------------------------------------------
     
-    template<typename S>
-    ofVec2<T>  getScaled( const S length ) const;
-    template<typename S>
-    ofVec2<T>& scale( const S length );
+    ofVec2<T>  getScaled( const T length ) const;
+    ofVec2<T>& scale( const T length );
 	
     // Rotation --------------------------------------------------
     
-    template<typename S>
-    ofVec2<T>  getRotated( S angle ) const;
-    template<typename S>
-    ofVec2<T>  getRotatedRad( S angle ) const;
-    template<typename S>
-    ofVec2<T>& rotate( S angle );
-    template<typename S>
-    ofVec2<T>& rotateRad( S angle );
+    ofVec2<T>  getRotated( T angle ) const;
+    ofVec2<T>  getRotatedRad( T angle ) const;
+    ofVec2<T>& rotate( T angle );
+    ofVec2<T>& rotateRad( T angle );
 	
-    // Rotation - point around pivot ------------------------------
+    // Rotation - point around pivot -------------------------------
 
-    template<typename S>
-    ofVec2<T>  getRotated( S angle, const ofVec2<S>& pivot ) const;
-    template<typename S>
-    ofVec2<T>& rotate( S angle, const ofVec2<S>& pivot );
-    template<typename S>
-    ofVec2<T>  getRotatedRad( S angle, const ofVec2<S>& pivot ) const;
-    template<typename S>
-    ofVec2<T>& rotateRad( S angle, const ofVec2<S>& pivot ); 
+    ofVec2<T>  getRotated( T angle, const ofVec2<T>& pivot ) const;
+    ofVec2<T>& rotate( T angle, const ofVec2<T>& pivot );
+    ofVec2<T>  getRotatedRad( T angle, const ofVec2<T>& pivot ) const;
+    ofVec2<T>& rotateRad( T angle, const ofVec2<T>& pivot ); 
 
-    // Setters ------------------------------------------------
+    // Setters -----------------------------------------------------
 	
 	void set( T _scalar );
 	void set( T _x, T _y );
 	void set( const ofVec2<T>& v );
     
-    // ios stream ---------------------------------------------
-
-    template<typename S>
-    friend ostream& operator << ( ostream& os, const ofVec2<S>& v );
+    // ios stream --------------------------------------------------
 		
-	template<typename S>
+	// This is crazy, but it removes the compiler warnings.
+	// bla bla bla...Non-template....
+	template <typename S>
+    friend ostream& operator << ( ostream& os, const ofVec2<S>& v );
+	template <typename S>
     friend istream& operator >> ( istream& is, ofVec2<S>& v );
+
+    //
+    // Deprecated --------------------------------------------------
+	// Version: 006
+	//
+	
+    /*! Use getScaled() instead. */
+    ofVec2<T> rescaled( const T length ) const;
+	
+	/*! Use scale() instead. */
+    ofVec2<T>& rescale( const T length );
+
+    /*! Use getRotated() instead. */
+    ofVec2<T> rotated( T angle ) const;
+
+    /*! Use getRotated() instead. */
+    ofVec2<T> rotated( T angle, const ofVec2<T>& pivot ) const;    
 };
 
 //
 // -------------------------------------------------------------
 //
 
-// Equality -----------------------------------------------------
-
-/*! Operators */
-template<typename T>
-inline
-bool ofVec2<T>::operator == ( const ofVec2<T> & v ) const {
-	return x == v.x 
-        && y == v.y;
-};
-
-template<typename T>
-inline
-bool ofVec2<T>::operator != ( const ofVec2<T> & v ) const {
-	return x != v.x 
-        || y != v.y;
-};
-
-template<typename T>
-inline
-bool ofVec2<T>::match( const ofVec2<T>& v, T tolerance ) const {
-	return fabs(x - v.x) < tolerance 
-        && fabs(y - v.y) < tolerance;
-};
-	
-	
-// Operators -----------------------------------------------------
-
-template<typename T>
-template<typename S>
-inline 
-ofVec2<T> ofVec2<T>::operator+( const ofVec2<S>& v ) const {
-	return ofVec2<T>( x + (T)v.x, y + (T)v.y );
-};
-
-template<typename T>
-template<typename S>
-inline 
-ofVec2<T>& ofVec2<T>::operator+=( const ofVec2<S>& v ) {
-	x += (T)v.x;
-	y += (T)v.y;
-	
-	return *this;
-};
-
-template<typename T>
-template<typename S>
-inline 
-ofVec2<T> ofVec2<T>::operator-( const ofVec2<S>& v ) const {
-	return ofVec2<T>( x - (T)v.x, y - (T)v.y );
-};
-
-template<typename T>
-template<typename S>
-inline 
-ofVec2<T>& ofVec2<T>::operator-=( const ofVec2<S>& v ) {
-	x -= (T)v.x;
-	y -= (T)v.y;
-	
-	return *this;
-};
-
-template<typename T>
-template<typename S>
-inline 
-ofVec2<T> ofVec2<T>::operator*( const ofVec2<S>& v ) const {
-	return ofVec2<T>( x * (T)v.x, y * (T)v.y );
-};
-
-template<typename T>
-template<typename S>
-inline 
-ofVec2<T>& ofVec2<T>::operator*=( const ofVec2<S>& v ) {
-	x *= (T)v.x;
-	y *= (T)v.y;
-	
-	return *this;
-};
-
-template<typename T>
-template<typename S>
-inline 
-ofVec2<T> ofVec2<T>::operator/( const ofVec2<S>& v ) const {
-	return ofVec2<T>( v.x != 0 ? x / (T)v.x : x , v.y != 0 ? y / (T)v.y : y );
-};
-
-template<typename T>
-template<typename S>
-inline 
-ofVec2<T>& ofVec2<T>::operator/=( const ofVec2<S>& v ) {
-	v.x != 0 ? x /= (T)v.x : x;
-	v.y != 0 ? y /= (T)v.y : y;
-	
-	return *this;
-};
-
-
-template<typename T>
-template<typename S>
-inline 
-ofVec2<T> ofVec2<T>::operator+( const S s ) const {
-	return ofVec2<T>( x + (T)s, y + (T)s );
-};
-
-template<typename T>
-template<typename S>
-inline 
-ofVec2<T>& ofVec2<T>::operator+=( const S s ) {
-	x += (T)s;
-	y += (T)s;
-	
-	return *this;
-};
-
-template<typename T>
-template<typename S>
-inline 
-ofVec2<T> ofVec2<T>::operator-( const S s ) const {
-	return ofVec2<T>( x - (T)s, y - (T)s );
-};
-
-template<typename T>
-template<typename S>
-inline 
-ofVec2<T>& ofVec2<T>::operator-=( const S s ) {
-	x -= (T)s;
-	y -= (T)s;
-	
-	return *this;
-};
-
-template<typename T>
-template<typename S>
-inline 
-ofVec2<T> ofVec2<T>::operator-() const {
-	return ofVec2<T>( -x, -y );
-};
-
-template<typename T>
-template<typename S>
-inline 
-ofVec2<T> ofVec2<T>::operator*( const S s ) const {
-	return ofVec2<T>( x * (T)s, y * (T)s );
-};
-
-template<typename T>
-template<typename S>
-inline 
-ofVec2<T>& ofVec2<T>::operator*=( const S s ) {
-	x *= (T)s;
-	y *= (T)s;
-	
-	return *this;
-};
-
-template<typename T>
-template<typename S>
-inline 
-ofVec2<T> ofVec2<T>::operator/( const S s ) const {
-	if( s == 0 ) return ofVec2<T>( x, y );
-	
-	return ofVec2<T>( x / (T)s, y / (T)s );
-};
-
-template<typename T>
-template<typename S>
-inline 
-ofVec2<T>& ofVec2<T>::operator/=( const S s ) {
-	if( s == 0 ) return *this;
-	
-	x /= (T)s;
-	y /= (T)s;
-	
-	return *this;
-};
-	
+// This file is really big.
+// Maybe, this can help.
+#include "ofVec2Operators.h"
+#include "ofVec2Geom.h"
 	
 // Setters --------------------------------------------------------
 
