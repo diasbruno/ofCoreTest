@@ -82,6 +82,8 @@
 		035D922616BC768A00587D9D /* ofVec4.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofVec4.cpp; sourceTree = "<group>"; };
 		035D927D16BC971C00587D9D /* ofVecT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofVecT.h; sourceTree = "<group>"; };
 		035D928F16BD5EDB002A012B /* ofVecT_Operations_test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofVecT_Operations_test.h; sourceTree = "<group>"; };
+		035D944816BDB168002A012B /* ofVec2Geom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofVec2Geom.h; sourceTree = "<group>"; };
+		035D944916BDB188002A012B /* ofVec2Operators.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofVec2Operators.h; sourceTree = "<group>"; };
 		03F7C17216B183A8009E009E /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
 		03F7C1C316B206C5009E009E /* collectoroutput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = collectoroutput.cpp; sourceTree = "<group>"; };
 		03F7C1C416B206C5009E009E /* compileroutput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = compileroutput.cpp; sourceTree = "<group>"; };
@@ -186,6 +188,8 @@
 				035D921C16BC75A100587D9D /* ofVec2.cpp */,
 				035D922316BC768100587D9D /* ofVec3.cpp */,
 				035D922616BC768A00587D9D /* ofVec4.cpp */,
+				035D944816BDB168002A012B /* ofVec2Geom.h */,
+				035D944916BDB188002A012B /* ofVec2Operators.h */,
 			);
 			name = vecs;
 			sourceTree = "<group>";
