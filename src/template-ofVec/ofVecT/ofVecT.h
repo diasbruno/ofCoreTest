@@ -25,11 +25,13 @@ namespace of {
 		
 		// Equality -------------------------------------
 		
-		bool operator==( const ofVecT<T>& v ) const {
+		template <typename S>
+		bool operator==( const ofVecT<S>& v ) const {
 			return x == v.x;
 		}
 		
-		bool operator!=( const ofVecT<T>& v ) const {
+		template <typename S>
+		bool operator!=( const ofVecT<S>& v ) const {
 			return x != v.x;
 		}
 		

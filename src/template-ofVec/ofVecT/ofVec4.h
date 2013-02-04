@@ -7,7 +7,7 @@ namespace of {
 	
 	template<typename T>
 	class ofVec4 
-	: public ofVecT<T> {
+		: public ofVecT<T> {
 	public:
 		T x, y, z, w;
 		

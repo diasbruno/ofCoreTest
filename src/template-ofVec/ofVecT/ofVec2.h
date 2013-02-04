@@ -1,5 +1,6 @@
 #pragma once
 
+#include "ofVecT.h"
 #include "ofConstants.h"
 
 namespace of {
@@ -8,7 +9,8 @@ namespace of {
 	//class ofVec4f;
 	
 	template <typename T>
-	class ofVec2 {
+	class ofVec2
+		: public ofVecT<T> {
 	public:
 		T x, y;
 		
@@ -20,20 +22,20 @@ namespace of {
 		//    ofVec2<T>( const ofVec3f& vec );
 		//    ofVec2<T>( const ofVec4f& vec );
 		
-		T * getPtr() {
-			return (T*)&x;
-		}
-		const T * getPtr() const {
-			return (const T *)&x;
-		}
-		
-		T& operator[]( int n ){
-			return getPtr()[n];
-		}
-		
-		T operator[]( int n ) const {
-			return getPtr()[n];
-		}
+//		T * getPtr() {
+//			return (T*)&x;
+//		}
+//		const T * getPtr() const {
+//			return (const T *)&x;
+//		}
+//		
+//		T& operator[]( int n ){
+//			return getPtr()[n];
+//		}
+//		
+//		T operator[]( int n ) const {
+//			return getPtr()[n];
+//		}
 		
 		
 		// Getters and Setters.
