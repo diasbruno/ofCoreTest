@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0351648F16C039BB007E826E /* testApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0351648116C039BA007E826E /* testApp.cpp */; };
+		0351648F16C039BB007E826E /* ofVecT_testApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0351648116C039BA007E826E /* ofVecT_testApp.cpp */; };
 		0351649016C039BB007E826E /* ofVec2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0351648616C039BB007E826E /* ofVec2.cpp */; };
 		0351649116C039BB007E826E /* ofVec3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0351648A16C039BB007E826E /* ofVec3.cpp */; };
 		0351649216C039BB007E826E /* ofVec4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0351648C16C039BB007E826E /* ofVec4.cpp */; };
@@ -209,8 +209,8 @@
 		0351642916C0391E007E826E /* ofVideoGrabber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofVideoGrabber.h; sourceTree = "<group>"; };
 		0351642A16C0391E007E826E /* ofVideoPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofVideoPlayer.cpp; sourceTree = "<group>"; };
 		0351642B16C0391E007E826E /* ofVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofVideoPlayer.h; sourceTree = "<group>"; };
-		0351648116C039BA007E826E /* testApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = testApp.cpp; sourceTree = "<group>"; };
-		0351648216C039BA007E826E /* testApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testApp.h; sourceTree = "<group>"; };
+		0351648116C039BA007E826E /* ofVecT_testApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofVecT_testApp.cpp; sourceTree = "<group>"; };
+		0351648216C039BA007E826E /* ofVecT_testApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofVecT_testApp.h; sourceTree = "<group>"; };
 		0351648516C039BB007E826E /* ofVec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofVec.h; sourceTree = "<group>"; };
 		0351648616C039BB007E826E /* ofVec2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofVec2.cpp; sourceTree = "<group>"; };
 		0351648716C039BB007E826E /* ofVec2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofVec2.h; sourceTree = "<group>"; };
@@ -549,8 +549,8 @@
 		0351648016C039BA007E826E /* test-app */ = {
 			isa = PBXGroup;
 			children = (
-				0351648116C039BA007E826E /* testApp.cpp */,
-				0351648216C039BA007E826E /* testApp.h */,
+				0351648116C039BA007E826E /* ofVecT_testApp.cpp */,
+				0351648216C039BA007E826E /* ofVecT_testApp.h */,
 			);
 			name = "test-app";
 			path = app;
@@ -937,7 +937,7 @@
 				03F7C1DF16B206C5009E009E /* textoutput.cpp in Sources */,
 				03F7C1E016B206C5009E009E /* time.cpp in Sources */,
 				03F7C1E116B206C5009E009E /* utils.cpp in Sources */,
-				0351648F16C039BB007E826E /* testApp.cpp in Sources */,
+				0351648F16C039BB007E826E /* ofVecT_testApp.cpp in Sources */,
 				0351649016C039BB007E826E /* ofVec2.cpp in Sources */,
 				0351649116C039BB007E826E /* ofVec3.cpp in Sources */,
 				0351649216C039BB007E826E /* ofVec4.cpp in Sources */,

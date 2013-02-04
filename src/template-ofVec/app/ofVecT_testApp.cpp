@@ -1,4 +1,4 @@
-#include "testApp.h"
+#include "ofVecT_testApp.h"
 #include "ofVec.h"
 
 namespace of {
