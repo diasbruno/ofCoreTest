@@ -16,9 +16,9 @@ public:
 	
 protected:
 	
-	of::ofVec2f v2f;
-	of::ofVec3f v3f;
-	of::ofVec4f v4f;
+	of::ofVec2<float> v2f;
+	of::ofVec3<float> v3f;
+	of::ofVec4<float> v4f;
 	
     void     setup() {}
     void tear_down() {}
