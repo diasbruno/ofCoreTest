@@ -1,5 +1,5 @@
 #include "ofMain.h"
-#include "testApp.h"
+#include "ofVecT_testApp.h"
 #include "ofAppGlutWindow.h"
 
 #include "ofCoreTests.h"
@@ -16,8 +16,8 @@ void bootApp() {
  
  */
 int main() {
-	bootApp();
+//	bootApp();
 	
-//	run_tests();
+	run_tests();
 	return 0;
 }
