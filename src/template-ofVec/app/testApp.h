@@ -7,8 +7,8 @@ namespace of {
 	class Rect;
 }
 
-class testApp : public ofBaseApp{
-	
+class testApp 
+	: public ofBaseApp {
 public:
 	void setup();
 	void update();

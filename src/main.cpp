@@ -6,7 +6,7 @@
 
 void bootApp() {
 	ofAppGlutWindow win;
-	ofSetupOpenGL( &win , 600, 400, OF_WINDOW);
+	ofSetupOpenGL( &win , 600, 400, OF_WINDOW );
 	ofRunApp( new testApp );
 }
 
@@ -16,8 +16,8 @@ void bootApp() {
  
  */
 int main() {
-//	bootApp();
+	bootApp();
 	
-	run_tests();
+//	run_tests();
 	return 0;
 }
