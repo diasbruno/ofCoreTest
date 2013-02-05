@@ -5,9 +5,6 @@
 
 namespace of {
 	
-	//class ofVec3f;
-	//class ofVec4f;
-	
 	template <typename T>
 	class ofVec2
 		: public ofVecT<T> {
