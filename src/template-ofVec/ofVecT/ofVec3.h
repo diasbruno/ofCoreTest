@@ -76,12 +76,12 @@ public:
     // Alignment ------------------------------------------------------------
     
     /*! Checks if vectors look in the same direction. */
-    bool    isAligned( const ofVec3<T>& vec, T tolerance ) const;
-    bool        align( const ofVec3<T>& vec, T tolerance ) const;
-    bool isAlignedRad( const ofVec3<T>& vec, T tolerance ) const;
-    bool     alignRad( const ofVec3<T>& vec, T tolerance ) const;
+    bool    isAligned( const ofVec3<T>& vec, T tolerance=0.0001 ) const;
+    bool        align( const ofVec3<T>& vec, T tolerance=0.0001 ) const;
+    bool isAlignedRad( const ofVec3<T>& vec, T tolerance=0.0001 ) const;
+    bool     alignRad( const ofVec3<T>& vec, T tolerance=0.0001 ) const;
 
-    // Scaling --------------------------------------------------------------		
+    // Scaling --------------------------------------------------------------	
     
     ofVec3<T>  getScaled( const T length ) const;
     ofVec3<T>&     scale( const T length );
