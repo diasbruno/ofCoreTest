@@ -33,68 +33,68 @@ typedef ofVec4<double> ofVec4d;
 
 // Vec2<T>
 
-//template<typename T>
-//inline ofVec2<T> operator+( T f, const ofVec2<T>& vec ) {
-//    return ofVec2<T>( f+vec.x, f+vec.y);
-//}
-//
-//template<typename T>
-//inline ofVec2<T> operator-( T f, const ofVec2<T>& vec ) {
-//    return ofVec2<T>( f-vec.x, f-vec.y);
-//}
-//
-//template<typename T>
-//inline ofVec2<T> operator*( T f, const ofVec2<T>& vec ) {
-//    return ofVec2<T>( f*vec.x, f*vec.y);
-//}
-//
-//template<typename T>
-//inline ofVec2<T> operator/( T f, const ofVec2<T>& vec ) {
-//    return ofVec2<T>( f/vec.x, f/vec.y);
-//}
+template<typename T>
+inline ofVec2<T> operator+( T f, const ofVec2<T>& vec ) {
+    return ofVec2<T>( f+vec.x, f+vec.y);
+}
+
+template<typename T>
+inline ofVec2<T> operator-( T f, const ofVec2<T>& vec ) {
+    return ofVec2<T>( f-vec.x, f-vec.y);
+}
+
+template<typename T>
+inline ofVec2<T> operator*( T f, const ofVec2<T>& vec ) {
+    return ofVec2<T>( f*vec.x, f*vec.y);
+}
+
+template<typename T>
+inline ofVec2<T> operator/( T f, const ofVec2<T>& vec ) {
+    return ofVec2<T>( f/vec.x, f/vec.y);
+}
 
 // Vec3<T>
 
-//template<typename T>
-//inline ofVec3<T> operator+( T s, const ofVec3<T>& v ) {
-//    return ofVec3<T>( s+v.x, s+v.y, s+v.z, s+v.w );
-//}
-//
-//template<typename T>
-//inline ofVec3<T> operator-( T s, const ofVec3<T>& v ) {
-//    return ofVec3<T>( s-v.x, s-v.y, s-v.z, s-v.w );
-//}
-//
-//template<typename T>
-//inline ofVec3<T> operator*( T s, const ofVec3<T>& v ) {
-//    return ofVec3<T>( s*v.x, s*v.y, s*v.z, s*v.w );
-//}
-//
-//template<typename T>
-//inline ofVec3<T> operator/( T s, const ofVec3<T>& v ) {
-//    return ofVec3<T>( s/v.x, s/v.y, s/v.z, s/v.w);
-//}
+template<typename T>
+inline ofVec3<T> operator+( T s, const ofVec3<T>& v ) {
+    return ofVec3<T>( s+v.x, s+v.y, s+v.z, s+v.w );
+}
+
+template<typename T>
+inline ofVec3<T> operator-( T s, const ofVec3<T>& v ) {
+    return ofVec3<T>( s-v.x, s-v.y, s-v.z, s-v.w );
+}
+
+template<typename T>
+inline ofVec3<T> operator*( T s, const ofVec3<T>& v ) {
+    return ofVec3<T>( s*v.x, s*v.y, s*v.z, s*v.w );
+}
+
+template<typename T>
+inline ofVec3<T> operator/( T s, const ofVec3<T>& v ) {
+    return ofVec3<T>( s/v.x, s/v.y, s/v.z, s/v.w);
+}
 
 // Vec4<T>
 
-//template<typename T>
-//inline ofVec4<T> operator+( T f, const ofVec4<T>& vec ) {
-//    return ofVec4<T>( f+vec.x, f+vec.y, f+vec.z, f+vec.w );
-//}
-//
-//template<typename T>
-//inline ofVec4<T> operator-( T f, const ofVec4<T>& vec ) {
-//    return ofVec4<T>( f-vec.x, f-vec.y, f-vec.z, f-vec.w );
-//}
-//
-//template<typename T>
-//inline ofVec4<T> operator*( T f, const ofVec4<T>& vec ) {
-//    return ofVec4<T>( f*vec.x, f*vec.y, f*vec.z, f*vec.w );
-//}
-//
-//template<typename T>
-//inline ofVec4<T> operator/( T f, const ofVec4<T>& vec ) {
-//    return ofVec4<T>( f/vec.x, f/vec.y, f/vec.z, f/vec.w);
-//}
+template<typename T>
+inline ofVec4<T> operator+( T f, const ofVec4<T>& vec ) {
+    return ofVec4<T>( f+vec.x, f+vec.y, f+vec.z, f+vec.w );
+}
+
+template<typename T>
+inline ofVec4<T> operator-( T f, const ofVec4<T>& vec ) {
+    return ofVec4<T>( f-vec.x, f-vec.y, f-vec.z, f-vec.w );
+}
+
+template<typename T>
+inline ofVec4<T> operator*( T f, const ofVec4<T>& vec ) {
+    return ofVec4<T>( f*vec.x, f*vec.y, f*vec.z, f*vec.w );
+}
+
+template<typename T>
+inline ofVec4<T> operator/( T f, const ofVec4<T>& vec ) {
+    return ofVec4<T>( f/vec.x, f/vec.y, f/vec.z, f/vec.w);
+}
 
 }
