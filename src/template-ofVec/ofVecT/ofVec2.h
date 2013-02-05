@@ -8,6 +8,12 @@
 
 
 namespace of {
+
+// Forward declaration for ofVec3 & 4.
+template <typename T> class ofVec3;
+template <typename T> class ofVec4;
+
+
 template <typename T>
 class ofVec2
     : public ofVecT<T> {
