@@ -84,10 +84,7 @@ private:
 		TEST_ASSERT( v4d[ 3 ] == 30.0f )
 	}
 
-	void test_equality() {
-		of::ofVecT<int> v1i( 50 );
-        TEST_ASSERT( v1i == of::ofVecT<int>( 50 ) ) 
-		
+	void test_equality() {		
         of::ofVec2f v2f( 12.0, 10.0 );
 		of::ofVec2f v2f2( 12.0f, 10.0f );
 		TEST_ASSERT( v2f.x == 12.0f )
