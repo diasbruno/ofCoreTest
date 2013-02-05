@@ -33,9 +33,9 @@ public:
     ofVec3( const ofVec2<S>& vec )
 		: x(vec.x), y(vec.y), z(0) {}
     
-//        template <typename S>
-//        ofVec3( const ofVec4<S>& vec )
-//        : x(vec.x), y(vec.y), z(vec.z) {}
+    template <typename S>
+    ofVec3( const ofVec4<S>& vec )
+        : x(vec.x), y(vec.y), z(vec.z) {}
     
     
     // Getters and Setters. -------------------------------------------------
