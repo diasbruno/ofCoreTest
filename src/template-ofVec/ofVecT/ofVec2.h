@@ -23,7 +23,7 @@ public:
     static const int DIM = 2;
     
     ofVec2()
-		: x(0), y(0) {};
+		: x(0), y(0) {}
 
     explicit ofVec2( T _scalar )
 		: x(_scalar), y(_scalar) {}
@@ -31,15 +31,13 @@ public:
     ofVec2( T _x, T _y )
 		: x(_x), y(_y) {}
     
-	// Not implementated.
     template <typename S>
-	ofVec2( const ofVec3<S>& vec );
-//		: x(vec.x), y(vec.y) {}
+	ofVec2( const ofVec3<S>& vec )
+		: x(vec.x), y(vec.y) {}
 	
-	// Not implementated.
 	template <typename S>
-	ofVec2( const ofVec4<S>& vec );
-//		: x(vec.x), y(vec.y) {}
+	ofVec2( const ofVec4<S>& vec )
+		: x(vec.x), y(vec.y) {}
 
     // Getters and Setters. -------------------------------------------------
     
