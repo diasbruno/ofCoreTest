@@ -5,9 +5,9 @@ namespace of {
 	
 	class Rect {
 	public:
-		of::ofVec3<float> position;
-		of::ofVec2<float> frame;
-		of::ofVec2<float> velocity;
+		of::ofVec3<double> position;
+		of::ofVec2<double> frame;
+		of::ofVec2<double> velocity;
 		of::ofVecT<int> alpha;
 		
 		bool isOutOfStage;

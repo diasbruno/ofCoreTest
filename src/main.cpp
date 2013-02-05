@@ -16,8 +16,8 @@ void bootApp() {
  
  */
 int main() {
-//	bootApp();
+	bootApp();
 	
-	run_tests();
+//	run_tests();
 	return 0;
 }
