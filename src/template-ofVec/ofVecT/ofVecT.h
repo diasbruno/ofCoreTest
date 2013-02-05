@@ -16,12 +16,10 @@ public:
 	static const int DIM = 1;
 	
 	ofVecT()
-	: x(0) 
-	{}
+	: x(0) {}
 	
 	ofVecT( T _x )
-	: x(_x) 
-	{}
+	: x(_x) {}
 	
 	// Accessors ------------------------------------
 	

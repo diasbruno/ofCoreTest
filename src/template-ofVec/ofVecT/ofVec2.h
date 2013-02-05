@@ -31,10 +31,12 @@ public:
     ofVec2( T _x, T _y )
 		: x(_x), y(_y) {}
     
+	// Not implementated.
     template <typename S>
 	ofVec2( const ofVec3<S>& vec );
 //		: x(vec.x), y(vec.y) {}
-		
+	
+	// Not implementated.
 	template <typename S>
 	ofVec2( const ofVec4<S>& vec );
 //		: x(vec.x), y(vec.y) {}

@@ -19,10 +19,10 @@ public:
     static const int DIM = 3;
     
     ofVec3()
-    : x(0), y(0), z(0) {}
+		: x(0), y(0), z(0) {}
 
     ofVec3( T _x, T _y, T _z = 0 )
-    : x(_x), y(_y), z(0) {}
+		: x(_x), y(_y), z(0) {}
     
     /// assigns scalar to x, y, and z
     template <typename S>

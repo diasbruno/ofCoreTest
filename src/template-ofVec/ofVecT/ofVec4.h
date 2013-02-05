@@ -14,21 +14,18 @@ namespace of {
 		static const int DIM = 4;
 		
 		ofVec4()
-		: x(0), y(0), z(0), w(0) 
-		{}
+			: x(0), y(0), z(0), w(0) {}
 		
 		ofVec4( T _x, T _y, T _z, T _w ) 
-		: x(_x), y(_y), z(_z), w(_w) 
-		{}
+			: x(_x), y(_y), z(_z), w(_w) {}
 		
 		ofVec4( const ofVec4<T>& v ) 
-		: x(v.x), y(v.y), z(v.z), w(v.w)
-		{}
+			: x(v.x), y(v.y), z(v.z), w(v.w) {}
 		
-		//	template <typename S>
-		//	ofVec4( const ofVec3<S>& v ) 
-		//	: x((T)v.x), y((T)v.y), z((T)v.z), w(0)
-		//	{}
+		// Not implementated.	
+		template <typename S>
+		ofVec4( const ofVec3<S>& v );
+		//: x((T)v.x), y((T)v.y), z((T)v.z), w(0) {}
 		
 		// Equality -----------------------------------------------
 		
