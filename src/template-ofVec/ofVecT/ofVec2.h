@@ -3,6 +3,10 @@
 #include "ofVecT.h"
 #include "ofConstants.h"
 
+#include <cmath>
+#include <iostream>
+
+
 namespace of {
 	
 	template <typename T>
