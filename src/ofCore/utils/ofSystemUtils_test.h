@@ -12,8 +12,8 @@ class ofSystemUtils_Suite
 public:
 	
     ofSystemUtils_Suite() { 
-        TEST_ADD( ofSystemUtils_Suite::test_of_system_alert_dialog_scenario    )
-		TEST_ADD( ofSystemUtils_Suite::test_of_system_text_box_dialog_scenario )
+        TEST_ADD( ofSystemUtils_Suite::test_of_system_alert_dialog_scenario )
+//		TEST_ADD( ofSystemUtils_Suite::test_of_system_text_box_dialog_scenario )
     }
 		
 	string dialog_error_message;
@@ -35,12 +35,7 @@ private:
     void test_of_system_alert_dialog_scenario() {
 		ofSystemAlertDialog( dialog_error_message );
 	}
-	void test_of_system_load_dialog_scenario() {
-		ofSystemAlertDialog( dialog_error_message );
-	}
-	void test_of_system_save_dialog_scenario() {
-		ofSystemAlertDialog( dialog_error_message );
-	}
+	
 	void test_of_system_text_box_dialog_scenario() {
 		string result;
 		
@@ -48,9 +43,3 @@ private:
 		TEST_ASSERT( result == encoding_string_a );
 	}
 };
-/*!
-void ofSystemAlertDialog(string errorMessage);
-ofFileDialogResult ofSystemLoadDialog(string windowTitle="", bool bFolderSelection = false, string defaultPath="");
-ofFileDialogResult ofSystemSaveDialog(string defaultName, string messageName);
-string ofSystemTextBoxDialog(string question, string text="");
- */
