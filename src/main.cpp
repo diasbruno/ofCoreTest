@@ -1,9 +1,11 @@
 #include "ofMain.h"
-#include "ofVecT_testApp.h"
 #include "ofAppGlutWindow.h"
 
 #include "ofCoreTests.h"
 
+
+
+#include "ofVecT_testApp.h"
 void bootApp() {
 	ofAppGlutWindow win;
 	ofSetupOpenGL( &win , 600, 400, OF_WINDOW );
@@ -16,8 +18,7 @@ void bootApp() {
  
  */
 int main() {
-	bootApp();
-	
-//	run_tests();
+	//bootApp();
+	run_tests();
 	return 0;
 }
