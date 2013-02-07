@@ -1,14 +1,16 @@
 #include "ofVecT_testApp.h"
-#include "ofVec.h"
+//#include "ofVec.h"
 
 namespace of {
 	
 	class Rect {
 	public:
-		of::ofVec3<double> position;
-		of::ofVec2<double> frame;
-		of::ofVec2<double> velocity;
-		of::ofVecT<int> alpha;
+		
+		ofVec3<double> position;
+		ofVec2<double> frame;
+		ofVec2<double> velocity;
+		
+		int alpha;
 		
 		bool isOutOfStage;
 		
@@ -17,8 +19,11 @@ namespace of {
 			
 			alpha = 255;
 			
-			position.x =  ofGetWidth() / 2;
+			position.x = ofGetWidth() / 2;
 			position.y = ofGetHeight() / 2;
+			
+			ofLog() << position.x << endl;
+			ofLog() << position.y << endl;
 			
 			float f = ofRandom( 40 );
 			
@@ -35,10 +40,10 @@ namespace of {
 			position.x += velocity.x * 0.1;
 			position.y += velocity.y * 0.1;
 			
-			alpha.x = alpha.x - 1;
+			alpha = alpha - 1;
 			
 			if ( ( position.x >  ofGetWidth() || position.x < 0 )
-				||   ( position.y > ofGetHeight() || position.y < 0 ) ) {
+			||   ( position.y > ofGetHeight() || position.y < 0 ) ) {
 				isOutOfStage = true;
 			}
 		}
@@ -52,6 +57,12 @@ void testApp::setup() {
 	ofBackground( 0 );
 	ofSetVerticalSync(true);
 	ofEnableAlphaBlending();
+	
+	ofLog() << ofGetWidth() << endl;
+	ofLog() << ofGetHeight() << endl;
+	
+	ofLog() << "Viewport width" << ofGetViewportWidth();
+	ofLog() << "Viewport height" << ofGetViewportHeight();
 }
 
 //--------------------------------------------------------------
@@ -61,6 +72,7 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
+	ofPushMatrix();
 	of::Rect* r;
 	int len = particles.size();
 	for (int i = 0; i < len; i++) {
@@ -68,11 +80,14 @@ void testApp::draw(){
 		r->update();
 		if ( !r->isOutOfStage ) {
 			
-			ofSetColor( 255, 255, 255, r->alpha.x );
+			ofSetColor( 255, 255, 255, r->alpha );
 			ofRect( r->position.x, r->position.y, r->frame.x, r->frame.y );
 			
 		}
 	}
+	ofPopMatrix();
+	ofSetColor( 255, 255, 255, 255 );
+	ofRect( -400, -100, 100, 100 );
 }
 
 //--------------------------------------------------------------
