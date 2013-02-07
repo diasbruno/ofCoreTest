@@ -244,7 +244,6 @@
 		03B7FF4016C18E8A00BA0C24 /* hayai-testdescriptor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "hayai-testdescriptor.hpp"; sourceTree = "<group>"; };
 		03B7FF4116C18E8A00BA0C24 /* hayai-testfactory.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "hayai-testfactory.hpp"; sourceTree = "<group>"; };
 		03B7FF4216C18E8A00BA0C24 /* hayai.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = hayai.hpp; sourceTree = "<group>"; };
-		03B7FF5B16C18F5500BA0C24 /* ofVecT_Benchmark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofVecT_Benchmark.h; sourceTree = "<group>"; };
 		03B7FF6316C18FB600BA0C24 /* ofVec4T_test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofVec4T_test.h; sourceTree = "<group>"; };
 		03B7FF6416C18FC700BA0C24 /* ofVec2T_test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofVec2T_test.h; sourceTree = "<group>"; };
 		03F7C17216B183A8009E009E /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
@@ -825,7 +824,6 @@
 		03F7C2B616B24181009E009E /* math */ = {
 			isa = PBXGroup;
 			children = (
-				03B7FF5B16C18F5500BA0C24 /* ofVecT_Benchmark.h */,
 				035D91E116BC6C8E00587D9D /* ofVecT_test.h */,
 				03B7FF6416C18FC700BA0C24 /* ofVec2T_test.h */,
 				03F7C2B716B24181009E009E /* ofVec3T_test.h */,
