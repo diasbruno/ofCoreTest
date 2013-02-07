@@ -1,12 +1,15 @@
 #pragma once
 
-#include "ofVecT.h"
-#include "ofVec2.h"
-#include "ofVec3.h"
-#include "ofVec4.h"
+#include "_ofVecT.h"
+#include "_ofVec2.h"
+#include "_ofVec3.h"
+#include "_ofVec4.h"
 
 namespace of { // using namespace to avoid conflicts.
 
+// Forward declaration for ofVec3 & 4.
+
+	
 /*!
  
  Definition:
@@ -57,22 +60,22 @@ inline ofVec2<T> operator/( T f, const ofVec2<T>& vec ) {
 
 template<typename T>
 inline ofVec3<T> operator+( T s, const ofVec3<T>& v ) {
-    return ofVec3<T>( s+v.x, s+v.y, s+v.z, s+v.w );
+    return ofVec3<T>( s+v.x, s+v.y, s+v.z );
 }
 
 template<typename T>
 inline ofVec3<T> operator-( T s, const ofVec3<T>& v ) {
-    return ofVec3<T>( s-v.x, s-v.y, s-v.z, s-v.w );
+    return ofVec3<T>( s-v.x, s-v.y, s-v.z );
 }
 
 template<typename T>
 inline ofVec3<T> operator*( T s, const ofVec3<T>& v ) {
-    return ofVec3<T>( s*v.x, s*v.y, s*v.z, s*v.w );
+    return ofVec3<T>( s*v.x, s*v.y, s*v.z );
 }
 
 template<typename T>
 inline ofVec3<T> operator/( T s, const ofVec3<T>& v ) {
-    return ofVec3<T>( s/v.x, s/v.y, s/v.z, s/v.w);
+    return ofVec3<T>( s/v.x, s/v.y, s/v.z);
 }
 
 // Vec4<T>

@@ -1,39 +1,60 @@
 #pragma once
 
-#include "ofVecT.h"
+#include "_ofVecT.h"
+
+#include "ofConstants.h"
+
+#include <cmath>
+#include <iostream>
 
 namespace of {
-	
+
 // Forward declaration for ofVec2 & 3.
 template <typename T> class ofVec2;
 template <typename T> class ofVec3;
 
 template<typename T>
-class ofVec4 
-    : public ofVecT<T> {
+class ofVec4 {
+	//	: public ofVecT<T> {
 public:
     T x, y, z, w;
     
     static const int DIM = 4;
     
     ofVec4()
-        : x(0), y(0), z(0), w(0) {}
+	: x(0), y(0), z(0), w(0) {}
     
     ofVec4( T _x, T _y, T _z, T _w ) 
-        : x(_x), y(_y), z(_z), w(_w) {}
+	: x(_x), y(_y), z(_z), w(_w) {}
     
     ofVec4( const ofVec4<T>& v ) 
-        : x(v.x), y(v.y), z(v.z), w(v.w) {}
+	: x(v.x), y(v.y), z(v.z), w(v.w) {}
     
-    template <typename S>
-    ofVec4( const ofVec3<S>& v )
-        : x(v.x), y(v.y), z(v.z), w(0) {}
+    ofVec4( const ofVec3<T>& v )
+	: x(v.x), y(v.y), z(v.z), w(0) {}
 	
     // Getters and Setters. -------------------------------------------------
     
 	void set( T _scalar );
     void set( T _x, T _y, T _z, T _w );
     void set( const ofVec4<T>& vec );
+	
+	// Accessors ------------------------------------
+	
+	T* getPtr() {
+		return (T*)&x;
+	}
+	const T* getPtr() const {
+		return (const T*)&x;
+	}
+	
+	T& operator[]( int n ){
+		return getPtr()[n];
+	}
+	
+	T operator[]( int n ) const {
+		return getPtr()[n];
+	}
 	
     // Similarity/equality --------------------------------------------------
     
@@ -43,26 +64,26 @@ public:
 	
     // Overloading for any type to any type ---------------------------------	
     
-    template <typename S> ofVec4<T>  operator +  ( const ofVec4<S>& vec ) const;
-    template <typename S> ofVec4<T>& operator += ( const ofVec4<S>& vec );
-    template <typename S> ofVec4<T>  operator -  ( const S f ) const;
-    template <typename S> ofVec4<T>& operator -= ( const S f );
-    template <typename S> ofVec4<T>  operator -  ( const ofVec4<S>& vec ) const;
-    template <typename S> ofVec4<T>& operator -= ( const ofVec4<S>& vec );
-    template <typename S> ofVec4<T>  operator +  ( const S f ) const;
-    template <typename S> ofVec4<T>& operator += ( const S f );
+    ofVec4<T>  operator +  ( const ofVec4<T>& vec ) const;
+    ofVec4<T>& operator += ( const ofVec4<T>& vec );
+    ofVec4<T>  operator -  ( const T f ) const;
+    ofVec4<T>& operator -= ( const T f );
+    ofVec4<T>  operator -  ( const ofVec4<T>& vec ) const;
+    ofVec4<T>& operator -= ( const ofVec4<T>& vec );
+    ofVec4<T>  operator +  ( const T f ) const;
+    ofVec4<T>& operator += ( const T f );
 	
-    template <typename S> ofVec4<T>  operator *  ( const ofVec4<S>& vec ) const;
-    template <typename S> ofVec4<T>& operator *= ( const ofVec4<S>& vec );
-    template <typename S> ofVec4<T>  operator *  ( const S f ) const;
-    template <typename S> ofVec4<T>& operator *= ( const S f );
-    template <typename S> ofVec4<T>  operator /  ( const ofVec4<S>& vec ) const;
-    template <typename S> ofVec4<T>& operator /= ( const ofVec4<S>& vec );
-    template <typename S> ofVec4<T>  operator /  ( const S f ) const;
-    template <typename S> ofVec4<T>& operator /= ( const S f );
+    ofVec4<T>  operator *  ( const ofVec4<T>& vec ) const;
+    ofVec4<T>& operator *= ( const ofVec4<T>& vec );
+    ofVec4<T>  operator *  ( const T f ) const;
+    ofVec4<T>& operator *= ( const T f );
+    ofVec4<T>  operator /  ( const ofVec4<T>& vec ) const;
+    ofVec4<T>& operator /= ( const ofVec4<T>& vec );
+    ofVec4<T>  operator /  ( const T f ) const;
+    ofVec4<T>& operator /= ( const T f );
 	
     ofVec4<T> operator - () const;
-
+	
     template <typename S> friend ostream& operator<<(ostream& os, const ofVec4<S>& vec);
     template <typename S> friend istream& operator>>(istream& is, const ofVec4<S>& vec);
 	
@@ -92,7 +113,7 @@ public:
 	
     /** Dot Product. */
     T dot( const ofVec4<T>& vec ) const;
-
+	
     // Normalization --------------------------------------------------------
     
     ofVec4<T>  getNormalized() const;
@@ -135,13 +156,13 @@ public:
     // use getMiddle
     ofVec4<T> 	middled( const ofVec4<T>& pnt ) const;    
     
-
+	
     // return all zero vector
     static ofVec4<T> zero() { return ofVec4<T>(0, 0, 0, 0); }
     
     // return all one vector
     static ofVec4<T> one() { return ofVec4<T>(1, 1, 1, 1); }
-
+	
 };
 
 //
@@ -183,22 +204,20 @@ inline bool ofVec4<T>::operator!=( const ofVec4<T>& vec ) const {
 template<typename T>
 inline bool ofVec4<T>::match( const ofVec4<T>& vec, T tolerance) const {
 	return ( fabs(x - vec.x) < tolerance )
-        && ( fabs(y - vec.y) < tolerance )
-        && ( fabs(z - vec.z) < tolerance )
-        && ( fabs(w - vec.w) < tolerance );
+	&& ( fabs(y - vec.y) < tolerance )
+	&& ( fabs(z - vec.z) < tolerance )
+	&& ( fabs(w - vec.w) < tolerance );
 }
 
 // Overloading for any type to any type ---------------------------------	
 
 template<typename T>
-template<typename S>
-inline ofVec4<T> ofVec4<T>::operator+( const ofVec4<S>& vec ) const {
+inline ofVec4<T> ofVec4<T>::operator+( const ofVec4<T>& vec ) const {
 	return ofVec4<T>( x+vec.x, y+vec.y, z+vec.z, w+vec.w);
 }
 
 template<typename T>
-template<typename S>
-inline ofVec4<T>& ofVec4<T>::operator+=( const ofVec4<S>& vec ) {
+inline ofVec4<T>& ofVec4<T>::operator+=( const ofVec4<T>& vec ) {
 	x += vec.x;
 	y += vec.y;
 	z += vec.z;
@@ -207,14 +226,12 @@ inline ofVec4<T>& ofVec4<T>::operator+=( const ofVec4<S>& vec ) {
 }
 
 template<typename T>
-template<typename S>
-inline ofVec4<T> ofVec4<T>::operator-( const S f ) const {
+inline ofVec4<T> ofVec4<T>::operator-( const T f ) const {
 	return ofVec4<T>( x-f, y-f, z-f, w-f );
 }
 
 template<typename T>
-template<typename S>
-inline ofVec4<T>& ofVec4<T>::operator-=( const S f ) {
+inline ofVec4<T>& ofVec4<T>::operator-=( const T f ) {
 	x -= f;
 	y -= f;
 	z -= f;
@@ -223,14 +240,12 @@ inline ofVec4<T>& ofVec4<T>::operator-=( const S f ) {
 }
 
 template<typename T>
-template<typename S>
-inline ofVec4<T> ofVec4<T>::operator-( const ofVec4<S>& vec ) const {
+inline ofVec4<T> ofVec4<T>::operator-( const ofVec4<T>& vec ) const {
 	return ofVec4<T>( x-vec.x, y-vec.y, z-vec.z, w-vec.w );
 }
 
 template<typename T>
-template<typename S>
-inline ofVec4<T>& ofVec4<T>::operator-=( const ofVec4<S>& vec ) {
+inline ofVec4<T>& ofVec4<T>::operator-=( const ofVec4<T>& vec ) {
 	x -= vec.x;
 	y -= vec.y;
 	z -= vec.z;
@@ -239,14 +254,12 @@ inline ofVec4<T>& ofVec4<T>::operator-=( const ofVec4<S>& vec ) {
 }
 
 template<typename T>
-template<typename S>
-inline ofVec4<T> ofVec4<T>::operator+( const S f ) const {
+inline ofVec4<T> ofVec4<T>::operator+( const T f ) const {
 	return ofVec4<T>( x+f, y+f, z+f, w+f );
 }
 
 template<typename T>
-template<typename S>
-inline ofVec4<T>& ofVec4<T>::operator+=( const S f ) {
+inline ofVec4<T>& ofVec4<T>::operator+=( const T f ) {
 	x += f;
 	y += f;
 	z += f;
@@ -261,14 +274,12 @@ inline ofVec4<T> ofVec4<T>::operator-() const {
 
 
 template<typename T>
-template<typename S>
-inline ofVec4<T> ofVec4<T>::operator*( const ofVec4<S>& vec ) const {
+inline ofVec4<T> ofVec4<T>::operator*( const ofVec4<T>& vec ) const {
 	return ofVec4<T>( x*vec.x, y*vec.y, z*vec.z, w*vec.w );
 }
 
 template<typename T>
-template<typename S>
-inline ofVec4<T>& ofVec4<T>::operator*=( const ofVec4<S>& vec ) {
+inline ofVec4<T>& ofVec4<T>::operator*=( const ofVec4<T>& vec ) {
 	x *= vec.x;
 	y *= vec.y;
 	z *= vec.z;
@@ -277,14 +288,12 @@ inline ofVec4<T>& ofVec4<T>::operator*=( const ofVec4<S>& vec ) {
 }
 
 template<typename T>
-template<typename S>
-inline ofVec4<T> ofVec4<T>::operator*( const S f ) const {
+inline ofVec4<T> ofVec4<T>::operator*( const T f ) const {
 	return ofVec4<T>( x*f, y*f, z*f, w*f );
 }
 
 template<typename T>
-template<typename S>
-inline ofVec4<T>& ofVec4<T>::operator*=( const S f ) {
+inline ofVec4<T>& ofVec4<T>::operator*=( const T f ) {
 	x *= f;
 	y *= f;
 	z *= f;
@@ -293,14 +302,12 @@ inline ofVec4<T>& ofVec4<T>::operator*=( const S f ) {
 }
 
 template<typename T>
-template<typename S>
-inline ofVec4<T> ofVec4<T>::operator/( const ofVec4<S>& vec ) const {
+inline ofVec4<T> ofVec4<T>::operator/( const ofVec4<T>& vec ) const {
 	return ofVec4<T>( vec.x!=0 ? x/vec.x : x , vec.y!=0 ? y/vec.y : y, vec.z!=0 ? z/vec.z : z, vec.w!=0 ? w/vec.w : w  );
 }
 
 template<typename T>
-template<typename S>
-inline ofVec4<T>& ofVec4<T>::operator/=( const ofVec4<S>& vec ) {
+inline ofVec4<T>& ofVec4<T>::operator/=( const ofVec4<T>& vec ) {
 	vec.x!=0 ? x/=vec.x : x;
 	vec.y!=0 ? y/=vec.y : y;
 	vec.z!=0 ? z/=vec.z : z;
@@ -309,16 +316,14 @@ inline ofVec4<T>& ofVec4<T>::operator/=( const ofVec4<S>& vec ) {
 }
 
 template<typename T>
-template<typename S>
-inline ofVec4<T> ofVec4<T>::operator/( const S f ) const {
+inline ofVec4<T> ofVec4<T>::operator/( const T f ) const {
 	if(f == 0) return ofVec4<T>(x, y, z, w);
 	
 	return ofVec4<T>( x/f, y/f, z/f, w/f );
 }
 
 template<typename T>
-template<typename S>
-inline ofVec4<T>& ofVec4<T>::operator/=( const S f ) {
+inline ofVec4<T>& ofVec4<T>::operator/=( const T f ) {
 	if(f == 0)return *this;
 	
 	x /= f;
@@ -358,7 +363,7 @@ inline ofVec4<T> ofVec4<T>::getScaled( const T length ) const {
 	T l = (T)sqrt(x*x + y*y + z*z + w*w);
 	if( l > 0 )
 		return ofVec4<T>( (x/l)*length, (y/l)*length,
-					   (z/l)*length, (w/l)*length );
+						 (z/l)*length, (w/l)*length );
 	else
 		return ofVec4<T>();
 }
@@ -419,9 +424,9 @@ inline ofVec4<T> ofVec4<T>::interpolated( const ofVec4<T>& pnt, T p ) const{
 template<typename T>
 inline ofVec4<T> ofVec4<T>::getInterpolated( const ofVec4<T>& pnt, T p ) const {
 	return ofVec4<T>( x*(1-p) + pnt.x*p,
-				   y*(1-p) + pnt.y*p,
-				   z*(1-p) + pnt.z*p,
-				   w*(1-p) + pnt.w*p );
+					 y*(1-p) + pnt.y*p,
+					 z*(1-p) + pnt.z*p,
+					 w*(1-p) + pnt.w*p );
 }
 
 template<typename T>
@@ -441,7 +446,7 @@ inline ofVec4<T> ofVec4<T>::middled( const ofVec4<T>& pnt ) const {
 template<typename T>
 inline ofVec4<T> ofVec4<T>::getMiddle( const ofVec4<T>& pnt ) const {
 	return ofVec4<T>( (x+pnt.x)/2.0f, (y+pnt.y)/2.0f,
-				   (z+pnt.z)/2.0f, (w+pnt.w)/2.0f );
+					 (z+pnt.z)/2.0f, (w+pnt.w)/2.0f );
 }
 
 template<typename T>
@@ -455,7 +460,7 @@ inline ofVec4<T>& ofVec4<T>::middle( const ofVec4<T>& pnt ) {
 
 
 /*! Average (centroid) among points.
-    (Addition is sometimes useful for calculating averages too). */
+ (Addition is sometimes useful for calculating averages too). */
 template<typename T>
 inline ofVec4<T>& ofVec4<T>::average( const ofVec4<T>* points, int num ) {
 	x = 0.f;
