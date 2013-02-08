@@ -41,7 +41,7 @@ public:
     void set( T _x, T _y );
     void set( const _ofVec2<T>& vec );
 	
-	// Accessors ------------------------------------
+	// Accessors ------------------------------------------------------------
 	
 	T* getPtr() 
 	{ return (T*)&x; }
