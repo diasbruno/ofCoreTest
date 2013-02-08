@@ -5,20 +5,18 @@
 
 #include "ofConstants.h"
 
-namespace of {
-	
 template<typename T>
-class ofVecT {
+class _ofVecT {
 public:
 	T x;
 	// T* x[ DIM ] ?
 	
 	static const int DIM = 1;
 	
-	ofVecT()
+	_ofVecT()
 		: x(0) {}
 	
-	ofVecT( T _x )
+	_ofVecT( T _x )
 		: x(_x) {}
 	
 	// Accessors ------------------------------------
@@ -39,5 +37,3 @@ public:
 	}
 	
 };
-	
-}
