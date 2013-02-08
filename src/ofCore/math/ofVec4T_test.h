@@ -15,16 +15,16 @@ public:
 		TEST_ADD( ofVec4T_Suite::test_operations )
     }
     
-	of::ofVec4<int>    v4i;
-    of::ofVec4<float>  v4f;
-	of::ofVec4<double> v4d;
-	
 protected:
 	
     void     setup() {}
     void tear_down() {}
 	
 private:
+	
+	_ofVec4i v4i;
+    _ofVec4f v4f;
+	_ofVec4d v4d;
 	
     void test_creation() {
 		TEST_ASSERT( v4i.x == 0 )
@@ -64,20 +64,8 @@ private:
     }
 	
 	void test_pointer_access() {
-		int *vi;
 		float *vf;
 		double *vd;
-		
-		v4i.x = 10;
-		v4i.y = 12;
-		v4i.z = 1;
-		v4i.w = 125;
-		
-		vi = v4i.getPtr();
-        TEST_ASSERT( *( vi + 0 ) == 10 )
-        TEST_ASSERT( *( vi + 1 ) == 12 )
-        TEST_ASSERT( *( vi + 2 ) == 1 )
-        TEST_ASSERT( *( vi + 3 ) == 125 )
 		
 		v4f.x = 10.f;
 		v4f.y = 12.f;
@@ -85,9 +73,9 @@ private:
 		v4f.w = 125.f;
 		
 		vf = v4f.getPtr();
-        TEST_ASSERT( *( vf + 0 ) == 10.f )
-        TEST_ASSERT( *( vf + 1 ) == 12.f )
-		TEST_ASSERT( *( vf + 2 ) == 1.f )
+        TEST_ASSERT( *( vf + 0 ) ==  10.f )
+        TEST_ASSERT( *( vf + 1 ) ==  12.f )
+		TEST_ASSERT( *( vf + 2 ) ==   1.f )
         TEST_ASSERT( *( vf + 3 ) == 125.f )
 		
 		v4d.x = 10.;
@@ -96,64 +84,64 @@ private:
 		v4d.w = 125.;
 		
 		vd = v4d.getPtr();
-        TEST_ASSERT( *( vd + 0 ) == 10. )
-        TEST_ASSERT( *( vd + 1 ) == 12. )
-		TEST_ASSERT( *( vd + 2 ) == 1. )
-        TEST_ASSERT( *( vd + 3 ) == 125. )
+        TEST_ASSERT( *( vd   ) ==  10. )
+        TEST_ASSERT( *( ++vd ) ==  12. )
+		TEST_ASSERT( *( ++vd ) ==   1. )
+        TEST_ASSERT( *( ++vd ) == 125. )
     }
 	
 	void test_sets_equality() {
 		v4i.set( 20, 30, 50, 100 );
-        TEST_ASSERT( v4i == of::ofVec4<int> ( 20, 30, 50, 100 ) )
+        TEST_ASSERT( v4i == _ofVec4<int> ( 20, 30, 50, 100 ) )
 		
 		v4f.set( 20.f, 30.f, 50.f, 100.f );
-		TEST_ASSERT( v4f == of::ofVec4<float> ( 20.f, 30.f, 50.f, 100.f ) )
+		TEST_ASSERT( v4f == _ofVec4<float> ( 20.f, 30.f, 50.f, 100.f ) )
 		
 		v4d.set( 20., 30., 50., 100. );
-		TEST_ASSERT( v4d == of::ofVec4<double> ( 20., 30., 50., 100. ) )
+		TEST_ASSERT( v4d == _ofVec4<double> ( 20., 30., 50., 100. ) )
     }
 	
 	void test_operations() {
 		v4i.set( 20, 30, 40, 10 );
 		
-		v4i += of::ofVec4i( 40, 30, 20, 10 );
-		TEST_ASSERT( v4i == of::ofVec4i( 60, 60, 60, 20 ) )
-		TEST_ASSERT( v4i +  of::ofVec4i( 40, 30, 10, 10 ) == of::ofVec4<int>( 100, 90, 70, 30 ) )
+		v4i += _ofVec4i( 40, 30, 20, 10 );
+		TEST_ASSERT( v4i == _ofVec4i( 60, 60, 60, 20 ) )
+		TEST_ASSERT( v4i +  _ofVec4i( 40, 30, 10, 10 ) == _ofVec4<int>( 100, 90, 70, 30 ) )
 		
-		v4i -= of::ofVec4i( 20, 30, 120, 40 );
-		TEST_ASSERT( v4i == of::ofVec4i( 40, 30, -60, -20 ) )
-		TEST_ASSERT( v4i -  of::ofVec4i( 20, 10,  50,  10 ) == of::ofVec4<int>( 20, 20, -110, -30 ) )
+		v4i -= _ofVec4i( 20, 30, 120, 40 );
+		TEST_ASSERT( v4i == _ofVec4i( 40, 30, -60, -20 ) )
+		TEST_ASSERT( v4i -  _ofVec4i( 20, 10,  50,  10 ) == _ofVec4<int>( 20, 20, -110, -30 ) )
 		
-		v4i *= of::ofVec4i( 2, 5, -4, 10 );
-		TEST_ASSERT( v4i == of::ofVec4i( 80, 150, 240, -200 ) )
-		TEST_ASSERT( v4i *  of::ofVec4i( 20,  10,  -2,   -1 ) == of::ofVec4<int>( 1600, 1500, -480, 200 ) )
+		v4i *= _ofVec4i( 2, 5, -4, 10 );
+		TEST_ASSERT( v4i == _ofVec4i( 80, 150, 240, -200 ) )
+		TEST_ASSERT( v4i *  _ofVec4i( 20,  10,  -2,   -1 ) == _ofVec4<int>( 1600, 1500, -480, 200 ) )
 		
-		v4i /= of::ofVec4i( 4, 5, 6, -20 );
-		TEST_ASSERT( v4i == of::ofVec4i( 20,  30, 40, 10 ) )
-		TEST_ASSERT( v4i /  of::ofVec4i(  2, -10, -5,  2 ) == of::ofVec4<int>( 10, -3, -8, 5 ) )
+		v4i /= _ofVec4i( 4, 5, 6, -20 );
+		TEST_ASSERT( v4i == _ofVec4i( 20,  30, 40, 10 ) )
+		TEST_ASSERT( v4i /  _ofVec4i(  2, -10, -5,  2 ) == _ofVec4<int>( 10, -3, -8, 5 ) )
 		
 		v4i = -v4i; 
-		TEST_ASSERT( v4i == of::ofVec4i( -20, -30, -40, -10 ) );
+		TEST_ASSERT( v4i == _ofVec4i( -20, -30, -40, -10 ) );
 		
 		v4f.set( 20, 30, 40, 10 );
 		
-		v4f += of::ofVec4f( 40, 30, 20, 10 );
-		TEST_ASSERT( v4f == of::ofVec4f( 60, 60, 60, 20 ) )
-		TEST_ASSERT( v4f +  of::ofVec4f( 40, 30, 10, 10 ) == of::ofVec4<float>( 100, 90, 70, 30 ) )
+		v4f += _ofVec4f( 40, 30, 20, 10 );
+		TEST_ASSERT( v4f == _ofVec4f( 60, 60, 60, 20 ) )
+		TEST_ASSERT( v4f +  _ofVec4f( 40, 30, 10, 10 ) == _ofVec4<float>( 100, 90, 70, 30 ) )
 		
-		v4f -= of::ofVec4f( 20, 30, 120, 40 );
-		TEST_ASSERT( v4f == of::ofVec4f( 40, 30, -60, -20 ) )
-		TEST_ASSERT( v4f -  of::ofVec4f( 20, 10,  50,  10 ) == of::ofVec4<float>( 20, 20, -110, -30 ) )
+		v4f -= _ofVec4f( 20, 30, 120, 40 );
+		TEST_ASSERT( v4f == _ofVec4f( 40, 30, -60, -20 ) )
+		TEST_ASSERT( v4f -  _ofVec4f( 20, 10,  50,  10 ) == _ofVec4<float>( 20, 20, -110, -30 ) )
 		
-		v4f *= of::ofVec4f( 2, 5, -4, 10 );
-		TEST_ASSERT( v4f == of::ofVec4f( 80, 150, 240, -200 ) )
-		TEST_ASSERT( v4f *  of::ofVec4f( 20,  10,  -2,   -1 ) == of::ofVec4<float>( 1600, 1500, -480, 200 ) )
+		v4f *= _ofVec4f( 2, 5, -4, 10 );
+		TEST_ASSERT( v4f == _ofVec4f( 80, 150, 240, -200 ) )
+		TEST_ASSERT( v4f *  _ofVec4f( 20,  10,  -2,   -1 ) == _ofVec4<float>( 1600, 1500, -480, 200 ) )
 		
-		v4f /= of::ofVec4f( 4, 5, 6, -20 );
-		TEST_ASSERT( v4f == of::ofVec4f( 20,  30, 40, 10 ) )
-		TEST_ASSERT( v4f /  of::ofVec4f(  2, -10, -5,  2 ) == of::ofVec4<float>( 10, -3, -8, 5 ) )
+		v4f /= _ofVec4f( 4, 5, 6, -20 );
+		TEST_ASSERT( v4f == _ofVec4f( 20,  30, 40, 10 ) )
+		TEST_ASSERT( v4f /  _ofVec4f(  2, -10, -5,  2 ) == _ofVec4<float>( 10, -3, -8, 5 ) )
 		
 		v4f = -v4f; 
-		TEST_ASSERT( v4f == of::ofVec4f( -20, -30, -40, -10 ) );
+		TEST_ASSERT( v4f == _ofVec4f( -20, -30, -40, -10 ) );
     }
 };
