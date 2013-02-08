@@ -1,5 +1,6 @@
 #pragma once
 
+#include "_ofVec.h"
 #include "ofMain.h"
 
 namespace of {

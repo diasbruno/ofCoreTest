@@ -6,8 +6,8 @@ namespace of {
 	public:
 		
 		ofVec3<double> position;
-		ofVec2<double> frame;
-		ofVec2<double> velocity;
+		::_ofVec2<double> frame;
+		::_ofVec2<double> velocity;
 		
 		int alpha;
 		
@@ -15,6 +15,9 @@ namespace of {
 		
 		Rect() {
 			isOutOfStage = false;
+			position = ofVec3<double>(0,0);
+			frame = ::_ofVec2<double>(0,0);
+			velocity = ::_ofVec2<double>(0,0);
 			
 			alpha = 255;
 			
