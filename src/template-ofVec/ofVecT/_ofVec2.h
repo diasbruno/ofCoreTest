@@ -35,19 +35,19 @@ public:
     void set( T _x, T _y );
     void set( const _ofVec2<T>& vec );
 	
-	// Accessors ------------------------------------------------------------
+    // Accessors ------------------------------------------------------------
 	
-	T* getPtr() 
-	{ return (T*)&x; }
+    T* getPtr() { 
+    	return (T*)&x; }
 	
-	const T* getPtr() const 
-	{ return (const T*)&x; }
+	const T* getPtr() const { 
+		return (const T*)&x; }
 	
-	T& operator[]( int n )
-	{ return getPtr()[n]; }
+	T& operator[]( int n ) { 
+		return getPtr()[n]; }
 	
-	T operator[]( int n ) const 
-	{ return getPtr()[n]; }
+	T operator[]( int n ) const { 
+		return getPtr()[n]; }
     
     // Similarity/equality --------------------------------------------------
     
@@ -293,15 +293,15 @@ _ofVec2<T>::_ofVec2( const _ofVec4<T>& vec )
 template <typename T> inline 
 bool _ofVec2<T>::operator == ( const _ofVec2<T>& vec ) const {
     
-    return (x == vec.x) 
-        && (y == vec.y);
+    return ( x == vec.x ) 
+        && ( y == vec.y );
 }
 
 template <typename T> inline 
 bool _ofVec2<T>::operator != ( const _ofVec2<T>& vec ) const {
 
-    return (x != vec.x) 
-        || (y != vec.y);
+    return ( x != vec.x ) 
+        || ( y != vec.y );
 }
 
 // Overloading for any type to any type ---------------------------------
