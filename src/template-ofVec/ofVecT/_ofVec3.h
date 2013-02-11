@@ -164,8 +164,8 @@ public:
     
     // Limit length ---------------------------------------------------------
     
-    _ofVec3<T> getLimited( T max ) const;
-    _ofVec3<T>&     limit( T max );
+    _ofVec3<T>  getLimited( T max ) const;
+    _ofVec3<T>&      limit( T max );
     
     // Perpendicular normalized vector --------------------------------------
     
