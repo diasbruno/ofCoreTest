@@ -200,9 +200,9 @@ public:
     // IO Stream -----------------------------------------------------------
 
     template <typename S> 
-    friend ostream& operator << ( ostream& os, const _ofVec3<S>& vec );
+    friend std::ostream& operator << ( std::ostream& os, const _ofVec3<S>& vec );
     template <typename S> 
-    friend istream& operator >> ( istream& is, const _ofVec3<S>& vec );
+    friend std::istream& operator >> ( std::istream& is, const _ofVec3<S>& vec );
     
     //
     // Deprecated -----------------------------------------------------------
@@ -396,17 +396,15 @@ _ofVec3<T>& _ofVec3<T>::operator/=( const T f ) {
 // IO Stream --------------------------------------------------
 
 template <typename S> inline 
-ostream& operator<<(ostream& os, const _ofVec3<S>& vec) {
+std::ostream& operator << ( std::ostream& os, const _ofVec3<S>& vec ) {
     os << vec.x << ", " << vec.y << ", " << vec.z;
     return os;
 }
 
 template <typename S> inline 
-istream& operator>>(istream& is, _ofVec3<S>& vec) {
-    is >> vec.x;
-    is.ignore(2);
-    is >> vec.y;
-    is.ignore(2);
+std::istream& operator >> ( std::istream& is, _ofVec3<S>& vec) {
+    is >> vec.x; is.ignore( 2 );
+    is >> vec.y; is.ignore( 2 );
     is >> vec.z;
     return is;
 }
