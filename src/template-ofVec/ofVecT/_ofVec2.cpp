@@ -4,13 +4,13 @@
 // Pythagoras
 
 // pow hypotenuse
-#define P_HYPOTENUSE( x, y ) x * x + y * y
-#define HYPOTENUSE( x, y ) sqrt( P_HYPOTENUSE( x, y ) )
+#define P_HYPOTENUSE_2D( x, y ) x * x + y * y
+#define   HYPOTENUSE_2D( x, y ) sqrt( P_HYPOTENUSE_2D( x, y ) )
 
 // Dot Product
 
-#define DOT_XYV2( x, y, vec ) x * vec.x + y * vec.y
-#define DOT_YXV2( x, y, vec ) x * vec.y - y * vec.x
+#define DOT_XY_V2D( x, y, vec ) x * vec.x + y * vec.y
+#define DOT_YX_V2D( x, y, vec ) x * vec.y - y * vec.x
 
 // Getters and Setters. -------------------------------------------------
 
