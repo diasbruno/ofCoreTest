@@ -1,42 +1,31 @@
-/*
- *  _ofQuaternionT.cpp
- *  ofCoreTest
- *
- *  Created by Bruno Dias on 2/6/13.
- *  Copyright 2013 Interactive Developer. All rights reserved.
- *
- */
 
-#include "_ofQuaternionT.h"
-
+#include "_ofQuaternion.h"
 #include "_ofMatrix4x4.h"
 #include "ofMath.h"
 
-namespace of {
-
 template <typename T>
-void ofQuaternion<T>::set(const ofMatrix4x4<T>T& matrix) {
+void _ofQuaternion<T>::set( const _ofMatrix4x4<T>& matrix ) {
 	*this = matrix.getRotate();
 }
 
 template <typename T>
-void ofQuaternion<T>::get(ofMatrix4x4<T>T& matrix) const {
-	matrix.makeRotationMatrix(*this);
+void _ofQuaternion<T>::get( _ofMatrix4x4<T>& matrix ) const {
+	matrix.makeRotationMatrix( *this );
 }
 
 
 /// Set the elements of the Quat to represent a rotation of angle
 /// (degrees) around the axis (x,y,z)
 template <typename T>
-void ofQuaternion<T>::makeRotate( T angle, T x, T y, T z ) {
+void _ofQuaternion<T>::makeRotate( T angle, T x, T y, T z ) {
 	angle = ofDegToRad(angle);
 	
 	const T epsilon = 0.0000001f;
 	
 	T length = sqrtf( x * x + y * y + z * z );
-	if (length < epsilon) {
+	if ( length < epsilon ) {
 		// ~zero length axis, so reset rotation to zero.
-		*this = ofQuaternion<T>();
+		*this = _ofQuaternion<T>();
 		return;
 	}
 	
@@ -52,20 +41,23 @@ void ofQuaternion<T>::makeRotate( T angle, T x, T y, T z ) {
 
 
 template <typename T>
-void ofQuaternion<T>::makeRotate( T angle, const ofVec3<T>& vec ) {
+void _ofQuaternion<T>::makeRotate( T angle, const _ofVec3<T>& vec ) {
 	makeRotate( angle, vec.x, vec.y, vec.z );
 }
 
 
 template <typename T>
-void ofQuaternion<T>::makeRotate ( T angle1, const ofVec3<T>& axis1,
-							       T angle2, const ofVec3<T>& axis2,
-							       T angle3, const ofVec3<T>& axis3 ) {
-	ofQuaternion<T> q1; q1.makeRotate(angle1,axis1);
-	ofQuaternion<T> q2; q2.makeRotate(angle2,axis2);
-	ofQuaternion<T> q3; q3.makeRotate(angle3,axis3);
+void _ofQuaternion<T>::makeRotate ( T angle1, const _ofVec3<T>& axis1,
+							        T angle2, const _ofVec3<T>& axis2,
+							        T angle3, const _ofVec3<T>& axis3 ) {
+	_ofQuaternion<T> q1; 
+	q1.makeRotate( angle1, axis1 );
+	_ofQuaternion<T> q2; 
+	q2.makeRotate( angle2, axis2 );
+	_ofQuaternion<T> q3; 
+	q3.makeRotate( angle3, axis3 );
 	
-	*this = q1*q2*q3;
+	*this = q1 * q2 * q3;
 }
 
 /** Make a rotation Quat which will rotate vec1 to vec2
@@ -83,7 +75,8 @@ void ofQuaternion<T>::makeRotate ( T angle1, const ofVec3<T>& axis1,
  @author Nicolas Brodu
  */
 template <typename T>
-void ofQuaternion<T>::makeRotate( const ofVec3<T>& from, const ofVec3<T>& to ) {
+void _ofQuaternion<T>::makeRotate( const _ofVec3<T>& from, 
+								   const _ofVec3<T>& to ) {
 	
 	// This routine takes any vector as argument but normalized
 	// vectors are necessary, if only for computing the dot product.
@@ -92,8 +85,8 @@ void ofQuaternion<T>::makeRotate( const ofVec3<T>& from, const ofVec3<T>& to ) {
 	// the sqrt could be shared, but we have no way to know beforehand
 	// at this point, while the caller may know.
 	// So, we have to test... in the hope of saving at least a sqrt
-	ofVec3<T> sourceVector = from;
-	ofVec3<T> targetVector = to;
+	_ofVec3<T> sourceVector = from;
+	_ofVec3<T> targetVector = to;
 	
 	T fromLen2 = from.lengthSquared();
 	T fromLen;
@@ -151,7 +144,7 @@ void ofQuaternion<T>::makeRotate( const ofVec3<T>& from, const ofVec3<T>& to ) {
 		// Find the shortest angle quaternion that transforms normalized vectors
 		// into one other. Formula is still valid when vectors are colinear
 		const double s = sqrt(0.5 * dotProdPlus1);
-		const ofVec3<T> tmp = sourceVector.getCrossed(targetVector) / (2.0 * s);
+		const _ofVec3<T> tmp = sourceVector.getCrossed(targetVector) / (2.0 * s);
 		_v.x = tmp.x;
 		_v.y = tmp.y;
 		_v.z = tmp.z;
@@ -166,7 +159,8 @@ void ofQuaternion<T>::makeRotate( const ofVec3<T>& from, const ofVec3<T>& to ) {
 // Watch out for the two special cases of when the vectors
 // are co-incident or opposite in direction.
 template <typename T>
-void ofQuaternion<T>::makeRotate_original( const ofVec3<T>& from, const ofVec3<T>& to ) {
+void _ofQuaternion<T>::makeRotate_original( const _ofVec3<T>& from, 
+										    const _ofVec3<T>& to ) {
 	const T epsilon = 0.0000001f;
 	
 	T length1  = from.length();
@@ -182,21 +176,21 @@ void ofQuaternion<T>::makeRotate_original( const ofVec3<T>& from, const ofVec3<T
 		// Need to generate an angle of zero with any vector we like
 		// We'll choose (1,0,0)
 		makeRotate( 0.0, 0.0, 0.0, 1.0 );
-	} else
+	} else {
 		if ( fabs(cosangle + 1.0) < epsilon ) {
 			// vectors are close to being opposite, so will need to find a
 			// vector orthongonal to from to rotate about.
-			ofVec3<T> tmp;
+			_ofVec3<T> tmp;
 			if (fabs(from.x) < fabs(from.y))
 				if (fabs(from.x) < fabs(from.z)) tmp.set(1.0, 0.0, 0.0); // use x axis.
 				else tmp.set(0.0, 0.0, 1.0);
 				else if (fabs(from.y) < fabs(from.z)) tmp.set(0.0, 1.0, 0.0);
 				else tmp.set(0.0, 0.0, 1.0);
 			
-			ofVec3<T> fromd(from.x, from.y, from.z);
+			_ofVec3<T> fromd(from.x, from.y, from.z);
 			
 			// find orthogonal axis.
-			ofVec3<T> axis(fromd.getCrossed(tmp));
+			_ofVec3<T> axis(fromd.getCrossed(tmp));
 			axis.normalize();
 			
 			_v.x = axis[0]; // sin of half angle of PI is 1.0.
@@ -207,14 +201,15 @@ void ofQuaternion<T>::makeRotate_original( const ofVec3<T>& from, const ofVec3<T
 		} else {
 			// This is the usual situation - take a cross-product of vec1 and vec2
 			// and that is the axis around which to rotate.
-			ofVec3<T> axis(from.getCrossed(to));
+			_ofVec3<T> axis(from.getCrossed(to));
 			T angle = acos( cosangle );
 			makeRotate( angle, axis );
 		}
+	}
 }
 
 template <typename T>
-void ofQuaternion<T>::getRotate( T& angle, ofVec3<T>& vec ) const {
+void _ofQuaternion<T>::getRotate( T& angle, _ofVec3<T>& vec ) const {
 	T x, y, z;
 	getRotate(angle, x, y, z);
 	vec.x = x;
@@ -225,7 +220,7 @@ void ofQuaternion<T>::getRotate( T& angle, ofVec3<T>& vec ) const {
 // Won't give very meaningful results if the Quat is not associated
 // with a rotation!
 template <typename T>
-void ofQuaternion<T>::getRotate( T& angle, T& x, T& y, T& z ) const {
+void _ofQuaternion<T>::getRotate( T& angle, T& x, T& y, T& z ) const {
 	T sinhalfangle = sqrt( _v.x * _v.x + _v.y * _v.y + _v.z * _v.z );
 	
 	angle = 2.0 * atan2( sinhalfangle, _v.w );
@@ -249,11 +244,12 @@ void ofQuaternion<T>::getRotate( T& angle, T& x, T& y, T& z ) const {
 /// See also
 /// http://www.gamasutra.com/features/programming/19980703/quaternions_01.htm
 template <typename T>
-void ofQuaternion<T>::slerp( T t, const ofQuaternion<T>& from, const ofQuaternion<T>& to ) {
+void _ofQuaternion<T>::slerp( T t, const _ofQuaternion<T>& from, 
+							       const _ofQuaternion<T>& to ) {
 	const double epsilon = 0.00001;
-	double omega, cosomega, sinomega, scale_from, scale_to ;
+	double omega, cosomega, sinomega, scale_from, scale_to;
 	
-	ofQuaternion<T> quatTo(to);
+	_ofQuaternion<T> quatTo(to);
 	// this is a dot product
 	
 	cosomega = from.asVec4().dot(to.asVec4());
@@ -287,7 +283,7 @@ void ofQuaternion<T>::slerp( T t, const ofQuaternion<T>& from, const ofQuaternio
 
 // ref at http://www.euclideanspace.com/maths/geometry/rotations/conversions/quaternionToEuler/index.htm
 template <typename T>
-ofVec3<T> ofQuaternion<T>::getEuler() const {
+_ofVec3<T> _ofQuaternion<T>::getEuler() const {
 	T test = x()*y() + z()*w();
 	T heading;
 	T attitude;
@@ -309,12 +305,10 @@ ofVec3<T> ofQuaternion<T>::getEuler() const {
 		bank = atan2(2.0f*x() * w() - 2.0f * y() * z(), 1.0f - 2.0f*sqx - 2.0f*sqz);
 	}
 	
-	return ofVec3<T>(ofRadToDeg(attitude), ofRadToDeg(heading), ofRadToDeg(bank));
+	return _ofVec3<T>(ofRadToDeg(attitude), ofRadToDeg(heading), ofRadToDeg(bank));
 }
 
 #define QX  _v.x
 #define QY  _v.y
 #define QZ  _v.z
 #define QW  _v.w
-
-}
