@@ -18,29 +18,22 @@ public:
     
     static const int DIM = 3;
     
-    _ofVec3()
-		: x(0), y(0), z(0) {}
+    _ofVec3();
 	
-    _ofVec3( T _x, T _y, T _z = 0 )
-		: x(_x), y(_y), z(_z) {}
+    _ofVec3( T _x, T _y, T _z = 0 );
     
     /// assigns scalar to x, y, and z
-    explicit _ofVec3( T _scalar )
-		: x(_scalar), y(_scalar), z(_scalar) {};
+    explicit _ofVec3( T _scalar );
     
-    _ofVec3( const _ofVec2<T>& vec )
-		: x(vec.x), y(vec.y), z(0) {}
+    _ofVec3( const _ofVec2<T>& vec );
     
-    _ofVec3( const _ofVec4<T>& vec )
-		: x(vec.x), y(vec.y), z(vec.z) {}
+    _ofVec3( const _ofVec4<T>& vec );
 	
 	template <typename S>
-	_ofVec3( const _ofVec2<S>& vec )
-		: x((T)vec.x), y((T)vec.y), z(0) {}
+	_ofVec3( const _ofVec2<S>& vec );
     
 	template <typename S>
-    _ofVec3( const _ofVec4<S>& vec )
-		: x((T)vec.x), y((T)vec.y), z((T)vec.z) {}
+    _ofVec3( const _ofVec4<S>& vec );
     
     
     // Getters and Setters. ------------------------------------------------
@@ -95,10 +88,10 @@ public:
     // Alignment ------------------------------------------------------------
     
     /*! Checks if vectors look in the same direction. */
-    bool    isAligned( const _ofVec3<T>& vec, T tolerance=0.0001 ) const;
-    bool        align( const _ofVec3<T>& vec, T tolerance=0.0001 ) const;
-    bool isAlignedRad( const _ofVec3<T>& vec, T tolerance=0.0001 ) const;
-    bool     alignRad( const _ofVec3<T>& vec, T tolerance=0.0001 ) const;
+    bool    isAligned( const _ofVec3<T>& vec, T tolerance = 0.0001 ) const;
+    bool        align( const _ofVec3<T>& vec, T tolerance = 0.0001 ) const;
+    bool isAlignedRad( const _ofVec3<T>& vec, T tolerance = 0.0001 ) const;
+    bool     alignRad( const _ofVec3<T>& vec, T tolerance = 0.0001 ) const;
 	
     // Scaling --------------------------------------------------------------	
     
@@ -107,37 +100,40 @@ public:
     
     // Rotation -------------------------------------------------------------
     
+	// Deg.
     _ofVec3<T>     getRotated( T angle, const _ofVec3<T>& axis ) const;
-    _ofVec3<T>  getRotatedRad( T angle, const _ofVec3<T>& axis ) const;
     _ofVec3<T>&        rotate( T angle, const _ofVec3<T>& axis );
-    _ofVec3<T>&     rotateRad( T angle, const _ofVec3<T>& axis );
     _ofVec3<T>     getRotated( T ax, T ay, T az ) const;
-    _ofVec3<T>  getRotatedRad( T ax, T ay, T az ) const;
     _ofVec3<T>&        rotate( T ax, T ay, T az );
+	// Rad.
+	_ofVec3<T>  getRotatedRad( T angle, const _ofVec3<T>& axis ) const;
+	_ofVec3<T>&     rotateRad( T angle, const _ofVec3<T>& axis );
+    _ofVec3<T>  getRotatedRad( T ax, T ay, T az ) const;	
     _ofVec3<T>&     rotateRad( T ax, T ay, T az );
     
     // Rotation - point around pivot ----------------------------------------
     
+	// Deg.
     _ofVec3<T>     getRotated( T angle, const _ofVec3<T>& pivot, 
-                                        const _ofVec3<T>& axis ) const;
+                                        const _ofVec3<T>&  axis ) const;
     _ofVec3<T>&        rotate( T angle, const _ofVec3<T>& pivot, 
-                                        const _ofVec3<T>& axis );
+                                        const _ofVec3<T>&  axis );
+	// Rad.
     _ofVec3<T>  getRotatedRad( T angle, const _ofVec3<T>& pivot, 
-                                        const _ofVec3<T>& axis ) const;
+                                        const _ofVec3<T>&  axis ) const;
     _ofVec3<T>&     rotateRad( T angle, const _ofVec3<T>& pivot, 
-                                        const _ofVec3<T>& axis );    
+                                        const _ofVec3<T>&  axis );    
     
     // Map point to coordinate system defined by origin, vx, and vy ---------
     
     _ofVec3<T>  getMapped( const _ofVec3<T>& origin,
-						 const _ofVec3<T>& vx,
-						 const _ofVec3<T>& vy,
-						 const _ofVec3<T>& vz ) 
-	const;
+						   const _ofVec3<T>& vx,
+						   const _ofVec3<T>& vy,
+						   const _ofVec3<T>& vz ) const;
     _ofVec3<T>&       map( const _ofVec3<T>& origin,
-						 const _ofVec3<T>& vx,
-						 const _ofVec3<T>& vy,
-						 const _ofVec3<T>& vz );
+						   const _ofVec3<T>& vx,
+						   const _ofVec3<T>& vy,
+						   const _ofVec3<T>& vz );
     
     // Distance between two points ------------------------------------------
     
@@ -199,197 +195,326 @@ public:
     
     // IO Stream -----------------------------------------------------------
 
-    template <typename S> 
-    friend std::ostream& operator << ( std::ostream& os, const _ofVec3<S>& vec );
-    template <typename S> 
-    friend std::istream& operator >> ( std::istream& is, const _ofVec3<S>& vec );
+    template <typename S> friend 
+	std::ostream& operator << ( std::ostream& os, const _ofVec3<S>& vec );
+    template <typename S> friend 
+	std::istream& operator >> ( std::istream& is, const _ofVec3<S>& vec );
     
+	// return all zero vector
+    static _ofVec3<T> zero() { 
+		return _ofVec3<T>( 0, 0, 0 ); }
+    
+    // return all one vector
+    static _ofVec3<T> one() { 
+		return _ofVec3<T>( 1, 1, 1 ); }
+	
     //
     // Deprecated -----------------------------------------------------------
     // Since: v006
     // 
+	
+	OF_DEPRECATED_MSG( 
+		"Use _ofVec3<T>::getScaled() instead.", 
+		_ofVec3<T> rescaled( const T length ) const 
+	);
     
-    // getScaled
-    _ofVec3<T> rescaled( const T length ) const;
+	OF_DEPRECATED_MSG( 
+		"Use _ofVec3<T>::scale() instead.", 
+		_ofVec3<T>& rescale( const T length ) 
+	);
     
-    // scale
-    _ofVec3<T>& rescale( const T length );
+	OF_DEPRECATED_MSG( 
+		"Use _ofVec3<T>::getRotated() instead.", 
+		_ofVec3<T> rotated( T angle, const _ofVec3<T>& axis ) const 
+	);
     
-    // getRotated
-    _ofVec3<T> rotated( T angle, const _ofVec3<T>& axis ) const;
+	OF_DEPRECATED_MSG( 
+		"Use _ofVec3<T>::getRotated() instead.", 
+		_ofVec3<T> rotated( T ax, T ay, T az ) 
+	);
     
-    // getRotated should this be const???
-    _ofVec3<T> rotated( T ax, T ay, T az );
+	OF_DEPRECATED_MSG( 
+		"Use _ofVec3<T>::getNormalized() instead.", 
+		_ofVec3<T> normalized() const 
+	);
     
-    // getNormalized
-    _ofVec3<T> normalized() const;
+	OF_DEPRECATED_MSG( 
+		"Use _ofVec3<T>::getLimited() instead.", 
+		_ofVec3<T> limited( T max ) const
+	);
     
-    // getLimited
-    _ofVec3<T> limited( T max) const;
+	OF_DEPRECATED_MSG( 
+		"Use _ofVec3<T>::getCrossed() instead.", 
+		_ofVec3<T> crossed( const _ofVec3<T>& vec ) const 
+	);
     
-    // getCrossed
-    _ofVec3<T> crossed( const _ofVec3<T>& vec ) const;
+	OF_DEPRECATED_MSG( 
+		"Use _ofVec3<T>::getPerpendicular() instead.", 
+		_ofVec3<T> perpendiculared( const _ofVec3<T>& vec ) const 
+	);
     
-    // getPerpendicular
-    _ofVec3<T> perpendiculared( const _ofVec3<T>& vec ) const;
+	OF_DEPRECATED_MSG( 
+		"Use _ofVec3<T>::getMapped() instead.", 
+		_ofVec3<T> mapped( const _ofVec3<T>& origin,
+						   const _ofVec3<T>&     vx,
+						   const _ofVec3<T>&     vy,
+						   const _ofVec3<T>&     vz ) const 
+	);
     
-    // use getMapped
-    _ofVec3<T> mapped( const _ofVec3<T>& origin,
-					   const _ofVec3<T>& vx,
-					   const _ofVec3<T>& vy,
-					   const _ofVec3<T>& vz ) const;
+	OF_DEPRECATED_MSG( 
+		"Use _ofVec3<T>::squareDistance() instead.", 
+		T distanceSquared( const _ofVec3<T>& pnt ) const 
+	);
     
-    // use squareDistance
-    T distanceSquared( const _ofVec3<T>& pnt ) const;
+	OF_DEPRECATED_MSG( 
+		"Use _ofVec3<T>::getInterpolated() instead.", 
+		_ofVec3<T> interpolated( const _ofVec3<T>& pnt, T p ) const 
+	);
     
-    // use getInterpolated
-    _ofVec3<T> interpolated( const _ofVec3<T>& pnt, T p ) const;
+	OF_DEPRECATED_MSG( 
+		"Use _ofVec3<T>::getMiddle() instead.", 
+		_ofVec3<T> middled( const _ofVec3<T>& pnt ) const 
+	);
     
-    // use getMiddle
-    _ofVec3<T> middled( const _ofVec3<T>& pnt ) const;
-    
-    // use getRotated
-    _ofVec3<T> rotated( T angle,
-					  const _ofVec3<T>& pivot,
-					  const _ofVec3<T>& axis ) const;    
-    
-    // return all zero vector
-    static _ofVec3<T> zero() 
-    { return _ofVec3<T>( 0, 0, 0 ); }
-    
-    // return all one vector
-    static _ofVec3<T> one() 
-    { return _ofVec3<T>( 1, 1, 1 ); }
+	OF_DEPRECATED_MSG( 
+		"Use _ofVec3<T>::getRotated() instead.", 
+		_ofVec3<T> rotated( T angle,
+							const _ofVec3<T>& pivot,
+							const _ofVec3<T>&  axis ) const 
+	);
+	
 };
 
 //
 // Implementation ---------------------------------------------
 //
 
+template <typename T> 
+_ofVec3<T>::_ofVec3()
+    : x(0), y(0), z(0) 
+{}
+
+template <typename T> 
+_ofVec3<T>::_ofVec3( T _x, T _y, T _z )
+    : x(_x), y(_y), z(_z) 
+{}
+
+template <typename T> 
+_ofVec3<T>::_ofVec3( T _scalar )
+    : x(_scalar), y(_scalar), z(_scalar) 
+{}
+
+template <typename T> 
+_ofVec3<T>::_ofVec3( const _ofVec2<T>& vec )
+    : x(vec.x), y(vec.y), z(0) 
+{}
+
+template <typename T> 
+_ofVec3<T>::_ofVec3( const _ofVec4<T>& vec )
+    : x(vec.x), y(vec.y), z(vec.z) 
+{}
+
+template <typename T> 
+template <typename S>
+_ofVec3<T>::_ofVec3( const _ofVec2<S>& vec )
+    : x((T)vec.x), y((T)vec.y), z(0) 
+{}
+
+template <typename T> 
+template <typename S>
+_ofVec3<T>::_ofVec3( const _ofVec4<S>& vec )
+    : x((T)vec.x), y((T)vec.y), z((T)vec.z) 
+{}
+
 // Similarity/equality --------------------------------------------------
 
 template <typename T> inline 
-bool _ofVec3<T>::operator==( const _ofVec3<T>& vec ) const {
-    return (x == vec.x) && (y == vec.y) && (z == vec.z);
+bool _ofVec3<T>::operator == ( const _ofVec3<T>& vec ) const {
+	
+    return ( x == vec.x ) 
+	    && ( y == vec.y ) 
+		&& ( z == vec.z );
 }
 
 template <typename T> inline 
 bool _ofVec3<T>::operator!=( const _ofVec3<T>& vec ) const {
-    return (x != vec.x) || (y != vec.y) || (z != vec.z);
+	
+    return ( x != vec.x ) 
+	    || ( y != vec.y ) 
+		|| ( z != vec.z );
 }
 
 // Overloading for any type to any type ---------------------------------	
 
 template <typename T> inline 
-_ofVec3<T> _ofVec3<T>::operator+( const _ofVec3<T>& pnt ) const {
-    return _ofVec3<T>( x+pnt.x, y+pnt.y, z+pnt.z );
+_ofVec3<T> _ofVec3<T>::operator + ( const _ofVec3<T>& pnt ) const {
+	
+    return _ofVec3<T>( 
+		x + pnt.x, 
+		y + pnt.y, 
+		z + pnt.z 
+	);
 }
 
 template <typename T> inline 
-_ofVec3<T>& _ofVec3<T>::operator+=( const _ofVec3<T>& pnt ) {
-    x+=pnt.x;
-    y+=pnt.y;
-    z+=pnt.z;
+_ofVec3<T>& _ofVec3<T>::operator += ( const _ofVec3<T>& pnt ) {
+	
+    x += pnt.x;
+    y += pnt.y;
+    z += pnt.z;
+	
     return *this;
 }
 
 template <typename T> inline 
-_ofVec3<T> _ofVec3<T>::operator-( const _ofVec3<T>& vec ) const {
-    return _ofVec3<T>( x-vec.x, y-vec.y, z-vec.z );
+_ofVec3<T> _ofVec3<T>::operator - ( const _ofVec3<T>& vec ) const {
+	
+    return _ofVec3<T>( 
+		x - vec.x, 
+		y - vec.y, 
+		z - vec.z 
+	);
 }
 
 template <typename T> inline 
-_ofVec3<T>& _ofVec3<T>::operator-=( const _ofVec3<T>& vec ) {
-    x -= vec.x;
+_ofVec3<T>& _ofVec3<T>::operator -= ( const _ofVec3<T>& vec ) {
+    
+	x -= vec.x;
     y -= vec.y;
     z -= vec.z;
+	
     return *this;
 }
 
 template <typename T> inline 
-_ofVec3<T> _ofVec3<T>::operator*( const _ofVec3<T>& vec ) const {
-    return _ofVec3<T>( x*vec.x, y*vec.y, z*vec.z );
+_ofVec3<T> _ofVec3<T>::operator * ( const _ofVec3<T>& vec ) const {
+	
+    return _ofVec3<T>( 
+		x * vec.x, 
+		y * vec.y, 
+		z * vec.z 
+	);
 }
 
 template <typename T> inline 
-_ofVec3<T>& _ofVec3<T>::operator*=( const _ofVec3<T>& vec ) {
-    x*=vec.x;
-    y*=vec.y;
-    z*=vec.z;
+_ofVec3<T>& _ofVec3<T>::operator *= ( const _ofVec3<T>& vec ) {
+    
+	x *= vec.x;
+    y *= vec.y;
+    z *= vec.z;
+	
     return *this;
 }
 
 template <typename T> inline 
-_ofVec3<T> _ofVec3<T>::operator/( const _ofVec3<T>& vec ) const {
-    return _ofVec3<T>( vec.x!=0 ? x/vec.x : x , vec.y!=0 ? y/vec.y : y, vec.z!=0 ? z/vec.z : z );
+_ofVec3<T> _ofVec3<T>::operator / ( const _ofVec3<T>& vec ) const {
+    
+	return _ofVec3<T>( 
+		vec.x != 0 ? x / vec.x : x, 
+		vec.y != 0 ? y / vec.y : y, 
+		vec.z != 0 ? z / vec.z : z 
+	);
 }
 
 template <typename T> inline 
-_ofVec3<T>& _ofVec3<T>::operator/=( const _ofVec3<T>& vec ) {
-    vec.x!=0 ? x/=vec.x : x;
-    vec.y!=0 ? y/=vec.y : y;
-    vec.z!=0 ? z/=vec.z : z;
+_ofVec3<T>& _ofVec3<T>::operator /= ( const _ofVec3<T>& vec ) {
+	
+    vec.x != 0 ? x /= vec.x : x;
+    vec.y != 0 ? y /= vec.y : y;
+    vec.z != 0 ? z /= vec.z : z;
+	
     return *this;
 }
 
 template <typename T> inline 
-_ofVec3<T> _ofVec3<T>::operator-() const {
-    return _ofVec3<T>( -x, -y, -z );
+_ofVec3<T> _ofVec3<T>::operator - () const {
+    
+	return _ofVec3<T>( -x, -y, -z );
 }
 
 template <typename T> inline 
-_ofVec3<T> _ofVec3<T>::operator+( const T f ) const {
-    return _ofVec3<T>( x+f, y+f, z+f);
+_ofVec3<T> _ofVec3<T>::operator + ( const T f ) const {
+	
+    return _ofVec3<T>( 
+		x + f, 
+		y + f, 
+		z + f 
+	);
 }
 
 template <typename T> inline 
-_ofVec3<T>& _ofVec3<T>::operator+=( const T f ) {
-    x += f;
-    y += f;
+_ofVec3<T>& _ofVec3<T>::operator += ( const T f ) {
+    
+	x += f;
+	y += f;
     z += f;
-    return *this;
+    
+	return *this;
 }
 
 template <typename T> inline 
-_ofVec3<T> _ofVec3<T>::operator-( const T f ) const {
-    return _ofVec3<T>( x-f, y-f, z-f);
+_ofVec3<T> _ofVec3<T>::operator - ( const T f ) const {
+	
+    return _ofVec3<T>( x - f, 
+					   y - f, 
+					   z - f );
 }
 
 template <typename T> inline 
-_ofVec3<T>& _ofVec3<T>::operator-=( const T f ) {
+_ofVec3<T>& _ofVec3<T>::operator -= ( const T f ) {
+	
     x -= f;
     y -= f;
     z -= f;
+	
     return *this;
 }
 
 template <typename T> inline 
-_ofVec3<T> _ofVec3<T>::operator*( const T f ) const {
-    return _ofVec3<T>( x*f, y*f, z*f );
+_ofVec3<T> _ofVec3<T>::operator * ( const T f ) const {
+	
+    return _ofVec3<T>( 
+		x * f, 
+		y * f, 
+		z * f 
+	);
 }
 
 template <typename T> inline 
-_ofVec3<T>& _ofVec3<T>::operator*=( const T f ) {
-    x *= f;
+_ofVec3<T>& _ofVec3<T>::operator *= ( const T f ) {
+    
+	x *= f;
     y *= f;
     z *= f;
+	
     return *this;
 }
 
 template <typename T> inline 
-_ofVec3<T> _ofVec3<T>::operator/( const T f ) const {
-    if(f == 0) return _ofVec3<T>( x, y, z);
+_ofVec3<T> _ofVec3<T>::operator / ( const T f ) const {
+	
+    if( f == 0 ) {
+		return _ofVec3<T>( x, y, z );
+	}
     
-    return _ofVec3<T>( x/f, y/f, z/f );
+    return _ofVec3<T>( 
+		x / f, 
+		y / f, 
+		z / f 
+	);
 }
 
 template <typename T> inline 
-_ofVec3<T>& _ofVec3<T>::operator/=( const T f ) {
-    if(f == 0) return *this;
+_ofVec3<T>& _ofVec3<T>::operator /= ( const T f ) {
+	
+    if ( f == 0 ) {
+		return *this;
+	}
     
-    x/=f;
-    y/=f;
-    z/=f;
+    x /= f;
+    y /= f;
+    z /= f;
+	
     return *this;
 }
 
@@ -397,14 +522,18 @@ _ofVec3<T>& _ofVec3<T>::operator/=( const T f ) {
 
 template <typename S> inline 
 std::ostream& operator << ( std::ostream& os, const _ofVec3<S>& vec ) {
-    os << vec.x << ", " << vec.y << ", " << vec.z;
-    return os;
+    
+	os << vec.x << ", " << vec.y << ", " << vec.z;
+    
+	return os;
 }
 
 template <typename S> inline 
-std::istream& operator >> ( std::istream& is, _ofVec3<S>& vec) {
+std::istream& operator >> ( std::istream& is, _ofVec3<S>& vec ) {
+	
     is >> vec.x; is.ignore( 2 );
     is >> vec.y; is.ignore( 2 );
     is >> vec.z;
+	
     return is;
 }

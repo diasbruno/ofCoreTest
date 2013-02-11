@@ -5,6 +5,7 @@
 
 template <typename T> inline 
 void _ofVec3<T>::set( T _scalar ) {
+	
     x = _scalar;
     y = _scalar;
     z = _scalar;
@@ -12,6 +13,7 @@ void _ofVec3<T>::set( T _scalar ) {
 
 template <typename T> inline 
 void _ofVec3<T>::set( T _x, T _y, T _z ) {
+	
     x = _x;
     y = _y;
     z = _z;
@@ -19,6 +21,7 @@ void _ofVec3<T>::set( T _x, T _y, T _z ) {
 
 template <typename T> inline 
 void _ofVec3<T>::set( const _ofVec3<T>& vec ) {
+	
     x = vec.x;
     y = vec.y;
     z = vec.z;
@@ -27,7 +30,8 @@ void _ofVec3<T>::set( const _ofVec3<T>& vec ) {
 // Similarity/equality --------------------------------------------------
 
 template <typename T> inline 
-bool _ofVec3<T>::match( const _ofVec3<T>& vec, T tolerance ) const{
+bool _ofVec3<T>::match( const _ofVec3<T>& vec, T tolerance ) const {
+	
     return (fabs(x - vec.x) < tolerance)
 		&& (fabs(y - vec.y) < tolerance)
 		&& (fabs(z - vec.z) < tolerance);
@@ -38,23 +42,27 @@ bool _ofVec3<T>::match( const _ofVec3<T>& vec, T tolerance ) const{
 /*! Checks if vectors look in the same direction. */
 template <typename T> inline 
 bool _ofVec3<T>::isAligned( const _ofVec3<T>& vec, T tolerance ) const {
+	
     T angle = this->angle( vec );
     return  angle < tolerance;
 }
 
 template <typename T> inline 
 bool _ofVec3<T>::align( const _ofVec3<T>& vec, T tolerance ) const {
+	
     return isAligned( vec, tolerance );
 }
 
 template <typename T> inline 
 bool _ofVec3<T>::isAlignedRad( const _ofVec3<T>& vec, T tolerance ) const {
+	
     T angle = this->angleRad( vec );
     return  angle < tolerance;
 }
 
 template <typename T> inline 
 bool _ofVec3<T>::alignRad( const _ofVec3<T>& vec, T tolerance ) const {
+	
     return isAlignedRad( vec, tolerance );
 }
 
@@ -62,31 +70,42 @@ bool _ofVec3<T>::alignRad( const _ofVec3<T>& vec, T tolerance ) const {
 
 template <typename T> inline 
 _ofVec3<T> _ofVec3<T>::rescaled( const T length ) const {
-    return getScaled(length);
+	
+    return getScaled( length );
 }
 
 template <typename T> inline 
 _ofVec3<T> _ofVec3<T>::getScaled( const T length ) const {
-    T l = (T)sqrt(x*x + y*y + z*z);
-    if( l > 0 )
-        return _ofVec3<T>( (x/l)*length, (y/l)*length, (z/l)*length );
+	
+    T len = (T)sqrt( x * x + y * y + z * z );
+	
+    if( len > 0 )
+        return _ofVec3<T>( 
+			( x / len ) * length, // x
+			( y / len ) * length, // y
+			( z / len ) * length  // z
+		);
     else
         return _ofVec3<T>();
 }
 
 template <typename T> inline 
 _ofVec3<T>& _ofVec3<T>::rescale( const T length ) {
-    return scale(length);
+	
+    return scale( length );
 }
 
 template <typename T> inline 
 _ofVec3<T>& _ofVec3<T>::scale( const T length ) {
-    T l = (T)sqrt(x*x + y*y + z*z);
-    if (l > 0) {
-        x = (x/l)*length;
-        y = (y/l)*length;
-        z = (z/l)*length;
+	
+    T len = (T)sqrt( x * x + y * y + z * z );
+	
+    if ( len > 0 ) {
+        x = ( x / len ) * length;
+        y = ( y / len ) * length;
+        z = ( z / len ) * length;
     }
+	
     return *this;
 }
 
@@ -94,158 +113,222 @@ _ofVec3<T>& _ofVec3<T>::scale( const T length ) {
 
 template <typename T> inline 
 _ofVec3<T> _ofVec3<T>::rotated( T angle, const _ofVec3<T>& axis ) const {
-    return getRotated(angle, axis);
+	
+    return getRotated( angle, axis );
 }
 
 template <typename T> inline 
 _ofVec3<T> _ofVec3<T>::getRotated( T angle, const _ofVec3<T>& axis ) const {
-    _ofVec3<T> ax = axis.normalized();
-    T a = (T)(angle*DEG_TO_RAD);
+	
+    _ofVec3<T> ax = axis.getNormalized();
+	
+    T a = (T)(angle * DEG_TO_RAD);
     T sina = sin( a );
     T cosa = cos( a );
     T cosb = 1.0f - cosa;
     
-    return _ofVec3<T>( x*(ax.x*ax.x*cosb + cosa)
-                     + y*(ax.x*ax.y*cosb - ax.z*sina)
-                     + z*(ax.x*ax.z*cosb + ax.y*sina),
-                     x*(ax.y*ax.x*cosb + ax.z*sina)
-                     + y*(ax.y*ax.y*cosb + cosa)
-                     + z*(ax.y*ax.z*cosb - ax.x*sina),
-                     x*(ax.z*ax.x*cosb - ax.y*sina)
-                     + y*(ax.z*ax.y*cosb + ax.x*sina)
-                     + z*(ax.z*ax.z*cosb + cosa) );
+    return _ofVec3<T>( 
+		x * ( ax.x * ax.x * cosb + cosa )
+	  + y * ( ax.x * ax.y * cosb - ax.z * sina )
+	  + z * ( ax.x * ax.z * cosb + ax.y * sina ), // x
+					  
+		x * ( ax.y * ax.x * cosb + ax.z * sina )
+	  + y * ( ax.y * ax.y * cosb + cosa ) 
+	  + z * ( ax.y * ax.z * cosb - ax.x * sina ), // y
+					  
+		x * ( ax.z * ax.x * cosb - ax.y * sina )
+	  + y * ( ax.z * ax.y * cosb + ax.x * sina )
+	  + z * ( ax.z * ax.z * cosb + cosa )         // z
+	);
 }
 
 template <typename T> inline 
 _ofVec3<T> _ofVec3<T>::getRotatedRad( T angle, const _ofVec3<T>& axis ) const {
-    _ofVec3<T> ax = axis.normalized();
+	
+    _ofVec3<T> ax = axis.getNormalized();
+	
     T a = angle;
     T sina = sin( a );
     T cosa = cos( a );
     T cosb = 1.0f - cosa;
     
-    return _ofVec3<T>( x*(ax.x*ax.x*cosb + cosa)
-                     + y*(ax.x*ax.y*cosb - ax.z*sina)
-                     + z*(ax.x*ax.z*cosb + ax.y*sina),
-                     x*(ax.y*ax.x*cosb + ax.z*sina)
-                     + y*(ax.y*ax.y*cosb + cosa)
-                     + z*(ax.y*ax.z*cosb - ax.x*sina),
-                     x*(ax.z*ax.x*cosb - ax.y*sina)
-                     + y*(ax.z*ax.y*cosb + ax.x*sina)
-                     + z*(ax.z*ax.z*cosb + cosa) );
+    return _ofVec3<T>( 
+		x * ( ax.x * ax.x * cosb + cosa )
+	  + y * ( ax.x * ax.y * cosb - ax.z * sina )
+	  + z * ( ax.x * ax.z * cosb + ax.y * sina ), // x
+	
+		x * ( ax.y * ax.x * cosb + ax.z * sina )
+	  + y * ( ax.y * ax.y * cosb + cosa ) 
+	  + z * ( ax.y * ax.z * cosb - ax.x * sina ), // y
+	
+		x * ( ax.z * ax.x * cosb - ax.y * sina )
+	  + y * ( ax.z * ax.y * cosb + ax.x * sina )
+	  + z * ( ax.z * ax.z * cosb + cosa )         // z
+	);
 }
 
 template <typename T> inline 
 _ofVec3<T>& _ofVec3<T>::rotate( T angle, const _ofVec3<T>& axis ) {
-    _ofVec3<T> ax = axis.normalized();
-    T a = (T)(angle*DEG_TO_RAD);
+	
+    _ofVec3<T> ax = axis.getNormalized();
+	
+    T a = (T)(angle * DEG_TO_RAD);
     T sina = sin( a );
     T cosa = cos( a );
     T cosb = 1.0f - cosa;
     
-    T nx = x*(ax.x*ax.x*cosb + cosa)
-    + y*(ax.x*ax.y*cosb - ax.z*sina)
-    + z*(ax.x*ax.z*cosb + ax.y*sina);
-    T ny = x*(ax.y*ax.x*cosb + ax.z*sina)
-    + y*(ax.y*ax.y*cosb + cosa)
-    + z*(ax.y*ax.z*cosb - ax.x*sina);
-    T nz = x*(ax.z*ax.x*cosb - ax.y*sina)
-    + y*(ax.z*ax.y*cosb + ax.x*sina)
-    + z*(ax.z*ax.z*cosb + cosa);
-    x = nx; y = ny; z = nz;
+    T nx = x * ( ax.x * ax.x * cosb + cosa )
+         + y * ( ax.x * ax.y * cosb - ax.z * sina )
+         + z * ( ax.x * ax.z * cosb + ax.y * sina );
+	
+    T ny = x * ( ax.y * ax.x * cosb + ax.z * sina )
+         + y * ( ax.y * ax.y * cosb + cosa )
+         + z * ( ax.y * ax.z * cosb - ax.x * sina );
+	
+    T nz = x * ( ax.z * ax.x * cosb - ax.y * sina )
+         + y * ( ax.z * ax.y * cosb + ax.x * sina )
+         + z * ( ax.z * ax.z * cosb + cosa );
+    
+	x = nx; 
+	y = ny; 
+	z = nz;
+	
     return *this;
 }
 
 template <typename T> inline 
 _ofVec3<T>& _ofVec3<T>::rotateRad( T angle, const _ofVec3<T>& axis ) {
-    _ofVec3<T> ax = axis.normalized();
+	
+    _ofVec3<T> ax = axis.getNormalized();
+	
     T a = angle;
     T sina = sin( a );
     T cosa = cos( a );
     T cosb = 1.0f - cosa;
     
-    T nx = x*(ax.x*ax.x*cosb + cosa)
-    + y*(ax.x*ax.y*cosb - ax.z*sina)
-    + z*(ax.x*ax.z*cosb + ax.y*sina);
-    T ny = x*(ax.y*ax.x*cosb + ax.z*sina)
-    + y*(ax.y*ax.y*cosb + cosa)
-    + z*(ax.y*ax.z*cosb - ax.x*sina);
-    T nz = x*(ax.z*ax.x*cosb - ax.y*sina)
-    + y*(ax.z*ax.y*cosb + ax.x*sina)
-    + z*(ax.z*ax.z*cosb + cosa);
-    x = nx; y = ny; z = nz;
+    T nx = x * ( ax.x * ax.x * cosb + cosa )
+         + y * ( ax.x * ax.y * cosb - ax.z * sina )
+         + z * ( ax.x * ax.z * cosb + ax.y * sina );
+	
+    T ny = x * ( ax.y * ax.x * cosb + ax.z * sina )
+         + y * ( ax.y * ax.y * cosb + cosa )
+         + z * ( ax.y * ax.z * cosb - ax.x * sina );
+	
+    T nz = x * ( ax.z * ax.x * cosb - ax.y * sina )
+         + y * ( ax.z * ax.y * cosb + ax.x * sina )
+         + z * ( ax.z * ax.z * cosb + cosa );
+    
+	x = nx; 
+	y = ny; 
+	z = nz;
+	
     return *this;
 }
 
 // const???
 template <typename T> inline 
 _ofVec3<T> _ofVec3<T>::rotated( T ax, T ay, T az ) {
+	
     return getRotated( ax, ay, az );
 }
 
 template <typename T> inline 
 _ofVec3<T> _ofVec3<T>::getRotated( T ax, T ay, T az ) const {
-    T a = (T)cos(DEG_TO_RAD*(ax));
-    T b = (T)sin(DEG_TO_RAD*(ax));
-    T c = (T)cos(DEG_TO_RAD*(ay));
-    T d = (T)sin(DEG_TO_RAD*(ay));
-    T e = (T)cos(DEG_TO_RAD*(az));
-    T f = (T)sin(DEG_TO_RAD*(az));
+	
+    T a = (T)cos( DEG_TO_RAD * (ax) );
+    T b = (T)sin( DEG_TO_RAD * (ax) );
+    T c = (T)cos( DEG_TO_RAD * (ay) );
+    T d = (T)sin( DEG_TO_RAD * (ay) );
+    T e = (T)cos( DEG_TO_RAD * (az) );
+    T f = (T)sin( DEG_TO_RAD * (az) );
     
-    T nx = c * e * x - c * f * y + d * z;
-    T ny = (a * f + b * d * e) * x + (a * e - b * d * f) * y - b * c * z;
-    T nz = (b * f - a * d * e) * x + (a * d * f + b * e) * y + a * c * z;
+    T nx = c * e * x 
+	     - c * f * y 
+	     + d * z;
+    T ny = (a * f + b * d * e) * x 
+	     + (a * e - b * d * f) * y 
+	     - b * c * z;
+    T nz = (b * f - a * d * e) * x 
+	     + (a * d * f + b * e) * y 
+	     + a * c * z;
     
     return _ofVec3<T>( nx, ny, nz );
 }
 
 template <typename T> inline 
 _ofVec3<T> _ofVec3<T>::getRotatedRad( T ax, T ay, T az ) const {
-    T a = cos(ax);
-    T b = sin(ax);
-    T c = cos(ay);
-    T d = sin(ay);
-    T e = cos(az);
-    T f = sin(az);
+	
+    T a = cos( ax );
+    T b = sin( ax );
+    T c = cos( ay );
+    T d = sin( ay );
+    T e = cos( az );
+    T f = sin( az );
     
-    T nx = c * e * x - c * f * y + d * z;
-    T ny = (a * f + b * d * e) * x + (a * e - b * d * f) * y - b * c * z;
-    T nz = (b * f - a * d * e) * x + (a * d * f + b * e) * y + a * c * z;
+    T nx = c * e * x 
+	     - c * f * y 
+	     + d * z;
+    T ny = (a * f + b * d * e) * x 
+	     + (a * e - b * d * f) * y 
+	     - b * c * z;
+    T nz = (b * f - a * d * e) * x 
+	     + (a * d * f + b * e) * y 
+	     + a * c * z;
     
     return _ofVec3<T>( nx, ny, nz );
 }
 
 template <typename T> inline 
 _ofVec3<T>& _ofVec3<T>::rotate( T ax, T ay, T az ) {
-    T a = (T)cos(DEG_TO_RAD*(ax));
-    T b = (T)sin(DEG_TO_RAD*(ax));
-    T c = (T)cos(DEG_TO_RAD*(ay));
-    T d = (T)sin(DEG_TO_RAD*(ay));
-    T e = (T)cos(DEG_TO_RAD*(az));
-    T f = (T)sin(DEG_TO_RAD*(az));
+	
+    T a = (T)cos( DEG_TO_RAD *(ax) );
+    T b = (T)sin( DEG_TO_RAD *(ax) );
+    T c = (T)cos( DEG_TO_RAD *(ay) );
+    T d = (T)sin( DEG_TO_RAD *(ay) );
+    T e = (T)cos( DEG_TO_RAD *(az) );
+    T f = (T)sin( DEG_TO_RAD *(az) );
     
-    T nx = c * e * x - c * f * y + d * z;
-    T ny = (a * f + b * d * e) * x + (a * e - b * d * f) * y - b * c * z;
-    T nz = (b * f - a * d * e) * x + (a * d * f + b * e) * y + a * c * z;
+    T nx = c * e * x 
+	     - c * f * y 
+	     + d * z;
+    T ny = (a * f + b * d * e) * x 
+	     + (a * e - b * d * f) * y 
+	     - b * c * z;
+    T nz = (b * f - a * d * e) * x 
+	     + (a * d * f + b * e) * y 
+	     + a * c * z;
     
-    x = nx; y = ny; z = nz;
+    x = nx; 
+	y = ny; 
+	z = nz;
+	
     return *this;
 }
 
 template <typename T> inline 
 _ofVec3<T>& _ofVec3<T>::rotateRad( T ax, T ay, T az ) {
-    T a = cos(ax);
-    T b = sin(ax);
-    T c = cos(ay);
-    T d = sin(ay);
-    T e = cos(az);
-    T f = sin(az);
+	
+    T a = cos( ax );
+    T b = sin( ax );
+    T c = cos( ay );
+    T d = sin( ay );
+    T e = cos( az );
+    T f = sin( az );
     
-    T nx = c * e * x - c * f * y + d * z;
-    T ny = (a * f + b * d * e) * x + (a * e - b * d * f) * y - b * c * z;
-    T nz = (b * f - a * d * e) * x + (a * d * f + b * e) * y + a * c * z;
+    T nx = c * e * x 
+	     - c * f * y 
+	     + d * z;
+    T ny = (a * f + b * d * e) * x 
+	     + (a * e - b * d * f) * y 
+	     - b * c * z;
+    T nz = (b * f - a * d * e) * x 
+	     + (a * d * f + b * e) * y 
+	     + a * c * z;
     
-    x = nx; y = ny; z = nz;
+    x = nx; 
+	y = ny; 
+	z = nz;
+	
     return *this;
 }
 
@@ -255,7 +338,7 @@ _ofVec3<T>& _ofVec3<T>::rotateRad( T ax, T ay, T az ) {
 template <typename T> inline 
 _ofVec3<T> _ofVec3<T>::rotated( T angle,
 								const _ofVec3<T>& pivot,
-								const _ofVec3<T>& axis ) 
+								const _ofVec3<T>&  axis ) 
 								const {
     return getRotated(angle, pivot, axis);
 }
@@ -263,38 +346,45 @@ _ofVec3<T> _ofVec3<T>::rotated( T angle,
 template <typename T>
 inline _ofVec3<T> _ofVec3<T>::getRotated( T angle,
                                           const _ofVec3<T>& pivot,
-                                          const _ofVec3<T>& axis ) 
+                                          const _ofVec3<T>&  axis ) 
 										  const {
-    _ofVec3<T> ax = axis.normalized();
+    
+    _ofVec3<T> ax = axis.getNormalized();
+											  
     T tx = x - pivot.x;
     T ty = y - pivot.y;
     T tz = z - pivot.z;
     
-    T a = (T)(angle*DEG_TO_RAD);
+    T a = (T)(angle * DEG_TO_RAD);
     T sina = sin( a );
     T cosa = cos( a );
     T cosb = 1.0f - cosa;
     
-    T xrot = tx*(ax.x*ax.x*cosb + cosa)
-    + ty*(ax.x*ax.y*cosb - ax.z*sina)
-    + tz*(ax.x*ax.z*cosb + ax.y*sina);
-    T yrot = tx*(ax.y*ax.x*cosb + ax.z*sina)
-    + ty*(ax.y*ax.y*cosb + cosa)
-    + tz*(ax.y*ax.z*cosb - ax.x*sina);
-    T zrot = tx*(ax.z*ax.x*cosb - ax.y*sina)
-    + ty*(ax.z*ax.y*cosb + ax.x*sina)
-    + tz*(ax.z*ax.z*cosb + cosa);
+    T xrot = tx * ( ax.x * ax.x * cosb + cosa )
+           + ty * ( ax.x * ax.y * cosb - ax.z * sina )
+           + tz * ( ax.x * ax.z * cosb + ax.y * sina );
+    T yrot = tx * ( ax.y * ax.x * cosb + ax.z * sina )
+           + ty * ( ax.y * ax.y * cosb + cosa )
+           + tz * ( ax.y * ax.z * cosb - ax.x * sina );
+    T zrot = tx * ( ax.z * ax.x * cosb - ax.y * sina )
+           + ty * ( ax.z * ax.y * cosb + ax.x * sina )
+           + tz * ( ax.z * ax.z * cosb + cosa );
     
-    
-    return _ofVec3<T>( xrot+pivot.x, yrot+pivot.y, zrot+pivot.z );
+    return _ofVec3<T>( 
+		xrot + pivot.x, // x
+		yrot + pivot.y, // y 
+		zrot + pivot.z  // z
+	);
 }
 
 template <typename T> inline 
 _ofVec3<T> _ofVec3<T>::getRotatedRad( T angle,
 									  const _ofVec3<T>& pivot,
-									  const _ofVec3<T>& axis ) 
+									  const _ofVec3<T>&  axis ) 
 									  const {
-    _ofVec3<T> ax = axis.normalized();
+    
+    _ofVec3<T> ax = axis.getNormalized();
+										  
     T tx = x - pivot.x;
     T ty = y - pivot.y;
     T tz = z - pivot.z;
@@ -314,9 +404,11 @@ _ofVec3<T> _ofVec3<T>::getRotatedRad( T angle,
 		   + ty*( ax.z * ax.y * cosb + ax.x * sina )
 		   + tz*( ax.z * ax.z * cosb + cosa );
     
-    return _ofVec3<T>( xrot + pivot.x, 
-					   yrot + pivot.y, 
-					   zrot + pivot.z );
+	return _ofVec3<T>( 
+		xrot + pivot.x, // x
+		yrot + pivot.y, // y 
+		zrot + pivot.z  // z
+	);
 }
 
 template <typename T> inline 
@@ -324,7 +416,8 @@ _ofVec3<T>& _ofVec3<T>::rotate( T angle,
 								const _ofVec3<T>& pivot,
 								const _ofVec3<T>& axis ) {
 	
-    _ofVec3<T> ax = axis.normalized();
+    _ofVec3<T> ax = axis.getNormalized();
+	
     x -= pivot.x;
     y -= pivot.y;
     z -= pivot.z;
@@ -335,11 +428,13 @@ _ofVec3<T>& _ofVec3<T>::rotate( T angle,
     T cosb = 1.0f - cosa;
     
     T xrot = x * ( ax.x * ax.x * cosb + cosa )
-           + y * ( ax.x * ax.y * cosb - ax.z *sina )
-           + z * ( ax.x * ax.z * cosb + ax.y *sina );
-    T yrot = x * ( ax.y * ax.x * cosb + ax.z *sina )
-           + y * ( ax.y * ax.y * cosb + cosa)
+           + y * ( ax.x * ax.y * cosb - ax.z * sina )
+           + z * ( ax.x * ax.z * cosb + ax.y * sina );
+	
+    T yrot = x * ( ax.y * ax.x * cosb + ax.z * sina )
+           + y * ( ax.y * ax.y * cosb + cosa )
            + z * ( ax.y * ax.z * cosb - ax.x * sina );
+	
     T zrot = x * ( ax.z * ax.x * cosb - ax.y * sina )
            + y * ( ax.z * ax.y * cosb + ax.x * sina )
 		   + z * ( ax.z * ax.z * cosb + cosa );
@@ -357,7 +452,8 @@ _ofVec3<T>& _ofVec3<T>::rotateRad( T angle,
 								   const _ofVec3<T>& pivot,
 								   const _ofVec3<T>& axis ) {
 	
-    _ofVec3<T> ax = axis.normalized();
+    _ofVec3<T> ax = axis.getNormalized();
+	
     x -= pivot.x;
     y -= pivot.y;
     z -= pivot.z;
@@ -370,9 +466,11 @@ _ofVec3<T>& _ofVec3<T>::rotateRad( T angle,
     T xrot = x * ( ax.x * ax.x * cosb + cosa )
            + y * ( ax.x * ax.y * cosb - ax.z * sina )
            + z * ( ax.x * ax.z * cosb + ax.y * sina );
+	
     T yrot = x * ( ax.y * ax.x * cosb + ax.z * sina )
            + y * ( ax.y * ax.y * cosb + cosa)
            + z * ( ax.y * ax.z * cosb - ax.x * sina );
+	
     T zrot = x * ( ax.z * ax.x * cosb - ax.y * sina )
            + y * ( ax.z * ax.y * cosb + ax.x * sina )
            + z * ( ax.z * ax.z * cosb + cosa );
@@ -388,29 +486,31 @@ _ofVec3<T>& _ofVec3<T>::rotateRad( T angle,
 
 template <typename T> inline 
 _ofVec3<T> _ofVec3<T>::mapped( const _ofVec3<T>& origin,
-							   const _ofVec3<T>& vx,
-							   const _ofVec3<T>& vy,
-							   const _ofVec3<T>& vz ) const {
+							   const _ofVec3<T>&     vx,
+							   const _ofVec3<T>&     vy,
+							   const _ofVec3<T>&     vz ) const {
 	
     return getMapped( origin, vx, vy, vz );
 }
 
 template <typename T> inline 
 _ofVec3<T> _ofVec3<T>::getMapped( const _ofVec3<T>& origin,
-								  const _ofVec3<T>& vx,
-								  const _ofVec3<T>& vy,
-								  const _ofVec3<T>& vz ) const {
+								  const _ofVec3<T>&     vx,
+								  const _ofVec3<T>&     vy,
+								  const _ofVec3<T>&     vz ) const {
 	
-    return _ofVec3<T>( origin.x + x*vx.x + y*vy.x + z*vz.x,
-                       origin.y + x*vx.y + y*vy.y + z*vz.y,
-                       origin.z + x*vx.z + y*vy.z + z*vz.z );
+    return _ofVec3<T>( 
+		origin.x + x * vx.x + y * vy.x + z * vz.x, // x
+		origin.y + x * vx.y + y * vy.y + z * vz.y, // y
+		origin.z + x * vx.z + y * vy.z + z * vz.z  // z
+	);
 }
 
 template <typename T> inline 
 _ofVec3<T>& _ofVec3<T>::map( const _ofVec3<T>& origin,
-                                 const _ofVec3<T>& vx,
-                                 const _ofVec3<T>& vy,
-                                 const _ofVec3<T>& vz ) {
+							 const _ofVec3<T>&     vx,
+						     const _ofVec3<T>&     vy,
+							 const _ofVec3<T>&     vz ) {
 	
     T xmap = origin.x + x * vx.x + y * vy.x + z * vz.x;
     T ymap = origin.y + x * vx.y + y * vy.y + z * vz.y;
@@ -460,15 +560,17 @@ T  _ofVec3<T>::squareDistance( const _ofVec3<T>& pnt ) const {
 template <typename T> inline 
 _ofVec3<T> _ofVec3<T>::interpolated( const _ofVec3<T>& pnt, T p ) const {
 	
-    return getInterpolated(pnt,p);
+    return getInterpolated( pnt, p );
 }
 
 template <typename T> inline 
 _ofVec3<T> _ofVec3<T>::getInterpolated( const _ofVec3<T>& pnt, T p ) const {
 	
-    return _ofVec3<T>( x * ( 1 - p ) + pnt.x * p,
-                       y * ( 1 - p ) + pnt.y * p,
-                       z * ( 1 - p ) + pnt.z * p );
+    return _ofVec3<T>( 
+		x * ( 1 - p ) + pnt.x * p, // x
+		y * ( 1 - p ) + pnt.y * p, // y
+	    z * ( 1 - p ) + pnt.z * p  // z
+	);
 }
 
 template <typename T> inline 
@@ -490,9 +592,11 @@ _ofVec3<T> _ofVec3<T>::middled( const _ofVec3<T>& pnt ) const {
 template <typename T> inline 
 _ofVec3<T> _ofVec3<T>::getMiddle( const _ofVec3<T>& pnt ) const {
 	
-    return _ofVec3<T>( ( x + pnt.x ) / 2.0f, 
-					   ( y + pnt.y ) / 2.0f, 
-					   ( z + pnt.z ) / 2.0f );
+    return _ofVec3<T>( 
+		( x + pnt.x ) / 2.0f, // x
+		( y + pnt.y ) / 2.0f, // y
+		( z + pnt.z ) / 2.0f  // z
+	);
 }
 
 template <typename T> inline 
@@ -507,7 +611,7 @@ _ofVec3<T>& _ofVec3<T>::middle( const _ofVec3<T>& pnt ) {
 
 
 /*! Average (centroid) among points.
- Addition is sometimes useful for calculating averages too. */
+    Addition is sometimes useful for calculating averages too. */
 template <typename T> inline 
 _ofVec3<T>& _ofVec3<T>::average( const _ofVec3<T>* points, int num ) {
     
@@ -542,9 +646,11 @@ _ofVec3<T> _ofVec3<T>::getNormalized() const {
     T len = (T)sqrt( x * x + y * y + z * z );
     
 	if( len > 0 ) {
-        return _ofVec3<T>( x / len, 
-						   y / len, 
-						   z / len );
+        return _ofVec3<T>( 
+			x / len, // x
+			y / len, // y
+			z / len  // z
+		);
     } else {
         return _ofVec3<T>();
     }
@@ -582,6 +688,7 @@ _ofVec3<T> _ofVec3<T>::getLimited( T max ) const {
 		
         T ratio = max / (T)sqrt( lengthSquared );
         limited.set( x * ratio, y * ratio, z * ratio );
+		
     } else {
         limited.set( x, y, z );
     }
@@ -611,7 +718,7 @@ _ofVec3<T>& _ofVec3<T>::limit(T max) {
 template <typename T> inline 
 _ofVec3<T> _ofVec3<T>::crossed( const _ofVec3<T>& vec ) const {
 	
-    return getCrossed(vec);
+    return getCrossed( vec );
 }
 
 template <typename T> inline 
@@ -627,7 +734,7 @@ _ofVec3<T>& _ofVec3<T>::cross( const _ofVec3<T>& vec ) {
 	
     T _x = y * vec.z - z * vec.y;
     T _y = z * vec.x - x * vec.z;
-    z = x * vec.y - y * vec.x;
+       z = x * vec.y - y * vec.x;
     x = _x;
     y = _y;
 	
@@ -638,7 +745,7 @@ _ofVec3<T>& _ofVec3<T>::cross( const _ofVec3<T>& vec ) {
 template <typename T> inline 
 _ofVec3<T> _ofVec3<T>::perpendiculared( const _ofVec3<T>& vec ) const {
     
-	return getPerpendicular(vec);
+	return getPerpendicular( vec );
 }
 
 template <typename T> inline 
@@ -653,9 +760,11 @@ _ofVec3<T> _ofVec3<T>::getPerpendicular( const _ofVec3<T>& vec ) const {
 					 crossZ * crossZ );
     
     if( len > 0 ) {
-        return _ofVec3<T>( crossX / len, 
-						   crossY / len, 
-						   crossZ / len );
+        return _ofVec3<T>( 
+			crossX / len, // x
+			crossY / len, // y
+		    crossZ / len  // z
+		);
     } else {
 		return _ofVec3<T>();
 	}
@@ -673,10 +782,13 @@ _ofVec3<T>& _ofVec3<T>::perpendicular( const _ofVec3<T>& vec ) {
 					 crossZ * crossZ );
     
     if( len > 0 ) {
-        x = crossX / len;
+        
+		x = crossX / len;
         y = crossY / len;
         z = crossZ / len;
+		
     } else {
+		
         x = 0.f;
         y = 0.f;
         z = 0.f;
@@ -723,16 +835,20 @@ T _ofVec3<T>::squareLength() const {
  */
 template <typename T> inline 
 T _ofVec3<T>::angle( const _ofVec3<T>& vec ) const {
-    _ofVec3<T> n1 = this->normalized();
-    _ofVec3<T> n2 = vec.normalized();
-    return (T)(acos( n1.dot(n2) )*RAD_TO_DEG);
+	
+    _ofVec3<T> n1 = this->getNormalized();
+    _ofVec3<T> n2 = vec.getNormalized();
+	
+    return (T)(acos( n1.dot( n2 ) ) * RAD_TO_DEG);
 }
 
 template <typename T> inline 
 T _ofVec3<T>::angleRad( const _ofVec3<T>& vec ) const {
-    _ofVec3<T> n1 = this->normalized();
-    _ofVec3<T> n2 = vec.normalized();
-    return (T)acos( n1.dot(n2) );
+    
+	_ofVec3<T> n1 = this->getNormalized();
+    _ofVec3<T> n2 = vec.getNormalized();
+	
+    return (T)acos( n1.dot( n2 ) );
 }
 
 // Expanded at compiler time?
