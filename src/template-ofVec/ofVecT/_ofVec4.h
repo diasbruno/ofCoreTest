@@ -11,8 +11,9 @@
 template <typename T> class _ofVec2;
 template <typename T> class _ofVec3;
 
-template<typename T>
+template <typename T>
 class _ofVec4 {
+//	: public _ofVecT<T> {
 public:
     T x, y, z, w;
     
@@ -217,7 +218,7 @@ _ofVec4<T>::_ofVec4( const _ofVec4<T>& v )
 
 template <typename T>
 _ofVec4<T>::_ofVec4( const _ofVec3<T>& v )
-    : x(v.x), y(v.y), z(v.z), w(0) 
+    : x(v.x), y(v.y), z(v.z), w((T)0) 
 {}
 
 template <typename T>
@@ -229,7 +230,7 @@ _ofVec4<T>::_ofVec4( const _ofVec4<S>& v )
 template <typename T>
 template <typename S>
 _ofVec4<T>::_ofVec4( const _ofVec3<S>& v )
-    : x((T)v.x), y((T)v.y), z((T)v.z), w(0) 
+    : x((T)v.x), y((T)v.y), z((T)v.z), w((T)0) 
 {}
 
 // Similarity/equality --------------------------------------------------

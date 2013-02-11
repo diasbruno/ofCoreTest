@@ -1,6 +1,6 @@
 #pragma once
 
-#include "_ofVecT.h"
+//#include "_ofVecT.h"
 #include "_ofVec2.h"
 #include "_ofVec4.h"
 #include "ofConstants.h"
@@ -13,6 +13,7 @@ template <typename T> class _ofVec4;
 
 template <typename T>
 class _ofVec3 {
+//	: public _ofVecT<T> {
 public:
     T x, y, z;
     
