@@ -177,9 +177,9 @@ public:
     // IO Stream -------------------------------------------------------------
 	
 	template <typename S> friend 
-	ostream& operator << ( ostream& os, const _ofVec2<S>& vec );
+	std::ostream& operator << ( std::ostream& os, const _ofVec2<S>& vec );
 	template <typename S> friend 
-	istream& operator >> ( istream& is, const _ofVec2<S>& vec );
+	std::istream& operator >> ( std::istream& is, const _ofVec2<S>& vec );
     
 	// return all zero vector
     static _ofVec2<T> zero() { 
