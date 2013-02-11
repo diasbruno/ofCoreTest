@@ -8,8 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		0351648F16C039BB007E826E /* ofVecT_testApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0351648116C039BA007E826E /* ofVecT_testApp.cpp */; };
-		03B7015C16C2024900BA0C24 /* _ofMatrix3x3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03B7015B16C2024900BA0C24 /* _ofMatrix3x3.cpp */; };
 		03B7017E16C202AB00BA0C24 /* ofMatrixT_testApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03B7017D16C202AB00BA0C24 /* ofMatrixT_testApp.cpp */; };
+		03B7054E16C34F7000BA0C24 /* _ofMatrix4x4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03B7015E16C2025800BA0C24 /* _ofMatrix4x4.cpp */; };
+		03B7077616C3838D00BA0C24 /* _ofVec2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03B7077516C3838D00BA0C24 /* _ofVec2.cpp */; };
+		03B708AC16C3AF7800BA0C24 /* _ofVec3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03B708AB16C3AF7800BA0C24 /* _ofVec3.cpp */; };
+		03B708B316C3AFC700BA0C24 /* _ofVec4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03B708B216C3AFC700BA0C24 /* _ofVec4.cpp */; };
+		03B70A9C16C4806D00BA0C24 /* _ofMatrix3x3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03B70A9B16C4806D00BA0C24 /* _ofMatrix3x3.cpp */; };
 		03F7C1D916B206C5009E009E /* collectoroutput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03F7C1C316B206C5009E009E /* collectoroutput.cpp */; };
 		03F7C1DA16B206C5009E009E /* compileroutput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03F7C1C416B206C5009E009E /* compileroutput.cpp */; };
 		03F7C1DB16B206C5009E009E /* htmloutput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03F7C1CF16B206C5009E009E /* htmloutput.cpp */; };
@@ -211,22 +215,23 @@
 		0351648116C039BA007E826E /* ofVecT_testApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofVecT_testApp.cpp; sourceTree = "<group>"; };
 		0351648216C039BA007E826E /* ofVecT_testApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofVecT_testApp.h; sourceTree = "<group>"; };
 		0351648516C039BB007E826E /* _ofVec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ofVec.h; sourceTree = "<group>"; };
-		0351648616C039BB007E826E /* _ofVec2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = _ofVec2.cpp; sourceTree = "<group>"; };
 		0351648716C039BB007E826E /* _ofVec2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ofVec2.h; sourceTree = "<group>"; };
-		0351648A16C039BB007E826E /* _ofVec3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = _ofVec3.cpp; sourceTree = "<group>"; };
 		0351648B16C039BB007E826E /* _ofVec3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ofVec3.h; sourceTree = "<group>"; };
-		0351648C16C039BB007E826E /* _ofVec4.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = _ofVec4.cpp; sourceTree = "<group>"; };
 		0351648D16C039BB007E826E /* _ofVec4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ofVec4.h; sourceTree = "<group>"; };
-		0351648E16C039BB007E826E /* _ofVecT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ofVecT.h; sourceTree = "<group>"; };
 		035D91E116BC6C8E00587D9D /* ofVecT_test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofVecT_test.h; sourceTree = "<group>"; };
 		03B7015A16C2024900BA0C24 /* _ofMatrix3x3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ofMatrix3x3.h; sourceTree = "<group>"; };
-		03B7015B16C2024900BA0C24 /* _ofMatrix3x3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = _ofMatrix3x3.cpp; sourceTree = "<group>"; };
 		03B7015D16C2025800BA0C24 /* _ofMatrix4x4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ofMatrix4x4.h; sourceTree = "<group>"; };
 		03B7015E16C2025800BA0C24 /* _ofMatrix4x4.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = _ofMatrix4x4.cpp; sourceTree = "<group>"; };
 		03B7017C16C202AB00BA0C24 /* ofMatrixT_testApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofMatrixT_testApp.h; sourceTree = "<group>"; };
 		03B7017D16C202AB00BA0C24 /* ofMatrixT_testApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofMatrixT_testApp.cpp; sourceTree = "<group>"; };
-		03B701B716C2055100BA0C24 /* _ofQuaternionT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ofQuaternionT.h; sourceTree = "<group>"; };
-		03B701B816C2055100BA0C24 /* _ofQuaternionT.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = _ofQuaternionT.cpp; sourceTree = "<group>"; };
+		03B701B716C2055100BA0C24 /* _ofQuaternion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ofQuaternion.h; sourceTree = "<group>"; };
+		03B701B816C2055100BA0C24 /* _ofQuaternion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = _ofQuaternion.cpp; sourceTree = "<group>"; };
+		03B705B016C35ACC00BA0C24 /* _ofMatrixUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ofMatrixUtils.h; sourceTree = "<group>"; };
+		03B7077516C3838D00BA0C24 /* _ofVec2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = _ofVec2.cpp; sourceTree = "<group>"; };
+		03B708AB16C3AF7800BA0C24 /* _ofVec3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = _ofVec3.cpp; sourceTree = "<group>"; };
+		03B708B216C3AFC700BA0C24 /* _ofVec4.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = _ofVec4.cpp; sourceTree = "<group>"; };
+		03B70A4116C4750C00BA0C24 /* _ofVecMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ofVecMath.h; sourceTree = "<group>"; };
+		03B70A9B16C4806D00BA0C24 /* _ofMatrix3x3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = _ofMatrix3x3.cpp; sourceTree = "<group>"; };
 		03B7FB0916C0C27800BA0C24 /* ofVecT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofVecT.h; sourceTree = "<group>"; };
 		03B7FB0A16C0C28400BA0C24 /* ofVec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofVec.h; sourceTree = "<group>"; };
 		03B7FEBE16C1880300BA0C24 /* ofQuaternionT_test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofQuaternionT_test.h; sourceTree = "<group>"; };
@@ -587,13 +592,13 @@
 			isa = PBXGroup;
 			children = (
 				0351648516C039BB007E826E /* _ofVec.h */,
-				0351648E16C039BB007E826E /* _ofVecT.h */,
+				03B70A4116C4750C00BA0C24 /* _ofVecMath.h */,
 				0351648716C039BB007E826E /* _ofVec2.h */,
 				0351648B16C039BB007E826E /* _ofVec3.h */,
 				0351648D16C039BB007E826E /* _ofVec4.h */,
-				0351648616C039BB007E826E /* _ofVec2.cpp */,
-				0351648A16C039BB007E826E /* _ofVec3.cpp */,
-				0351648C16C039BB007E826E /* _ofVec4.cpp */,
+				03B7077516C3838D00BA0C24 /* _ofVec2.cpp */,
+				03B708AB16C3AF7800BA0C24 /* _ofVec3.cpp */,
+				03B708B216C3AFC700BA0C24 /* _ofVec4.cpp */,
 			);
 			path = ofVecT;
 			sourceTree = "<group>";
@@ -619,9 +624,10 @@
 		03B7015916C2023100BA0C24 /* ofMatrixT */ = {
 			isa = PBXGroup;
 			children = (
+				03B705B016C35ACC00BA0C24 /* _ofMatrixUtils.h */,
 				03B7015A16C2024900BA0C24 /* _ofMatrix3x3.h */,
-				03B7015B16C2024900BA0C24 /* _ofMatrix3x3.cpp */,
 				03B7015D16C2025800BA0C24 /* _ofMatrix4x4.h */,
+				03B70A9B16C4806D00BA0C24 /* _ofMatrix3x3.cpp */,
 				03B7015E16C2025800BA0C24 /* _ofMatrix4x4.cpp */,
 			);
 			name = ofMatrixT;
@@ -647,8 +653,8 @@
 		03B701B616C2052F00BA0C24 /* ofQuaternionT */ = {
 			isa = PBXGroup;
 			children = (
-				03B701B716C2055100BA0C24 /* _ofQuaternionT.h */,
-				03B701B816C2055100BA0C24 /* _ofQuaternionT.cpp */,
+				03B701B716C2055100BA0C24 /* _ofQuaternion.h */,
+				03B701B816C2055100BA0C24 /* _ofQuaternion.cpp */,
 			);
 			path = ofQuaternionT;
 			sourceTree = "<group>";
@@ -1043,7 +1049,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				03F7C1D916B206C5009E009E /* collectoroutput.cpp in Sources */,
 				03F7C1DA16B206C5009E009E /* compileroutput.cpp in Sources */,
 				03F7C1DB16B206C5009E009E /* htmloutput.cpp in Sources */,
@@ -1053,9 +1058,14 @@
 				03F7C1DF16B206C5009E009E /* textoutput.cpp in Sources */,
 				03F7C1E016B206C5009E009E /* time.cpp in Sources */,
 				03F7C1E116B206C5009E009E /* utils.cpp in Sources */,
-				03B7015C16C2024900BA0C24 /* _ofMatrix3x3.cpp in Sources */,
+				03B7077616C3838D00BA0C24 /* _ofVec2.cpp in Sources */,
+				03B708AC16C3AF7800BA0C24 /* _ofVec3.cpp in Sources */,
+				03B708B316C3AFC700BA0C24 /* _ofVec4.cpp in Sources */,
+				03B70A9C16C4806D00BA0C24 /* _ofMatrix3x3.cpp in Sources */,
+				03B7054E16C34F7000BA0C24 /* _ofMatrix4x4.cpp in Sources */,
 				0351648F16C039BB007E826E /* ofVecT_testApp.cpp in Sources */,
 				03B7017E16C202AB00BA0C24 /* ofMatrixT_testApp.cpp in Sources */,
+				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1090,12 +1100,18 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
 				GCC_WARN_UNUSED_VALUE = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
+				HEADER_SEARCH_PATHS = (
+					src,
+					"$(OF_CORE_HEADERS)",
+				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
 					"-lpthread",
 					"-mtune=native",
 				);
 				SDKROOT = macosx;
+				VALID_ARCHS = "x86_64 i386 ppc ppc64 ppc7400 ppc970";
 			};
 			name = Debug;
 		};
@@ -1120,6 +1136,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
 				GCC_WARN_UNUSED_VALUE = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
+				HEADER_SEARCH_PATHS = (
+					src,
+					"$(OF_CORE_HEADERS)",
+				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
 					"-lpthread",
@@ -1130,12 +1151,15 @@
 					"$(OF_CORE_LIBS)",
 				);
 				SDKROOT = macosx;
+				VALID_ARCHS = "x86_64 i386 ppc ppc64 ppc7400 ppc970";
 			};
 			name = Release;
 		};
 		E4B69B600A3A1757003C02F2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1148,6 +1172,7 @@
 				GCC_MODEL_TUNING = NONE;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
@@ -1225,6 +1250,8 @@
 		E4B69B610A3A1757003C02F2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1236,6 +1263,7 @@
 				GCC_MODEL_TUNING = NONE;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
