@@ -38,7 +38,7 @@ public:
     // Accessors ------------------------------------------------------------
 	
     T* getPtr() { 
-    	return (T*)&x; }
+		return (T*)&x; }
 	
 	const T* getPtr() const { 
 		return (const T*)&x; }
