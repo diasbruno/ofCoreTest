@@ -18,25 +18,21 @@ public:
     
     static const int DIM = 4;
     
-    _ofVec4()
-        : x(0), y(0), z(0), w(0) {}
+    _ofVec4();
     
-    _ofVec4( T _x, T _y, T _z, T _w ) 
-        : x(_x), y(_y), z(_z), w(_w) {}
+    explicit _ofVec4( T _scalar );
+
+    _ofVec4( T _x, T _y, T _z, T _w );
     
-    _ofVec4( const _ofVec4<T>& v ) 
-        : x(v.x), y(v.y), z(v.z), w(v.w) {}
+    _ofVec4( const _ofVec4<T>& v );
     
-    _ofVec4( const _ofVec3<T>& v )
-        : x(v.x), y(v.y), z(v.z), w(0) {}
+    _ofVec4( const _ofVec3<T>& v );
 	
 	template <typename S>
-	_ofVec4( const _ofVec4<S>& v ) 
-		: x((T)v.x), y((T)v.y), z((T)v.z), w((T)v.w) {}
+	_ofVec4( const _ofVec4<S>& v );
     
 	template <typename S>
-    _ofVec4( const _ofVec3<S>& v )
-		: x((T)v.x), y((T)v.y), z((T)v.z), w(0) {}
+    _ofVec4( const _ofVec3<S>& v );
 	
     // Getters and Setters. -------------------------------------------------
     
@@ -137,199 +133,330 @@ public:
     
     T        length() const;
     T lengthSquared() const;
-	OF_DEPRECATED_MSG("Use _ofVec4<T>::lengthSquared() instead.", T squareLength() const);
 	
+    // return all zero vector
+    static _ofVec4<T> zero() { 
+        return _ofVec4<T>( 0, 0, 0, 0 ); }
+    
+    // return all one vector
+    static _ofVec4<T> one() { 
+        return _ofVec4<T>( 1, 1, 1, 1 ); }
+
 	//
     // Deprecated -----------------------------------------------------------
     // Since: v006
     //
     
-    // getScaled
-    _ofVec4<T> rescaled( const T length ) const;
+	OF_DEPRECATED_MSG( 
+        "Use _ofVec4<T>::lengthSquared() instead.", 
+        T squareLength() const
+    );
+
+	OF_DEPRECATED_MSG( 
+        "Use _ofVec4<T>::getScaled() instead.", 
+        _ofVec4<T> rescaled( const T length ) const
+    );
+
+	OF_DEPRECATED_MSG( 
+        "Use _ofVec4<T>::scaled() instead.", 
+        _ofVec4<T>& rescale( const T length )
+    );
+
+	OF_DEPRECATED_MSG( 
+        "Use _ofVec4<T>::getNormalized() instead.", 
+        _ofVec4<T> normalized() const
+    );
 	
-    // scale
-    _ofVec4<T>& rescale( const T length );
+	OF_DEPRECATED_MSG( 
+        "Use _ofVec4<T>::getLimited() instead.", 
+        _ofVec4<T> limited( T max ) const
+    );
 	
-    // getNormalized
-    _ofVec4<T> normalized() const;
+	OF_DEPRECATED_MSG( 
+        "Use _ofVec4<T>::squareDistance() instead.", 
+        T distanceSquared( const _ofVec4<T>& pnt ) const
+    );
 	
-    // getLimited
-    _ofVec4<T> limited(T max) const;
+	OF_DEPRECATED_MSG( 
+        "Use _ofVec4<T>::getInterpolated() instead.", 
+        _ofVec4<T> interpolated( const _ofVec4<T>& pnt, T p ) const
+    );
 	
-    // use squareDistance
-    T  distanceSquared( const _ofVec4<T>& pnt ) const;
-	
-    // use getInterpolated
-    _ofVec4<T> 	interpolated( const _ofVec4<T>& pnt, T p ) const;
-	
-    // use getMiddle
-    _ofVec4<T> 	middled( const _ofVec4<T>& pnt ) const;    
-    
-	
-    // return all zero vector
-    static _ofVec4<T> zero() { return _ofVec4<T>(0, 0, 0, 0); }
-    
-    // return all one vector
-    static _ofVec4<T> one() { return _ofVec4<T>(1, 1, 1, 1); }
-	
+	OF_DEPRECATED_MSG( 
+        "Use _ofVec4<T>::getMiddle() instead.", 
+        _ofVec4<T> middled( const _ofVec4<T>& pnt ) const
+    );
+
 };
 
 //
-// Implementation ---------------------------------------------
+// Implementation -----------------------------------------------------
 //
+
+// Constructors -------------------------------------------------------
+
+template <typename T>
+_ofVec4<T>::_ofVec4()
+    : x(0), y(0), z(0), w(0) 
+{}
+
+template <typename T>
+_ofVec4<T>::_ofVec4( T _scalar ) 
+    : x(_scalar), y(_scalar), z(_scalar), w(_scalar) 
+{}
+
+template <typename T>
+_ofVec4<T>::_ofVec4( T _x, T _y, T _z, T _w ) 
+    : x(_x), y(_y), z(_z), w(_w) 
+{}
+
+template <typename T>
+_ofVec4<T>::_ofVec4( const _ofVec4<T>& v ) 
+    : x(v.x), y(v.y), z(v.z), w(v.w) 
+{}
+
+template <typename T>
+_ofVec4<T>::_ofVec4( const _ofVec3<T>& v )
+    : x(v.x), y(v.y), z(v.z), w(0) 
+{}
+
+template <typename T>
+template <typename S>
+_ofVec4<T>::_ofVec4( const _ofVec4<S>& v ) 
+    : x((T)v.x), y((T)v.y), z((T)v.z), w((T)v.w) 
+{}
+
+template <typename T>
+template <typename S>
+_ofVec4<T>::_ofVec4( const _ofVec3<S>& v )
+    : x((T)v.x), y((T)v.y), z((T)v.z), w(0) 
+{}
 
 // Similarity/equality --------------------------------------------------
 
 template <typename T> inline 
 bool _ofVec4<T>::operator==( const _ofVec4<T>& vec ) const {
-	return (x == vec.x) && (y == vec.y) && (z == vec.z) && (w == vec.w);
+	return ( x == vec.x ) 
+        && ( y == vec.y ) 
+        && ( z == vec.z ) 
+        && ( w == vec.w );
 }
 
 template <typename T> inline 
 bool _ofVec4<T>::operator!=( const _ofVec4<T>& vec ) const {
-	return (x != vec.x) || (y != vec.y) || (z != vec.z) || (w != vec.w);
+	
+    return ( x != vec.x ) 
+        || ( y != vec.y ) 
+        || ( z != vec.z ) 
+        || ( w != vec.w );
 }
 
 // Overloading for any type to any type ---------------------------------	
 
 template<typename T> inline 
-_ofVec4<T> _ofVec4<T>::operator+( const _ofVec4<T>& vec ) const {
-	return _ofVec4<T>( x+vec.x, y+vec.y, z+vec.z, w+vec.w);
+_ofVec4<T> _ofVec4<T>::operator + ( const _ofVec4<T>& vec ) const {
+	
+    return _ofVec4<T>( 
+        x + vec.x, // x 
+        y + vec.y, // y
+        z + vec.z, // z
+        w + vec.w  // w
+    );
 }
 
 template<typename T> inline 
-_ofVec4<T>& _ofVec4<T>::operator+=( const _ofVec4<T>& vec ) {
-	x += vec.x;
+_ofVec4<T>& _ofVec4<T>::operator += ( const _ofVec4<T>& vec ) {
+	
+    x += vec.x;
 	y += vec.y;
 	z += vec.z;
 	w += vec.w;
+
 	return *this;
 }
 
 template <typename T> inline 
-_ofVec4<T> _ofVec4<T>::operator-( const T f ) const {
-	return _ofVec4<T>( x-f, y-f, z-f, w-f );
+_ofVec4<T> _ofVec4<T>::operator - ( const T f ) const {
+	return _ofVec4<T>( 
+        x - f, // x
+        y - f, // y
+        z - f, // z
+        w - f  // w
+    );
 }
 
 template <typename T> inline 
-_ofVec4<T>& _ofVec4<T>::operator-=( const T f ) {
+_ofVec4<T>& _ofVec4<T>::operator -= ( const T f ) {
+
 	x -= f;
 	y -= f;
 	z -= f;
 	w -= f;
+
 	return *this;
 }
 
 template <typename T> inline 
-_ofVec4<T> _ofVec4<T>::operator-( const _ofVec4<T>& vec ) const {
-	return _ofVec4<T>( x-vec.x, y-vec.y, z-vec.z, w-vec.w );
+_ofVec4<T> _ofVec4<T>::operator - ( const _ofVec4<T>& vec ) const {
+
+    return _ofVec4<T>( 
+        x - vec.x, // x
+        y - vec.y, // y
+        z - vec.z, // z
+        w - vec.w  // w
+    );
 }
 
 template <typename T> inline 
-_ofVec4<T>& _ofVec4<T>::operator-=( const _ofVec4<T>& vec ) {
+_ofVec4<T>& _ofVec4<T>::operator -= ( const _ofVec4<T>& vec ) {
+
 	x -= vec.x;
 	y -= vec.y;
 	z -= vec.z;
 	w -= vec.w;
+
 	return *this;
 }
 
-template <typename T>
-inline _ofVec4<T> _ofVec4<T>::operator+( const T f ) const {
-	return _ofVec4<T>( x+f, y+f, z+f, w+f );
+template <typename T> inline 
+_ofVec4<T> _ofVec4<T>::operator + ( const T f ) const {
+	
+    return _ofVec4<T>( 
+        x + f, // x
+        y + f, // y
+        z + f, // z
+        w + f  // w 
+    );
 }
 
 template <typename T> inline 
-_ofVec4<T>& _ofVec4<T>::operator+=( const T f ) {
+_ofVec4<T>& _ofVec4<T>::operator += ( const T f ) {
+
 	x += f;
 	y += f;
 	z += f;
 	w += f;
+
 	return *this;
 }
 
 template <typename T> inline 
-_ofVec4<T> _ofVec4<T>::operator-() const {
+_ofVec4<T> _ofVec4<T>::operator - () const {
+
 	return _ofVec4<T>( -x, -y, -z, -w );
 }
 
 
 template <typename T> inline 
-_ofVec4<T> _ofVec4<T>::operator*( const _ofVec4<T>& vec ) const {
-	return _ofVec4<T>( x*vec.x, y*vec.y, z*vec.z, w*vec.w );
+_ofVec4<T> _ofVec4<T>::operator * ( const _ofVec4<T>& vec ) const {
+	return _ofVec4<T>( 
+        x * vec.x, // x
+        y * vec.y, // y
+        z * vec.z, // z
+        w * vec.w  // w
+    );
 }
 
 template<typename T> inline 
-_ofVec4<T>& _ofVec4<T>::operator*=( const _ofVec4<T>& vec ) {
+_ofVec4<T>& _ofVec4<T>::operator *= ( const _ofVec4<T>& vec ) {
+
 	x *= vec.x;
 	y *= vec.y;
 	z *= vec.z;
 	w *= vec.w;
+
 	return *this;
 }
 
 template <typename T> inline 
-_ofVec4<T> _ofVec4<T>::operator*( const T f ) const {
-	return _ofVec4<T>( x*f, y*f, z*f, w*f );
+_ofVec4<T> _ofVec4<T>::operator * ( const T f ) const {
+	
+    return _ofVec4<T>( 
+        x * f, 
+        y * f, 
+        z * f, 
+        w * f 
+    );
 }
 
 template <typename T> inline 
-_ofVec4<T>& _ofVec4<T>::operator*=( const T f ) {
+_ofVec4<T>& _ofVec4<T>::operator *= ( const T f ) {
+
 	x *= f;
 	y *= f;
-	z *= f;
+    z *= f;
 	w *= f;
+
 	return *this;
 }
 
 template <typename T> inline 
-_ofVec4<T> _ofVec4<T>::operator/( const _ofVec4<T>& vec ) const {
-	return _ofVec4<T>( vec.x!=0 ? x/vec.x : x , vec.y!=0 ? y/vec.y : y, vec.z!=0 ? z/vec.z : z, vec.w!=0 ? w/vec.w : w  );
+_ofVec4<T> _ofVec4<T>::operator / ( const _ofVec4<T>& vec ) const {
+
+	return _ofVec4<T>( 
+        vec.x != 0 ? x / vec.x : x, // x
+        vec.y != 0 ? y / vec.y : y, // y
+        vec.z != 0 ? z / vec.z : z, // z
+        vec.w != 0 ? w / vec.w : w  // w 
+    );
 }
 
 template <typename T> inline 
 _ofVec4<T>& _ofVec4<T>::operator/=( const _ofVec4<T>& vec ) {
-	vec.x!=0 ? x/=vec.x : x;
-	vec.y!=0 ? y/=vec.y : y;
-	vec.z!=0 ? z/=vec.z : z;
-	vec.w!=0 ? w/=vec.w : w;
+
+	vec.x != 0 ? x /= vec.x : x;
+	vec.y != 0 ? y /= vec.y : y;
+	vec.z != 0 ? z /= vec.z : z;
+	vec.w != 0 ? w /= vec.w : w;
+
 	return *this;
 }
 
 template <typename T> inline 
-_ofVec4<T> _ofVec4<T>::operator/( const T f ) const {
-	if(f == 0) return _ofVec4<T>(x, y, z, w);
+_ofVec4<T> _ofVec4<T>::operator / ( const T f ) const {
+
+	if( f == 0 ) { 
+        return _ofVec4<T>( x, y, z, w );
+    }
 	
-	return _ofVec4<T>( x/f, y/f, z/f, w/f );
+	return _ofVec4<T>( 
+        x / f, // x
+        y / f, // y
+        z / f, // z
+        w / f  // w
+    );
 }
 
 template <typename T> inline 
-_ofVec4<T>& _ofVec4<T>::operator/=( const T f ) {
-	if(f == 0)return *this;
+_ofVec4<T>& _ofVec4<T>::operator /= ( const T f ) {
+	
+    if ( f == 0 ) {
+        return *this;
+    }
 	
 	x /= f;
 	y /= f;
 	z /= f;
 	w /= f;
+
 	return *this;
 }
 
 // IO Stream --------------------------------------------------
 
 template <typename S> inline 
-ostream& operator<<(ostream& os, const _ofVec4<S>& vec) {
+std::ostream& operator << ( std::ostream& os, const _ofVec4<S>& vec ) {
 	os << vec.x << ", " << vec.y << ", " << vec.z << ", " << vec.w;
 	return os;
 }
 
 template <typename S> inline 
-istream& operator>>(istream& is, _ofVec4<S>& vec) {
-	is >> vec.x;
-	is.ignore(2);
-	is >> vec.y;
-	is.ignore(2);
-	is >> vec.z;
-	is.ignore(2);
+std::istream& operator >> ( std::istream& is, _ofVec4<S>& vec ) {
+
+	is >> vec.x; is.ignore(2);
+    is >> vec.y; is.ignore(2);
+	is >> vec.z; is.ignore(2);
 	is >> vec.w;
+
 	return is;
 }
