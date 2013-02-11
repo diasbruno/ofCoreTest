@@ -16,18 +16,21 @@
 
 template <typename T> inline 
 void _ofVec2<T>::set( T _scalar ) {
+	
 	x = _scalar;
 	y = _scalar;
 }
 
 template <typename T> inline 
 void _ofVec2<T>::set( T _x, T _y ) {
+	
 	x = _x;
 	y = _y;
 }
 
 template <typename T> inline 
 void _ofVec2<T>::set( const _ofVec2<T>& v ) {
+	
 	x = v.x;
 	y = v.y;
 }
@@ -36,6 +39,7 @@ void _ofVec2<T>::set( const _ofVec2<T>& v ) {
 
 template <typename T> inline 
 bool _ofVec2<T>::match( const _ofVec2<T>& v, T tolerance ) const {
+	
     return (fabs( x - v.x ) < tolerance)
 		&& (fabs( y - v.y ) < tolerance);
 }
@@ -48,21 +52,25 @@ bool _ofVec2<T>::match( const _ofVec2<T>& v, T tolerance ) const {
  */
 template <typename T> inline 
 bool _ofVec2<T>::isAligned( const _ofVec2<T>& v, T tolerance ) const { 
-	return  fabs( this->angle( v ) ) < tolerance;
+	
+	return fabs( this->angle( v ) ) < tolerance;
 }
 
 template <typename T> inline 
 bool _ofVec2<T>::align( const _ofVec2<T>& v, T tolerance ) const {
+	
 	return isAligned( v, tolerance );
 }
 
 template <typename T> inline 
 bool _ofVec2<T>::isAlignedRad( const _ofVec2<T>& v, T tolerance ) const {
-	return  fabs( this->angleRad( v ) ) < tolerance;
+	
+	return fabs( this->angleRad( v ) ) < tolerance;
 }
 
 template <typename T> inline 
 bool _ofVec2<T>::alignRad( const _ofVec2<T>& v, T tolerance ) const {
+	
 	return isAlignedRad( v, tolerance );
 }
 
@@ -70,17 +78,20 @@ bool _ofVec2<T>::alignRad( const _ofVec2<T>& v, T tolerance ) const {
 
 template <typename T> inline 
 _ofVec2<T> _ofVec2<T>::rescaled( const T length ) const {
-    return getScaled(length);
+	
+    return getScaled( length );
 }
 
 template <typename T> inline 
 _ofVec2<T> _ofVec2<T>::getScaled( const T length ) const {
 	
-    T len = (T)HYPOTENUSE( x, y );
+    T len = (T)HYPOTENUSE_2D( x, y );
     
 	if( len > 0 ) {
-        return _ofVec2<T>( ( x / len ) * length, 
-						   ( y / len ) * length );
+        return _ofVec2<T>( 
+			( x / len ) * length, // x
+			( y / len ) * length  // y
+		);
 	} else {
 		return _ofVec2<T>();
 	}
@@ -95,7 +106,7 @@ _ofVec2<T>& _ofVec2<T>::rescale( const T length ) {
 template <typename T> inline 
 _ofVec2<T>& _ofVec2<T>::scale( const T length ) {
 	
-    T len = (T)HYPOTENUSE( x, y );
+    T len = (T)HYPOTENUSE_2D( x, y );
     
 	if ( len > 0 ) {
         x = ( x / len ) * length;
@@ -118,8 +129,10 @@ _ofVec2<T> _ofVec2<T>::getRotated( T angle ) const {
 	
     T a = (T)( angle * DEG_TO_RAD );
 	
-    return _ofVec2<T>( x * cos( a ) - y * sin( a ),
-					   x * sin( a ) + y * cos( a ) );
+    return _ofVec2<T>( 
+		x * cos( a ) - y * sin( a ), // x
+		x * sin( a ) + y * cos( a )  // y
+	);
 }
 
 template <typename T> inline 
@@ -127,8 +140,10 @@ _ofVec2<T> _ofVec2<T>::getRotatedRad( T angle ) const {
 	
     T a = angle;
 	
-    return _ofVec2<T>( x * cos( a ) - y * sin( a ),
-					   x * sin( a ) + y * cos( a ) );
+    return _ofVec2<T>( 
+		x * cos( a ) - y * sin( a ), // x
+		x * sin( a ) + y * cos( a )  // y
+	);
 }
 
 template <typename T> inline 
@@ -169,8 +184,10 @@ _ofVec2<T> _ofVec2<T>::getRotated( T angle, const _ofVec2<T>& pivot ) const {
 	
     T a = (T)( angle * DEG_TO_RAD );
 	
-    return _ofVec2<T>( ( ( x - pivot.x ) * cos( a ) - ( y - pivot.y ) * sin( a ) ) + pivot.x,
-					   ( ( x - pivot.x ) * sin( a ) + ( y - pivot.y ) * cos( a ) ) + pivot.y );
+    return _ofVec2<T>( 
+		( ( x - pivot.x ) * cos( a ) - ( y - pivot.y ) * sin( a ) ) + pivot.x, // x
+		( ( x - pivot.x ) * sin( a ) + ( y - pivot.y ) * cos( a ) ) + pivot.y  // y
+	);
 }
 
 template <typename T> inline 
@@ -190,8 +207,10 @@ _ofVec2<T> _ofVec2<T>::getRotatedRad( T angle, const _ofVec2<T>& pivot ) const {
 	
     T a = angle;
 	
-    return _ofVec2<T>( ( ( x - pivot.x ) * cos( a ) - ( y - pivot.y ) * sin( a ) ) + pivot.x,
-					   ( ( x - pivot.x ) * sin( a ) + ( y - pivot.y ) * cos( a ) ) + pivot.y );
+    return _ofVec2<T>( 
+		( ( x - pivot.x ) * cos( a ) - ( y - pivot.y ) * sin( a ) ) + pivot.x, // x
+		( ( x - pivot.x ) * sin( a ) + ( y - pivot.y ) * cos( a ) ) + pivot.y  // y
+	);
 }
 
 template <typename T> inline 
@@ -199,8 +218,7 @@ _ofVec2<T>& _ofVec2<T>::rotateRad( T angle, const _ofVec2<T>& pivot ) {
 	
     T a = angle;
     T xrot = ( ( x - pivot.x ) * cos( a ) - ( y - pivot.y ) * sin( a ) ) + pivot.x;
-	
-    y = ( ( x - pivot.x ) * sin( a ) + ( y - pivot.y ) * cos( a ) ) + pivot.y;
+    y      = ( ( x - pivot.x ) * sin( a ) + ( y - pivot.y ) * cos( a ) ) + pivot.y;
     x = xrot;
 	
     return *this;
@@ -211,16 +229,19 @@ _ofVec2<T>& _ofVec2<T>::rotateRad( T angle, const _ofVec2<T>& pivot ) {
 template <typename T> inline 
 _ofVec2<T> _ofVec2<T>::getMapped( const _ofVec2<T>& origin,
 								  const _ofVec2<T>& vx,
-								  const _ofVec2<T>& vy ) 
-								  const {
-    return _ofVec2<T>( origin.x + x * vx.x + y * vy.x,
-					   origin.y + x * vx.y + y * vy.y );
+								  const _ofVec2<T>& vy ) const {
+									  
+    return _ofVec2<T>( 
+		origin.x + x * vx.x + y * vy.x, // x
+		origin.y + x * vx.y + y * vy.y // y
+	);
 }
 
 template <typename T> inline 
 _ofVec2<T>& _ofVec2<T>::map( const _ofVec2<T>& origin,
 							 const _ofVec2<T>& vx, 
 							 const _ofVec2<T>& vy ) {
+	
     T xmap = origin.x + x * vx.x + y * vy.x;
     
 	y = origin.y + x * vx.y + y * vy.y;
@@ -234,6 +255,7 @@ template <typename T> inline
 _ofVec2<T> _ofVec2<T>::mapped( const _ofVec2<T>& origin,
 							   const _ofVec2<T>& vx,
 							   const _ofVec2<T>& vy ) const {
+	
     return getMapped( origin, vx, vy );
 }
 
@@ -245,7 +267,7 @@ T _ofVec2<T>::distance( const _ofVec2<T>& pnt) const {
 	T vx = x - pnt.x;
     T vy = y - pnt.y;
 	
-    return (T)HYPOTENUSE( vx, vy );
+    return (T)HYPOTENUSE_2D( vx, vy );
 }
 
 //this method is deprecated in 006 please use squareDistance
@@ -261,7 +283,7 @@ T _ofVec2<T>::squareDistance( const _ofVec2<T>& pnt ) const {
     T vx = x - pnt.x;
     T vy = y - pnt.y;
 	
-    return P_HYPOTENUSE( vx, vy );
+    return P_HYPOTENUSE_2D( vx, vy );
 }
 
 // Linear interpolation -------------------------------------------------
@@ -274,8 +296,10 @@ T _ofVec2<T>::squareDistance( const _ofVec2<T>& pnt ) const {
 template <typename T> inline 
 _ofVec2<T> _ofVec2<T>::getInterpolated( const _ofVec2<T>& pnt, T p ) const {
 	
-    return _ofVec2<T>( x * ( 1 - p ) + pnt.x * p, 
-					   y * ( 1 - p ) + pnt.y * p );
+    return _ofVec2<T>( 
+		x * ( 1 - p ) + pnt.x * p, // x
+		y * ( 1 - p ) + pnt.y * p // y 
+	);
 }
 
 template <typename T> inline 
@@ -290,8 +314,10 @@ _ofVec2<T>& _ofVec2<T>::interpolate( const _ofVec2<T>& pnt, T p ) {
 template <typename T> inline 
 _ofVec2<T> _ofVec2<T>::getMiddle( const _ofVec2<T>& pnt ) const {
 	
-    return _ofVec2<T>( ( x + pnt.x ) / 2.0f, 
-					   ( y + pnt.y ) / 2.0f );
+    return _ofVec2<T>( 
+		( x + pnt.x ) / 2.0f, // x
+		( y + pnt.y ) / 2.0f  // y
+	);
 }
 
 template <typename T> inline 
@@ -347,11 +373,13 @@ _ofVec2<T> _ofVec2<T>::normalized() const {
 template <typename T> inline 
 _ofVec2<T> _ofVec2<T>::getNormalized() const {
 	
-    T len = (T)P_HYPOTENUSE( x, y );
+    T len = (T)P_HYPOTENUSE_2D( x, y );
 	
     if( len > 0 ) {
-        return _ofVec2<T>( x / len, 
-						   y / len );
+        return _ofVec2<T>( 
+			x / len, // x
+			y / len  // y
+		);
     } else {
         return _ofVec2<T>();
     }
@@ -360,7 +388,7 @@ _ofVec2<T> _ofVec2<T>::getNormalized() const {
 template <typename T> inline 
 _ofVec2<T>& _ofVec2<T>::normalize() {
 	
-    T len = (T)P_HYPOTENUSE( x, y );
+    T len = (T)P_HYPOTENUSE_2D( x, y );
 	
     if( len > 0 ) {
         x /= len;
@@ -382,12 +410,14 @@ template <typename T> inline
 _ofVec2<T> _ofVec2<T>::getLimited( T max ) const {
 	
     _ofVec2<T> limited;
-    T lengthSquared = P_HYPOTENUSE( x, y );
+    T lengthSquared = P_HYPOTENUSE_2D( x, y );
 	
     if ( lengthSquared > max * max 
 	&&   lengthSquared > 0 ) {
+		
         T ratio = max / (T)sqrt( lengthSquared );
         limited.set( x * ratio, y * ratio );
+		
     } else {
         limited.set( x, y );
     }
@@ -398,11 +428,12 @@ _ofVec2<T> _ofVec2<T>::getLimited( T max ) const {
 template <typename T> inline 
 _ofVec2<T>& _ofVec2<T>::limit( T max ) {
 	
-    T lengthSquared = P_HYPOTENUSE( x, y );
+    T lengthSquared = P_HYPOTENUSE_2D( x, y );
 	
     if ( lengthSquared > max * max 
 	&&   lengthSquared > 0 ) {
-        T ratio = max/(T)sqrt( lengthSquared );
+		
+        T ratio = max / (T)sqrt( lengthSquared );
         x *= ratio;
         y *= ratio;
     }
@@ -421,11 +452,13 @@ _ofVec2<T> _ofVec2<T>::perpendiculared() const {
 template <typename T> inline 
 _ofVec2<T> _ofVec2<T>::getPerpendicular() const {
 	
-    T len = (T)HYPOTENUSE( x, y );
+    T len = (T)HYPOTENUSE_2D( x, y );
 	
     if( len > 0 ) {
-        return _ofVec2<T>( -( y / len ), 
-						      x / len    );
+        return _ofVec2<T>( 
+			-( y / len ), // x
+			x / len       // y
+		);
     } else {
 		return _ofVec2<T>();
 	}
@@ -434,12 +467,12 @@ _ofVec2<T> _ofVec2<T>::getPerpendicular() const {
 template <typename T> inline 
 _ofVec2<T>& _ofVec2<T>::perpendicular() {
 	
-    T len = (T)HYPOTENUSE( x, y );
+    T len = (T)HYPOTENUSE_2D( x, y );
 	
     if( len > 0 ) {
         T _x = x;
         x    = -( y / len );
-        y    =   _x / len;
+        y    = _x / len;
     }
 	
     return *this;
@@ -450,13 +483,13 @@ _ofVec2<T>& _ofVec2<T>::perpendicular() {
 template <typename T> inline 
 T _ofVec2<T>::length() const {
 	
-    return (T)HYPOTENUSE( x, y );
+    return (T)HYPOTENUSE_2D( x, y );
 }
 
 template <typename T> inline 
 T _ofVec2<T>::lengthSquared() const {
 	
-    return (T)P_HYPOTENUSE( x, y );
+    return (T)P_HYPOTENUSE_2D( x, y );
 }
 
 template <typename T> inline 
@@ -472,8 +505,8 @@ T _ofVec2<T>::squareLength() const {
 template <typename T> inline 
 T _ofVec2<T>::angle( const _ofVec2<T>& vec ) const {
 	
-    return (T)(atan2( DOT_YXV2( x, y, vec ), 
-					  DOT_XYV2( x, y, vec ) ) * RAD_TO_DEG);
+    return (T)( atan2( DOT_YX_V2D( x, y, vec ), 
+					   DOT_XY_V2D( x, y, vec ) ) * RAD_TO_DEG );
 }
 
 /*! Angle (deg) between two vectors.
@@ -481,8 +514,8 @@ T _ofVec2<T>::angle( const _ofVec2<T>& vec ) const {
 template <typename T> inline 
 T _ofVec2<T>::angleRad( const _ofVec2<T>& vec ) const {
 	
-    return atan2( DOT_YXV2( x, y, vec ), 
-				  DOT_XYV2( x, y, vec ) );
+    return atan2( DOT_YX_V2D( x, y, vec ), 
+				  DOT_XY_V2D( x, y, vec ) );
 }
 
 
@@ -490,7 +523,7 @@ T _ofVec2<T>::angleRad( const _ofVec2<T>& vec ) const {
 template <typename T> inline 
 T _ofVec2<T>::dot( const _ofVec2<T>& vec ) const {
 	
-    return DOT_XYV2( x, y, vec );
+    return DOT_XY_V2D( x, y, vec );
 }
 
 // Expanded at compiler time?
