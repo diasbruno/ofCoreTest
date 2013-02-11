@@ -3,12 +3,13 @@
 #include "cpptest.h"
 #include "_ofVec.h"
 
-class ofVec3T_Suite : public Test::Suite {
+class ofVec3T_Suite 
+	: public Test::Suite {
 public:
 	
-    ofVec3T_Suite() 
-    { 
-        TEST_ADD( ofVec3T_Suite::test_creation )
+    ofVec3T_Suite() {
+		
+        TEST_ADD( ofVec3T_Suite::test_instantiation )
         TEST_ADD( ofVec3T_Suite::test_array_access )
 		TEST_ADD( ofVec3T_Suite::test_pointer_access )
 		TEST_ADD( ofVec3T_Suite::test_sets_equality )
@@ -26,13 +27,15 @@ private:
     _ofVec3f v3f;
 	_ofVec3d v3d;
 	
-    void test_creation() {
+    void test_instantiation() {
+		
         TEST_ASSERT( v3f.x == 0 )
         TEST_ASSERT( v3f.y == 0 )
         TEST_ASSERT( v3f.z == 0 )
     }
 	
     void test_array_access() {
+		
         TEST_ASSERT( v3f[0] == 0 )
         TEST_ASSERT( v3f[1] == 0 )
         TEST_ASSERT( v3f[2] == 0 )
@@ -42,6 +45,7 @@ private:
     }
 	
 	void test_pointer_access() {
+		
 		float *vf;
 		double *vd;
 		
@@ -67,6 +71,7 @@ private:
     }
 	
 	void test_sets_equality() {
+		
 		// axis
 		v3i.set( 20, 30, 40 );
         TEST_ASSERT( v3i == _ofVec3<int>( 20, 30, 40 ) )
@@ -84,6 +89,7 @@ private:
     }
 	
 	void test_operations() {
+		
 		v3i.set( 20, 30, 40 );
 		
 		v3i += _ofVec3i( 40, 30, 20 );
@@ -126,6 +132,5 @@ private:
 		v3f = -v3f; 
 		TEST_ASSERT( v3f == _ofVec3f( -20, -30, -40 ) );
     }
+
 };
-
-

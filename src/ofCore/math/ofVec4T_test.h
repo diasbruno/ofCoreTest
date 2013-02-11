@@ -3,12 +3,13 @@
 #include "cpptest.h"
 #include "_ofVec.h"
 
-class ofVec4T_Suite : public Test::Suite {
+class ofVec4T_Suite 
+	: public Test::Suite {
 public:
 	
-    ofVec4T_Suite() 
-    { 
-        TEST_ADD( ofVec4T_Suite::test_creation )
+    ofVec4T_Suite() {
+		
+        TEST_ADD( ofVec4T_Suite::test_instantiation )
 		TEST_ADD( ofVec4T_Suite::test_array_access )
 		TEST_ADD( ofVec4T_Suite::test_pointer_access )
 		TEST_ADD( ofVec4T_Suite::test_sets_equality )
@@ -26,7 +27,7 @@ private:
     _ofVec4f v4f;
 	_ofVec4d v4d;
 	
-    void test_creation() {
+    void test_instantiation() {
 		TEST_ASSERT( v4i.x == 0 )
         TEST_ASSERT( v4i.y == 0 )
 		TEST_ASSERT( v4i.z == 0 )
@@ -144,4 +145,5 @@ private:
 		v4f = -v4f; 
 		TEST_ASSERT( v4f == _ofVec4f( -20, -30, -40, -10 ) );
     }
+	
 };
