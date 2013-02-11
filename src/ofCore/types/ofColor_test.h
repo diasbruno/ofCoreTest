@@ -8,12 +8,12 @@
 
 using namespace std;
 
-class ofColor_Suite : public Test::Suite {
+class ofColor_Suite 
+	: public Test::Suite {
 public:
 	
-    ofColor_Suite() 
-    { 
-        TEST_ADD( ofColor_Suite::test_instance_creation     )
+    ofColor_Suite() {
+        TEST_ADD( ofColor_Suite::test_instantiation )
     }
     
     ofColor tColor;
@@ -25,13 +25,12 @@ protected:
 	
 private:
 	
-    void test_instance_creation() {
+    void test_instantiation() {
         TEST_ASSERT( tColor.r == 255.0 )
 		TEST_ASSERT( tColor.g == 255.0 )
 		TEST_ASSERT( tColor.b == 255.0 )
 		TEST_ASSERT( tColor.a == 255.0 )
 		
-		// ofColor.set( <#ofColor_ *color#> );
 		tColor.set( ofColor_<float>::blue );
 		
         TEST_ASSERT( tColor.r == 0.0 )

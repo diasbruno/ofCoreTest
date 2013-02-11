@@ -16,8 +16,8 @@
 #include "ofVec4T_test.h"
 
 #include "ofMatrix3x3T_test.h"
-//#include "ofMatrix4x4T_test.h"
-//#include "ofQuaternionT_test.h"
+#include "ofMatrix4x4T_test.h"
+#include "ofQuaternionT_test.h"
 
 // uncomment this line to export 
 // the results as html.
@@ -32,8 +32,8 @@ void run_test_for_math() {
 	ts_types.add( auto_ptr<Test::Suite>( new ofVec3T_Suite ) );
 	ts_types.add( auto_ptr<Test::Suite>( new ofVec4T_Suite ) );
 	ts_types.add( auto_ptr<Test::Suite>( new ofMatrix3x3_test ) );
-//	ts_types.add( auto_ptr<Test::Suite>( new ofMatrix4x4_test ) );
-//	ts_types.add( auto_ptr<Test::Suite>( new ofQuaternion_test ) );
+	ts_types.add( auto_ptr<Test::Suite>( new ofMatrix4x4_test ) );
+	ts_types.add( auto_ptr<Test::Suite>( new ofQuaternion_test ) );
 }
 
 void run_test_for_utils() {

@@ -16,12 +16,12 @@ using namespace std;
  
  */
 
-class ofPixels_Suite : public Test::Suite {
+class ofPixels_Suite 
+	: public Test::Suite {
 public:
 	
-    ofPixels_Suite() 
-    { 
-        TEST_ADD( ofPixels_Suite::test_instance_creation     )
+    ofPixels_Suite() {
+        TEST_ADD( ofPixels_Suite::test_instantiation )
     }
     
     ofPixels tpixels;
@@ -39,7 +39,7 @@ protected:
 	
 private:
 	
-    void test_instance_creation() {
+    void test_instantiation() {
 		
 		// ofPixels
 		
@@ -70,12 +70,12 @@ private:
 	}
 };
 
-class ofPixels_Scenarion : public Test::Suite {
+class ofPixels_Scenarion 
+	: public Test::Suite {
 public:
 	
-    ofPixels_Scenarion() 
-    { 
-        TEST_ADD( ofPixels_Scenarion::test_instance_creation     )
+    ofPixels_Scenarion() {
+        TEST_ADD( ofPixels_Scenarion::test_instantiation )
     }
     
     ofPixels tpixels;
@@ -91,7 +91,7 @@ protected:
 	
 private:
 	
-    void test_instance_creation() {
+    void test_instantiation() {
 		
 	}
 };

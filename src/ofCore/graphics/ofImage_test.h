@@ -10,7 +10,7 @@ public:
 	
     ofImage_Suite() 
     { 
-        TEST_ADD( ofImage_Suite::test_instance_creation     )
+        TEST_ADD( ofImage_Suite::test_instantiation     )
 //		ofPixels pixels = tImage.getPixels();
 //		if ( pixels.isAllocated() ) {
 //			TEST_ADD( ofImage_Suite::test_initialized_pixels    )
@@ -26,7 +26,7 @@ protected:
 	
 private:
 	
-    void test_instance_creation() {
+    void test_instantiation() {
 		TEST_ASSERT( tImage.width == 0 )
 		TEST_ASSERT( tImage.height == 0 )
 		TEST_ASSERT( tImage.bpp == 0 )
