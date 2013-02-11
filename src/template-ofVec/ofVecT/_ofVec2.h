@@ -38,16 +38,16 @@ public:
     // Accessors ------------------------------------------------------------
 	
     T* getPtr() { 
-    	return (T*)&x; }
-	
-	const T* getPtr() const { 
-		return (const T*)&x; }
-	
-	T& operator[]( int n ) { 
-		return getPtr()[n]; }
-	
-	T operator[]( int n ) const { 
-		return getPtr()[n]; }
+        return (T*)&x; }
+
+    const T* getPtr() const { 
+        return (const T*)&x; }
+
+    T& operator[]( int n ) { 
+        return getPtr()[n]; }
+
+    T operator[]( int n ) const { 
+        return getPtr()[n]; }
     
     // Similarity/equality --------------------------------------------------
     
